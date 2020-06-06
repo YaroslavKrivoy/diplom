@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <body>
+    <referenceBlock name="order_items">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="product" xsi:type="string" translate="true">Product</item>
+                <item name="status" xsi:type="string" translate="true">Item Status</item>
+                <item name="price-original" xsi:type="string" translate="true">Original Price</item>
+                <item name="price" xsi:type="string" translate="true">Price</item>
+                <item name="ordered-qty" xsi:type="string" translate="true">Qty</item>
+                <item name="cases" xsi:type="string" translate="true">Cases</item>
+                <item name="price-lb" xsi:type="string" translate="true">Price/lb</item>
+                <item name="ordered-weight" xsi:type = "string" translate="true">Weight</item>
+                <item name="unit" xsi:type = "string" translate="true">Unit Wgt</item>
+                <item name="subtotal" xsi:type="string" translate="true">Subtotal</item>
+                <item name="tax-amount" xsi:type="string" translate="true">Tax Amount</item>
+                <item name="tax-percent" xsi:type="string" translate="true">Tax Percent</item>
+                <item name="discont" xsi:type="string" translate="true">Discount Amount</item>
+                <item name="total" xsi:type="string" translate="true">Row Total</item>
+            </argument>
+        </arguments>
+    </referenceBlock>
+    <referenceBlock name="default_order_items_renderer">
+      <arguments>
+        <argument name="columns" xsi:type="array">
+          <item name="product" xsi:type="string" translate="false">col-product</item>
+          <item name="status" xsi:type="string" translate="false">col-status</item>
+          <item name="price-original" xsi:type="string" translate="false">col-price-original</item>
+          <item name="price" xsi:type="string" translate="false">col-price</item>
+          <item name="qty" xsi:type="string" translate="false">col-ordered-qty</item>
+          <item name="cases" xsi:type="string" translate="false">col-cases</item>
+          <item name="price-lb" xsi:type="string" translate="false">col-price-lb</item>
+          <!--<item name="weight" xsi:type="string" translate="false">col-ordered-weight</item>-->
+          <item name="unit" xsi:type="string" translate="false">col-unit</item>
+          <item name="subtotal" xsi:type="string" translate="false">col-subtotal</item>
+          <item name="tax-amount" xsi:type="string" translate="false">col-tax-amount</item>
+          <item name="tax-percent" xsi:type="string" translate="false">col-tax-percent</item>
+          <item name="discont" xsi:type="string" translate="false">col-discont</item>
+          <item name="total" xsi:type="string" translate="false">col-total</item>
+        </argument>
+      </arguments>
+    </referenceBlock>
+  </body>
+</page>

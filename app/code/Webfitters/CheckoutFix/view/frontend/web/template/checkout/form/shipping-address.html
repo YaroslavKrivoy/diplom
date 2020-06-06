@@ -1,0 +1,26 @@
+<div class="billing-address-same-as-shipping-block field choice">
+    <div data-bind="fadeVisible: !isAddressPickupInStore()">
+        <input type="checkbox" name="shipping-address-same-as-billing"
+               data-bind="checked: isAddressSameAsBilling, attr: {id: 'shipping-address-same-as-billing'}"/>
+        <label data-bind="attr: {for: 'shipping-address-same-as-billing'}"><span
+                data-bind="i18n: 'My billing and shipping address are the same'"></span></label>
+    </div>
+</div>
+<form class="form form-shipping-address" id="co-shipping-form" data-bind="fadeVisible: !isAddressSameAsBilling() && !isAddressPickupInStore(), attr: {'data-hasrequired': $t('* Required Fields')}">
+    <!-- ko foreach: getRegion('before-fields') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <div id="shipping-new-address-form" class="fieldset address">
+        <!-- ko foreach: getRegion('additional-fieldsets') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <!-- ko if: (isCustomerLoggedIn) -->
+        <div class="field choice" data-bind="visible: !isFormInline">
+            <input type="checkbox" class="checkbox" id="shipping-save-in-address-book" data-bind="checked: saveInAddressBook" />
+            <label class="label" for="shipping-save-in-address-book">
+                <span data-bind="i18n: 'Save in address book'"></span>
+            </label>
+        </div>
+        <!-- /ko -->
+    </div>
+</form>

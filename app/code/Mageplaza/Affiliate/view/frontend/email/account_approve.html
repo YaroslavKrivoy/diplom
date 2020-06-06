@@ -1,0 +1,43 @@
+<!--@subject {{trans "Affiliate account approved"}} @-->
+<!--@vars
+"var account.status":"Account Status",
+"var customer.name":"Account Name"
+@-->
+
+{{template config_path="design/email/header_template"}}
+
+<p class="greeting">Dear {{trans "%name," name=$customer.name}}</p>
+<p>{{trans "Welcome to our Affiliate program."}}</p>
+<p>{{trans "Your Affiliate account is approved and let begin with Affiliate program's outstanding features."}}</p>
+<p>{{trans "Affiliate is the perfect and interesting Magento extension and be seemed to be the business model, where you have the role as collaborators. You can recommend other customers to seller's products, and then make a big shopping public for yourself. This is earning methods on internet although you don't need any product or private website."}}</p>
+<p>{{trans "Specially, you will receive the typical and wonderful benefits following as:"}}</p>
+<ul>
+    <li>
+        <strong>{{trans "Earning commission"}}</strong><br />
+        {{trans "Coming to Affiliate, simply, you will choose any product from seller's website, and seed link of the product to people needing it. If the presentee buy the item, you will get percentage per order."}}</li>
+    <li>
+        <strong>{{trans "Using available template"}}</strong><br />
+        {{trans "In addition,you are supplied templates such as email, banner, newsletters, etc. by seller's website. You will send invitations to your target customers by these templates, which makes you build the network easily and perfectly."}}</li>
+    <li>
+        <strong>{{trans "Tracking history activities"}}</strong><br />
+        {{trans "Affiliate supports you to manage the process of sending invitation, recipient's name, their profit, etc. Therefore, you can follow your work detailedly by themselves."}}</li>
+    <li>
+        <strong>{{trans "Giving cash when achieving the target"}}</strong><br />
+        {{trans "Affiliate give interesting chances to earning money while you don't need any products or services, you only advertise the product of seller's website by available advertising methods. Until their revenue they earn reach  the offered rates, they will withdraw money from their accounts."}}</li>
+</ul>
+<p>{trans "Thus, let enjoy the interesting chances, Affiliate program gives, you will see earning money is not so difficult and complicated."}}</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <table width="100%" class="inner-wrapper" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr width="100%">
+                    <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;">
+                        <p>{{trans "Thank you again, %store_name" store_name=$store.getFrontendName()}}</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

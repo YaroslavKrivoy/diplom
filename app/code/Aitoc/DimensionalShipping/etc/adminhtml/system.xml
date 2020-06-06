@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Aitoc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aitoc_extensions" translate="label" sortOrder="1000000">
+            <label>Aitoc Extensions</label>
+        </tab>
+        <section id="DimensionalShipping" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>Dimensional Shipping</label>
+            <tab>aitoc_extensions</tab>
+            <resource>Aitoc_DimensionalShipping::config_units</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Units Settings</label>
+                <attribute type="expanded">1</attribute>
+                <field id="unit" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Dimensional units</label>
+                    <source_model>Aitoc\DimensionalShipping\Model\Config\Source\UnitsList</source_model>
+                    <comment>Units for boxes and products dimensions.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

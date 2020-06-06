@@ -1,0 +1,32 @@
+<div class="box-account box-info box-affiliate affiliate-banner-content affiliate-block form-edit-account">
+	<?php
+	$banners = $this->getAvailableBanners();
+	if(sizeof($banners)):
+	?>
+		<?php foreach($banners as $banner): ?>
+			<fieldset class="fieldset banner-<?php echo $banner->getId() ?>">
+				<legend class="legend"><span><?php /* @escapeNotVerified */ echo $banner->getTitle() ?></span></legend><br>
+				<div class="field link">
+					<label class="label"><span><?php /* @escapeNotVerified */ echo __('Link') ?></span></label>
+					<div class="control">
+						<span><?php /* @escapeNotVerified */ echo $this->getBannerLink($banner, $this->getLink($banner)) ?></span>
+					</div>
+				</div>
+				<div class="field preview">
+					<label class="label"><span><?php /* @escapeNotVerified */ echo __('Preview') ?></span></label>
+					<div class="control">
+						<?php echo $this->getContentText($banner); ?>
+					</div>
+				</div>
+				<div class="field content">
+					<label class="label" for="banner-content-<?= $banner->getId() ?>"><span><?php /* @escapeNotVerified */ echo __('Copy and past this source code into your website or forum.') ?></span></label>
+					<div class="control">
+						<textarea id="banner-content-<?= $banner->getId() ?>" class="banner-content" rows="4" readonly="readonly" onclick="this.select()"><?php echo $this->getContentText($banner) ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+		<?php endforeach; ?>
+	<?php else: ?>
+		<?php echo __('No banner available'); ?>
+	<?php endif; ?>
+</div>

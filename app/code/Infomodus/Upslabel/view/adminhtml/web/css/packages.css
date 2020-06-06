@@ -1,0 +1,22 @@
+li[aria-selected="false"] > #infomodus_upslabel_items_edit_tabs_package_section button.add-package {
+    display: none;
+}
+#infomodus_upslabel_items_edit_tabs_package_section_content .package-down-arrow {
+    padding-left: 10px;
+    cursor: pointer;
+    display: none;
+}
+#infomodus_upslabel_items_edit_tabs_package_section_content .package-up-arrow {
+    padding-left: 10px;
+    cursor: pointer;
+}
+#infomodus_upslabel_items_edit_tabs_package_section_content .package-delete {
+    float: right;
+    cursor: pointer;
+}
+#infomodus_upslabel_items_edit_tabs_package_section_content .package-collapsed {
+    padding-bottom: 0;
+}
+#infomodus_upslabel_items_edit_tabs_package_section_content .package-collapsed .admin__legend.legend{
+    margin-bottom: 0;
+}

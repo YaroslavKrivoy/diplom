@@ -1,0 +1,8 @@
+<?php if($this->getRecipe()): ?>
+<div class="recipe-holder">
+	<?php if ($this->getRecipe()->getImage()) : ?>
+    <img class="img-responsive" src="<?php echo $this->getImageUrl($this->getRecipe()->getImage()); ?>" alt="<?php echo $this->getRecipe()->getName(); ?>"/>
+    <?php endif; ?>
+	<?php echo $this->getRecipe()->getPostContent(); ?>
+</div>
+<?php endif; ?>

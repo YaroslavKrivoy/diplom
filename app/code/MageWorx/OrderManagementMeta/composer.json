@@ -1,0 +1,10 @@
+{
+    "name": "mageworx/module-ordereditor",
+    "version": "3.2.3",
+    "type": "metapackage",
+    "require": {
+        "mageworx/module-ordereditorbase": "2.5.3",
+        "mageworx/module-ordersgrid"     : "1.0.2",
+        "mageworx/module-ordersbase"     : "1.1.1"
+    }
+}

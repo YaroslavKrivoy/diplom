@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_content_top_category" before="category.products" />
+        </referenceContainer>
+        <referenceContainer name="page.bottom">
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_category_page_bottom" after="-" />
+        </referenceContainer>
+    </body>
+</page>

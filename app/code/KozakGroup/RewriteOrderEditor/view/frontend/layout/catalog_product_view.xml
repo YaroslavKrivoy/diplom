@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="content">
+            <block class="Magento\Reports\Block\Product\Widget\Viewed" name="recently_viewed" template="Magento_Reports::widget/viewed/content/viewed_grid.phtml" cacheable="false">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Recently Viewed</argument>
+                    <argument name="sort_order" xsi:type="string">50</argument>
+                </arguments>
+                <action method="setPageSize">
+                    <argument name="page_size" xsi:type="number">5</argument>
+                </action>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

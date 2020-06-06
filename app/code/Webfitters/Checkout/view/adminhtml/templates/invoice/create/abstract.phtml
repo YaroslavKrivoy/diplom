@@ -1,0 +1,12 @@
+<?php if($this->getOrder()->getPayment()->getMethod() == 'webfitters_paylater'): ?>
+<script>
+    require(["Webfitters_Checkout/invoice/create/form"], function(){});
+</script>
+<div class="admin__page-section-title">
+    <span class="title"><?= /* @escapeNotVerified */ $block->getHeaderText() ?></span>
+    <?php if($block->getButtonsHtml()): ?>
+        <div class="actions"><?= $block->getButtonsHtml() ?></div>
+    <?php endif; ?>
+</div>
+<?= $block->getChildHtml('', true) ?>
+<?php endif; ?>

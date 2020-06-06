@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="data">
+            <action method="setTemplate">
+                <argument xsi:type="string" name="template">Mageplaza_Affiliate::order/data.phtml</argument>
+            </action>
+            <block class="Mageplaza\Affiliate\Block\Adminhtml\Order\Create\Affiliate" template="Mageplaza_Affiliate::order/create/affiliate.phtml" name="affiliate" />
+        </referenceBlock>
+    </body>
+</page>

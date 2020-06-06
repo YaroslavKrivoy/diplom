@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Infomodus. All rights reserved.
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.actions.toolbar">
+            <block class="KozakGroup\RewriteOrderEditor\Block\Adminhtml\Label\Edit\ButtonList" as="edit_label_items_button"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" template="KozakGroup_RewriteOrderEditor::edit/items/redirect.phtml" as="redirect_page"/>
+        </referenceContainer>
+    </body>
+</page>

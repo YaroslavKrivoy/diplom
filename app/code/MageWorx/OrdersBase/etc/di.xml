@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2018 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="mageworx_order_base_save_device_data" type="MageWorx\OrdersBase\Plugin\Order\SaveAttributes"/>
+        <plugin name="mageworx_order_base_get_device_data" type="MageWorx\OrdersBase\Plugin\Order\GetAttributes"/>
+    </type>
+    <!-- Api preferences -->
+    <preference for="MageWorx\OrdersBase\Api\Data\DeviceDataInterface" type="MageWorx\OrdersBase\Model\DeviceData"/>
+    <preference for="MageWorx\OrdersBase\Api\DeviceDataRepositoryInterface" type="MageWorx\OrdersBase\Model\DeviceDataRepository"/>
+</config>

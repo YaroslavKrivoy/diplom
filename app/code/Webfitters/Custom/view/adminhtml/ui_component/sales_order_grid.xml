@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="sales_order_columns">
+        <column name="tracking_code" class="Webfitters\Custom\Ui\Component\Tracking">
+            <settings>
+                <filter>false</filter>
+                <label translate="true">Tracking Code</label>
+                <visible>true</visible>
+                <sortable>false</sortable>
+                <sorting>false</sorting>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+            </settings>
+        </column>
+    </columns>
+</listing>

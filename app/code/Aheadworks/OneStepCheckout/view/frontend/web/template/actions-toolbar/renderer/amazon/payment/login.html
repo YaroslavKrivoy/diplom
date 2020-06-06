@@ -1,0 +1,13 @@
+<div class="primary">
+    <button class="action primary checkout"
+            type="submit"
+            data-bind="
+                click: continueToAmazon,
+                attr: {'title': $t('Continue to Amazon')},
+                css: {disabled: !isPlaceOrderActionAllowed()},
+                enable: isPlaceOrderActionAllowed()
+                "
+            disabled>
+        <span data-bind="i18n: 'Continue to Amazon'"></span>
+    </button>
+</div>

@@ -1,0 +1,57 @@
+.table-checkout-shipping-method {
+	tbody {
+		tr.storepickup-row {
+			td {
+				border-top:0px;
+			}
+			label {
+				padding-bottom: 8px;
+				display: inline-block;
+			}
+			.show-store-detail, .storepickup-date-show {
+				max-width: 300px;
+			}
+		}
+	}
+}
+.checkout-shipping-address {
+	.step-title {
+		margin-bottom: 15px;
+	}
+	.step-content {
+		margin-bottom: 15px;
+	}
+}
+.display-storeinfo {
+    max-width: 240px;
+	border: 2px solid transparent;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 15px 0 20px;
+    padding: 20px 35px 20px 20px;
+    transition: .3s border-color;
+    position: relative;
+    vertical-align: top;
+    border-color: @color-orange-red1;
+    word-wrap: break-word;
+		&:after {
+			background: @color-orange-red1;
+			color: @color-white;
+			content: '\e610';
+			font-family: 'luma-icons';
+			height: 27px;
+			width: 29px;
+			font-size: 19px;
+			line-height: 21px;
+			padding-top: 2px;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			top: 0;
+		}
+		h4 {
+			.lib-heading(h3);
+			margin-top: 8px;
+			margin-bottom: 8px;
+		}
+}

@@ -1,0 +1,17 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko if: isCalculated() -->
+  <tr class="totals fee excl">
+        <th class="mark" scope="row">
+            <span class="label" data-bind="text: title"></span>
+            <span class="value" data-bind="text: getValue()"></span>
+        </th>
+        <td class="amount">
+            <span class="price" data-bind="text: getValue(), attr: {'data-th': title}"></span>
+        </td>
+    </tr>
+<!-- /ko -->

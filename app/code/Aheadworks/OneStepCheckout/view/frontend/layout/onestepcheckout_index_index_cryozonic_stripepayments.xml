@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="Cryozonic_StripePayments::js/cryozonic_stripe.js" />
+        <css src="Cryozonic_StripePayments::css/cryozonic_stripe.css" />
+        <css src="Cryozonic_StripePayments::css/cryozonic_stripe_elements.css" />
+        <css src="Cryozonic_StripePayments::css/paymentfont.min.css" />
+    </head>
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="actions-toolbar" xsi:type="array">
+                                    <item name="rendererList" xsi:type="array">
+                                        <item name="cryozonic_stripe" xsi:type="string">Aheadworks_OneStepCheckout/js/view/actions-toolbar/renderer/cryozonic/stripepayments/stripe-method</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

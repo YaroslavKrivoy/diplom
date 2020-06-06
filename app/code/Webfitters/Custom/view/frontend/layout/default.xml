@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+    	<css src="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto+Slab:400,700" src_type="url" />
+        <css src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" src_type="url" />
+        <css src="Webfitters_Custom::css/fonts/stylesheet.css" />
+        <css src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" src_type="url" />
+        <css src="Webfitters_Custom::css/custom.css" />
+        <meta name="msvalidate.01" content="14CD23DD340356B6F8A90E609C62BA31" />
+    </head>
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Magento\Framework\View\Element\Template" name="facebook-pixel" template="Webfitters_Custom::facebook-pixel.phtml"/>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="analytics" template="Webfitters_Custom::analytics.phtml" before="-" />
+        </referenceContainer>
+        <referenceContainer name="header.panel">
+    		<block class="Magento\Cms\Block\Block" name="top_header_links" after="-">
+    			<arguments>
+    				<argument name="block_id" xsi:type="string">top_header_links</argument>
+    			</arguments>
+    		</block>
+    		<container name="header.panel.after.link" htmlClass="after-links" htmlTag="div" after="top_header_links" />
+    	</referenceContainer>
+        <referenceBlock name="top.storelocator.chooser" remove="true" />
+    	<referenceBlock name="currency" remove="true"/>
+    	<referenceContainer name="form.subscribe" remove="true" />
+    	<referenceBlock name="copyright" remove="true" />
+    	<referenceBlock name="footer_links" remove="true" />
+        <referenceBlock name="catalog.compare.link" remove="true" />
+        <referenceContainer name="header.panel.after.link">
+            <block class="Webfitters\Custom\Block\AccountDropdown" template="Webfitters_Custom::account_dropdown.phtml" before="top.search" name="account.dropdown">
+                <block class="Magento\Customer\Block\Account\Customer" name="new-links" template="Webfitters_Custom::logged-links.phtml" />
+            </block>
+        </referenceContainer>
+        <move element="breadcrumbs" destination="content" before="-" />
+        <move element="header.links" destination="account.dropdown" />
+        <move element="new-links" destination="header.links" before="-" />
+        <referenceBlock name="customer" remove="true" />
+        <referenceBlock name="my-account-link">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">Account Info</argument>
+            </arguments>
+        </referenceBlock>
+        <move element="my-account-link" destination="new-links" />
+        <move element="wish-list-link" destination="new-links" />
+        <!--<referenceBlock name="reviews.tab" remove="true" />-->
+        <!--<referenceBlock name="product.review.form" remove="true" />-->
+        <!--<referenceBlock name="product.info.review" remove="true" />-->
+        <referenceBlock name="store.menu">
+            <block class="Magento\Cms\Block\Block" name="before_navigation_links" before="catalog.topnav">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">before_navigation_links</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="after_navigation_links" after="catalog.topnav">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">after_navigation_links</argument>
+                </arguments>
+            </block>
+            <container name="mobile.menu.bottom" htmlClass="mobile-bottom" htmlTag="div" after="-">
+                <block class="Magento\Cms\Block\Block" name="bottom_mobile_links" after="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">bottom_mobile_links</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceBlock>
+        <referenceContainer name="header.container">
+            <container name="megamenu" htmlClass="megamenu" htmlTag="div" after="-">
+                <block class="Magento\Cms\Block\Block" name="bottom_megamenu" after="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">bottom_megamenu</argument>
+                    </arguments>
+                </block>
+            </container>
+            <block class="Magento\Checkout\Block\Cart\Sidebar" name="minicart.mobile" as="minicart.mobile" after="logo" template="Magento_Checkout::cart/minicart.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="types" xsi:type="array"/>
+                        <item name="components" xsi:type="array">
+                            <item name="minicart_content.mobile" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Checkout/js/view/minicart</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">Magento_Checkout/minicart/content</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="subtotal.container.mobile" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="displayArea" xsi:type="string">subtotalContainer</item>
+                                        </item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="subtotal" xsi:type="array">
+                                                <item name="component" xsi:type="string">uiComponent</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Magento_Checkout/minicart/subtotal</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="extra_info.mobile" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="displayArea" xsi:type="string">extraInfo</item>
+                                        </item>
+                                    </item>
+                                    <item name="promotion.mobile" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="displayArea" xsi:type="string">promotion</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+                <container name="minicart.mobile.addons" label="Mini-cart promotion block"/>
+            </block>
+        </referenceContainer>
+        <move element="catalog.topnav" destination="megamenu" before="-" />
+        <referenceBlock name="catalog.topnav">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Webfitters_Custom::menu.phtml</argument>
+            </action>
+        </referenceBlock>
+        <move element="minicart" destination="header.panel.after.link" after="-" />
+        <move element="navigation.sections" destination="header-wrapper" after="top.search" />
+        <move element="header.links" destination="account.dropdown" />
+    	<referenceContainer name="footer">
+	        <block class="Magento\Cms\Block\Block" name="footer_block" before="-">
+	        	<arguments>
+	        		<argument name="block_id" xsi:type="string">footer_block</argument>
+	        	</arguments>
+	        </block>
+    	</referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" template="Webfitters_Custom::copyright.phtml" after="footer" name="copyright_block" />
+            <!--<container name="new-copyright-container" htmlClass="copyright" htmlTag="div">
+                <block class="Magento\Cms\Block\Block" name="copyright_block" after="footer">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">copyright_block</argument>
+                    </arguments>
+                </block>
+            </container>-->
+        </referenceContainer>
+    </body>
+</page>

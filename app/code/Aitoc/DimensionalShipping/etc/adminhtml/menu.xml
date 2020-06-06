@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Aitoc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="Aitoc_DimensionalShipping::dimensional_shipping"
+                toolTip="Aitoc Extension"
+                title="Dimensional Shipping"
+                module="Aitoc_DimensionalShipping"
+                sortOrder="11"
+                parent="Magento_Integration::system_extensions"
+                action="aitdimensionalshipping/boxes"
+                resource="Aitoc_DimensionalShipping::boxes"/>
+    </menu>
+</config>

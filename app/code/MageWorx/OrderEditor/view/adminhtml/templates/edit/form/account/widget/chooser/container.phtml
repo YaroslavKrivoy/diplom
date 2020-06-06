@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright © 2017 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php
+/**
+ * @var \MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Account\Widget\Chooser\Container $block
+ *
+ * Customers grid container.
+ */
+?>
+<div class="columns">
+    <div class="main-col"><?php echo $block->getGridHtml();?></div>
+    <script type="text/javascript">
+        window.orderEditSelectCustomerGridName = '<?php echo $block->getJsObjectName();?>';
+    </script>
+</div>

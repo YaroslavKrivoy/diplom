@@ -1,0 +1,18 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="action-select-wrap">
+    <select class="action-select" data-bind="foreach: actions, value: selectedValue, event:{ change: applyAction(selectedValue())}">
+        <!-- ko if: $data.actions -->
+        <optgroup data-bind="attr: {label: label}, foreach: actions, item: '$action'">
+            <option data-bind="text: label, value: $data.type"></option>
+        </optgroup>
+        <!-- /ko -->
+        <!-- ko ifnot: $data.actions -->
+        <option data-bind="text: label, value: $data.type"></option>
+        <!-- /ko -->
+    </select>
+</div>

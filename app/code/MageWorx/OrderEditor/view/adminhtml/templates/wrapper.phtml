@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright © 2017 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /** @var \MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Wrapper $block */?>
+<script type="text/javascript">
+    // <![CDATA[
+    require([
+            "MageWorx_OrderEditor/js/order/edit/form/items",
+            "MageWorx_OrderEditor/js/order/edit/form/address/billing",
+            "MageWorx_OrderEditor/js/order/edit/form/address/shipping",
+            "MageWorx_OrderEditor/js/order/edit/form/shipping",
+            "MageWorx_OrderEditor/js/order/edit/form/payment",
+            "MageWorx_OrderEditor/js/order/edit/form/account",
+            "MageWorx_OrderEditor/js/order/edit/form/info",
+            "prototype"
+        ],
+        function(
+            mageworxOrderEditorItems,
+            mageworxOrderEditorAddressShipping,
+            mageworxOrderEditorAddressBilling,
+            mageworxOrderEditorShipping,
+            mageworxOrderEditorPayment,
+            mageworxOrderEditorAccount,
+            mageworxOrderEditorInfo,
+        ) {
+            new mageworxOrderEditorItems().init(<?php echo $block->getJsonParamsItems(); ?>);
+            new mageworxOrderEditorAddressBilling().init(<?php echo $block->getJsonParamsAddress(); ?>);
+            new mageworxOrderEditorAddressShipping().init(<?php echo $block->getJsonParamsAddress(); ?>);
+            new mageworxOrderEditorShipping().init(<?php echo $block->getJsonParamsShipping(); ?>);
+            new mageworxOrderEditorPayment().init(<?php echo $block->getJsonParamsPayment(); ?>);
+            new mageworxOrderEditorAccount().init(<?php echo $block->getJsonParamsAccount(); ?>);
+            new mageworxOrderEditorInfo().init(<?php echo $block->getJsonParamsInfo(); ?>);
+        }
+    );
+    // ]]>
+</script>

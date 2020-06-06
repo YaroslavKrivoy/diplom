@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza_Affiliate extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the Mageplaza License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     https://www.mageplaza.com/LICENSE.txt
+ * 
+ *                     @category  Mageplaza
+ *                     @package   Mageplaza_Affiliate
+ *                     @copyright Copyright (c) 2016
+ *                     @license   https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns">
+                <item name="referral_email" xsi:type="string">sales_order.referral_email</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Backend\Controller\Adminhtml\Index\GlobalSearch">
+        <arguments>
+            <argument name="searchModules" xsi:type="array">
+                <item name="mageplaza_affiliate_campaign" xsi:type="array">
+                    <item name="class" xsi:type="string">Mageplaza\Affiliate\Model\Adminhtml\Search\Campaign</item>
+                    <item name="acl" xsi:type="string">Mageplaza_Affiliate::campaign</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="affiliate_account_listing_data_source" xsi:type="string">Mageplaza\Affiliate\Model\ResourceModel\Account\Grid\Collection</item>
+                <item name="affiliate_group_listing_data_source" xsi:type="string">Mageplaza\Affiliate\Model\ResourceModel\Group\Grid\Collection</item>
+                <item name="affiliate_campaign_listing_data_source" xsi:type="string">Mageplaza\Affiliate\Model\ResourceModel\Campaign\Grid\Collection</item>
+                <item name="affiliate_banner_listing_data_source" xsi:type="string">Mageplaza\Affiliate\Model\ResourceModel\Banner\Grid\Collection</item>
+                <item name="affiliate_transaction_listing_data_source" xsi:type="string">Mageplaza\Affiliate\Model\ResourceModel\Transaction\Grid\Collection</item>
+                <item name="affiliate_withdraw_listing_data_source" xsi:type="string">Mageplaza\Affiliate\Model\ResourceModel\Withdraw\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Mageplaza\Affiliate\Model\ResourceModel\Group\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageplaza_affiliate_group</argument>
+            <argument name="resourceModel" xsi:type="string">Mageplaza\Affiliate\Model\ResourceModel\Group</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Mageplaza\Affiliate\Model\ResourceModel\Campaign\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mageplaza_affiliate_campaign</argument>
+            <argument name="resourceModel" xsi:type="string">Mageplaza\Affiliate\Model\ResourceModel\Campaign</argument>
+        </arguments>
+    </virtualType>
+</config>

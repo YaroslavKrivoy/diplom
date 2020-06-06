@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="custom-attribute" xsi:type="array">
+                    <item name="class" xsi:type="string">Aitoc\DimensionalShipping\Ui\DataProvider\Form\Modifier\ProductCustomAttributes</item>
+                    <item name="sortOrder" xsi:type="number">100</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aitoc\DimensionalShipping\Ui\DataProvider\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="add-unit" xsi:type="array">
+                    <item name="class" xsi:type="string">Aitoc\DimensionalShipping\Ui\DataProvider\Form\Modifier\AddUnits</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aitoc\DimensionalShipping\Ui\DataProvider\Form\BoxDataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">Aitoc\DimensionalShipping\Ui\DataProvider\Form\Modifier\Pool</argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Sales\Block\Adminhtml\Order\View\Info" type="Aitoc\DimensionalShipping\Block\Adminhtml\Order\View\BoxItems"/>
+    <preference for="Magento\Sales\Model\Order\Pdf\Shipment" type="Aitoc\DimensionalShipping\Model\Sales\Model\Order\Pdf\Shipment"/>
+</config>

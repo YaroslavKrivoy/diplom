@@ -1,0 +1,768 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="upslabel" translate="label" type="text" sortOrder="330" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>UPS Shipping Labels</label>
+            <tab>sales</tab>
+            <resource>Infomodus_Upslabel::upslabel</resource>
+            <group id="credentials" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Your UPS Account Credentials</label>
+                <field id="accesslicensenumber" translate="label comment" type="password" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Access License Number</label>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="userid" translate="label comment" type="password" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>User Id</label>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="password" translate="label comment" type="password" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Password</label>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="shippernumber" translate="label comment" type="text" sortOrder="400" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Shipper Number</label>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+            <group id="testmode" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Test Mode</label>
+                <field id="testing" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Test mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="packaging" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Default Packaging Settings</label>
+                <field id="packagingtypecode" translate="label comment" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Packaging Type Code</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Upspackagecode</source_model>
+                </field>
+                <field id="packagingdescription" translate="label comment" type="text" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Packaging Description</label>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="packagingreferencenumbercode" translate="label" type="text" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Packaging Reference Number Code</label>
+                </field>
+                <field id="packagingreferencenumbervalue" translate="label" type="text" sortOrder="400"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Packaging Reference Number Value</label>
+                </field>
+                <field id="packagingreferencebarcode" translate="label" type="select" sortOrder="500" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Bar Code</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="packagingreferencenumbercode2" translate="label" type="text" sortOrder="600"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Packaging Reference Number Code 2</label>
+                </field>
+                <field id="packagingreferencenumbervalue2" translate="label" type="text" sortOrder="700"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Packaging Reference Number Value 2</label>
+                </field>
+                <field id="packagingreferencebarcode2" translate="label" type="select" sortOrder="800" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Bar Code 2</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="frontend_multipackes_enable" translate="label" type="select" sortOrder="900"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Create packages for each Product in an Order?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="packages_by_attribute_enable" translate="label" type="select" sortOrder="1000"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Create packages by product attribute?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="packages_by_attribute_code" translate="label" type="select" sortOrder="1100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Attribute</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ProductAttributes</source_model>
+                    <depends>
+                        <field id="packages_by_attribute_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="shipping" translate="label" type="text" sortOrder="400" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Default Shipping Settings</label>
+                <field id="origin_shipment" translate="label" type="select" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Origin of the Shipment</label>
+                    <source_model>Magento\Ups\Model\Config\Source\OriginShipment</source_model>
+                </field>
+                <field id="defaultshipmentmethod" translate="label" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Shipping Method for Domestic</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Upsmethod</source_model>
+                </field>
+                <field id="defaultshipmentmethodworld" translate="label" type="select" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Shipping Method for International</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Upsmethod</source_model>
+                </field>
+                <field id="shipping_method_native" translate="label" type="select" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Use the compliance of methods</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="button_method_native" translate="label" type="button" sortOrder="350" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Manage compliance of methods</label>
+                    <frontend_model>Infomodus\Upslabel\Model\Config\ShippingSettingsLink</frontend_model>
+                    <depends>
+                        <field id="shipping_method_native">1</field>
+                    </depends>
+                </field>
+                <field id="shipmentdescription" translate="label" type="select" sortOrder="400" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Shipping description</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Shipdesc</source_model>
+                </field>
+                <field id="shipmentdescription_custom" translate="label" type="textarea" sortOrder="450"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Description custom value</label>
+                    <depends>
+                        <field id="shipmentdescription">4</field>
+                    </depends>
+                </field>
+                <field id="defaultshipper" translate="label" type="select" sortOrder="500" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Shipper address</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Defaultaddress</source_model>
+                </field>
+                <field id="defaultshipfrom" translate="label" type="select" sortOrder="600" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Ship from address</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Defaultaddress</source_model>
+                </field>
+                <field id="dest_type" translate="label" type="select" sortOrder="650" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Destination type</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\DestType</source_model>
+                    <comment>By Company Field: if the Company field writes in checkout - destination type will change to Commercial</comment>
+                </field>
+                <field id="validate" translate="label" type="select" sortOrder="700" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Validate address</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="addtrack" translate="label" type="select" sortOrder="800" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Add tracking number automatically</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="track_send" translate="label" type="select" sortOrder="810" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Send tracking number on customer email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="addtrack">1</field>
+                    </depends>
+                </field>
+                <field id="saturday_delivery" translate="label" type="select" sortOrder="900" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Saturday Delivery</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="movement_reference_number" translate="label" type="text" sortOrder="1000" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Movement Reference number</label>
+                    <comment>Must contain alphanumeric characters only. Must be a length of 18 characters. The 3rd and
+                        4th Characters must be the Shipper country ISO Code.
+                    </comment>
+                </field>
+                <field id="movement_min_price" translate="label" type="text" sortOrder="1100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Movement Reference number min price</label>
+                </field>
+            </group>
+            <group id="return" translate="label" type="text" sortOrder="500" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Return Labels</label>
+                <field id="frontend_customer_return" translate="label" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Printing "Return label" by customer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="refundaccess" translate="label" type="select" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Refund</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="frontend_customer_return">1</field>
+                    </depends>
+                </field>
+                <field id="default_return" translate="label" type="select" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Create return label by default</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="default_return_amount" translate="label" type="text" sortOrder="400" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Order amount for default return label, from</label>
+                </field>
+                <field id="default_return_method" translate="label" type="select" sortOrder="500" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default shipping method for return labels</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Upsmethod</source_model>
+                </field>
+                <field id="return_service_code" translate="label" type="select" sortOrder="600" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Service code</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ReturnServiceOptions</source_model>
+                </field>
+            </group>
+            <group id="weightdimension" translate="label" type="text" sortOrder="600" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Weight and Dimensions</label>
+                <field id="weightunits" translate="label" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Weight units</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Weight</source_model>
+                </field>
+                <field id="defweigth" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Default weight</label>
+                </field>
+                <field id="packweight" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Pack weight</label>
+                </field>
+                <field id="dimensions_type" translate="label" type="select" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dimensions type</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\DimensionsType</source_model>
+                </field>
+                <field id="default_dimensions_box" translate="label" type="select" sortOrder="400" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Default box</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Defaultdimensionsset</source_model>
+                    <depends>
+                        <field id="dimensions_type">1</field>
+                    </depends>
+                </field>
+                <field id="unitofmeasurement" translate="label" type="select" sortOrder="500" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default unit of dimensions</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Unitofmeasurement</source_model>
+                </field>
+                <field id="multipackes_attribute_width" translate="label" type="select" sortOrder="700"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Attribute for product width</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ProductAttributes</source_model>
+                </field>
+                <field id="multipackes_attribute_height" translate="label" type="select" sortOrder="800"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Attribute for product height</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ProductAttributes</source_model>
+                </field>
+                <field id="multipackes_attribute_length" translate="label" type="select" sortOrder="900"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Attribute for product length</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ProductAttributes</source_model>
+                </field>
+            </group>
+            <group id="ratepayment" translate="label" type="text" sortOrder="700" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Rates and Payments</label>
+                <field id="third_party" translate="label" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Payer</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ThirdParty</source_model>
+                </field>
+                <field id="currencycode" translate="label comment" type="select" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Currency code</label>
+                    <source_model>Magento\Config\Model\Config\Source\Locale\Currency\All</source_model>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="dytytaxinternational" translate="label" type="select" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Duty and Tax charges</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\DutyAndTaxInternational</source_model>
+                </field>
+                <field id="negotiatedratesindicator" translate="label" type="select" sortOrder="400" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Negotiated Rates</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cod" translate="label" type="select" sortOrder="500" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>COD (default)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cod_shipping_cost" translate="label" type="select" sortOrder="550" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Add shipping cost to COD</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="cod">1</field>
+                    </depends>
+                </field>
+                <field id="additionalhandling" translate="label" type="select" sortOrder="600" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Additional Handling</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="insured_automaticaly" translate="label" type="select" sortOrder="700" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Adding Insured Value automatically</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="invoicelinetotal" translate="label" type="select" sortOrder="800" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Send InvoiceLineTotal (for shipments from US to Canada and PR only)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="carbon_neutral" translate="label" type="select" sortOrder="900" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Carbon neutral</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="quantum" translate="label" type="text" sortOrder="800" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Quantum View Notification</label>
+                <field id="qvn" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Quantum View Notification Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="qvn_email_shipper" translate="label" type="text" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Shipper Email</label>
+                </field>
+                <field id="qvn_code" translate="label" type="multiselect" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Notification Code</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Notificationcode</source_model>
+                </field>
+                <field id="qvn_code_admin" translate="label" type="multiselect" sortOrder="310" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Notification Code For Shipper</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Notificationcode</source_model>
+                </field>
+                <field id="qvn_lang" translate="label" type="select" sortOrder="350" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Notification Lang</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\NotificationLang</source_model>
+                </field>
+                <field id="adult" translate="label" type="select" sortOrder="400" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Delivery Confirmation</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\DeliveryConfirmation</source_model>
+                </field>
+                <field id="adult_allow_country" translate="label" type="multiselect" sortOrder="500" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Allowed countries for Delivery Confirmation</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <depends>
+                        <field id="adult">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="printing" translate="label" type="text" sortOrder="900" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Printing Settings</label>
+                <field id="printer" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Print type</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\PrintType</source_model>
+                    <comment>In case of COD shipping, label will be only Image and PDF, regardless this setting.</comment>
+                </field>
+                <field id="printer_name" translate="label" type="text" sortOrder="150" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Name of printer</label>
+                    <validate>required-entry</validate>
+                    <comment>If you use more than one printer, enter them separated by commas</comment>
+                    <depends>
+                        <field id="printer" separator="|">EPL|SPL|ZPL|STARPL</field>
+                    </depends>
+                </field>
+                <field id="automatic_printing" translate="label" type="select" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Automatic printing</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="printer" separator="|">EPL|SPL|ZPL|STARPL</field>
+                    </depends>
+                </field>
+                <field id="automatic_printing_ip" translate="label" type="text" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>IP</label>
+                    <depends>
+                        <field id="printer" separator="|">EPL|SPL|ZPL|STARPL</field>
+                    </depends>
+                </field>
+                <field id="automatic_printing_port" translate="label" type="text" sortOrder="400" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Port</label>
+                    <depends>
+                        <field id="printer" separator="|">EPL|SPL|ZPL|STARPL</field>
+                    </depends>
+                </field>
+                <field id="termal_width" translate="label" type="select" sortOrder="500" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Width</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\TermalWidth</source_model>
+                    <depends>
+                        <field id="printer" separator="|">EPL|SPL|ZPL|STARPL</field>
+                    </depends>
+                </field>
+                <field id="bulk_printing_all" translate="label" type="select" sortOrder="600" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Bulk printing</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\BulkPrinting</source_model>
+                </field>
+                <field id="papersize" translate="label" type="select" sortOrder="700" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Paper size</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\PaperSize</source_model>
+                    <depends>
+                        <field id="printer">GIF</field>
+                    </depends>
+                </field>
+                <field id="custom_width" translate="label comment" type="text" sortOrder="800" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Width</label>
+                    <comment>pixels</comment>
+                    <depends>
+                        <field id="papersize">AC</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="pickup" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Pickup options</label>
+                <field id="CloseTime" translate="label" type="time" sortOrder="100" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Close Time</label>
+                </field>
+                <field id="ReadyTime" translate="label" type="time" sortOrder="200" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Ready Time</label>
+                </field>
+                <field id="PickupDateYear" translate="label" type="select" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Pickup Date Year</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Pickup\Year</source_model>
+                </field>
+                <field id="PickupDateMonth" translate="label" type="select" sortOrder="400" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Pickup Date Month</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Pickup\Month</source_model>
+                </field>
+                <field id="PickupDateDay" translate="label" type="select" sortOrder="500" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Pickup Date Day</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Pickup\Day</source_model>
+                </field>
+                <field id="AlternateAddressIndicator" translate="label" type="select" sortOrder="600" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Alternate Address Indicator</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Pickup\Alternateindicator</source_model>
+                </field>
+                <field id="ServiceCode" translate="label" type="select" sortOrder="700" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Service Code</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Pickup\Servicecode</source_model>
+                </field>
+                <field id="Quantity" translate="label" type="text" sortOrder="800" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Quantity</label>
+                </field>
+                <field id="DestinationCountryCode" translate="label" type="select" sortOrder="800" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Destination Country</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>
+                <field id="ContainerCode" translate="label" type="select" sortOrder="900" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Container Code</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Pickup\Containercode</source_model>
+                </field>
+                <field id="Weight" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Weight</label>
+                </field>
+                <field id="UnitOfMeasurement" translate="label" type="select" sortOrder="1100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Unit Of Measurement</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Weight</source_model>
+                </field>
+                <field id="OverweightIndicator" translate="label comment" type="select" sortOrder="1200"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Overweight Indicator</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Pickup\Overweightindicator</source_model>
+                    <comment>Indicates whether or not at least one package is over 70 lbs or 32 kgs</comment>
+                </field>
+                <field id="PaymentMethod" translate="label comment" type="select" sortOrder="1300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Payment Method</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\Pickup\Paymentmethod</source_model>
+                    <comment>Required field. For countries and (or) zip codes where pickup is free of charge,
+                        please submit 00, means no payment needed as payment method. If 01 is the payment
+                        method, then ShipperAccountNumber and ShipperAccount CountryCode must be provided. If 03
+                        is selected, then CreditCard information should be provided. If 04 is selected, then the
+                        shipper agreed to pay for the pickup packages. If 05 is selected, then the shipper will
+                        pay for the pickup with a check or money order.
+                    </comment>
+                </field>
+                <field id="SpecialInstruction" translate="label comment" type="textarea" sortOrder="1400"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Special Instruction</label>
+                    <comment>Special handling instruction from the customer (1...57 length)</comment>
+                </field>
+                <field id="ReferenceNumber" translate="label comment" type="textarea" sortOrder="1500" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Reference Number</label>
+                    <comment>Information entered by a customer for internal reference (1...35 length)</comment>
+                </field>
+                <field id="Notification" translate="label" type="select" sortOrder="1600" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Notification Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ConfirmationEmailAddress" translate="label comment" type="textarea" sortOrder="1700"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Confirmation Email Address</label>
+                    <comment>Email addresses to confirm the pickup. No more than five email addresses are
+                        allowed. Enter separated by commas.
+                    </comment>
+                </field>
+                <field id="UndeliverableEmailAddress" translate="label comment" type="textarea" sortOrder="1800"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Undeliverable Email Address</label>
+                    <comment>The email address to use when the Confirmation Email Address is not reachable.</comment>
+                </field>
+            </group>
+            <group id="paperless" translate="label" type="text" sortOrder="2600" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>International Paperless Invoice</label>
+                <field id="enable" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>International Invoice</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="print_pdf" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Paperless</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="international_comments" translate="label" type="textarea" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>International Comments</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="reasonforexport" translate="label" type="select" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Reason for export</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ReasonForExport</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <!--<field id="international_sold_to" translate="label" type="select" sortOrder="350" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Sold to</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\SoldTo</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>-->
+                <field id="international_termsofshipment" translate="label" type="select" sortOrder="400"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>International Terms of shipment</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\TermsOfShipment</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="international_unitofmeasurement" translate="label" type="select" sortOrder="500"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>International Unit of measurement</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\InternationalUnitofmeasurement</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="international_unitofmeasurementdesc" translate="label" type="text" sortOrder="600"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>International Unit of measurement description</label>
+                    <depends>
+                        <field id="international_unitofmeasurement">OTH</field>
+                    </depends>
+                </field>
+                <field id="international_commodity_id" translate="label" type="select" sortOrder="700" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Product Commodity attribute</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ProductAttributes</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="product_description" translate="label" type="textarea" sortOrder="800" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default Product description</label>
+                    <comment>If empty, Product Name will be used</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="product_origin_country" translate="label" type="select" sortOrder="900" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Product origin country code</label>
+                    <comment>Will be used, if Product has no Country of Manufacture attribute</comment>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="schedule_b" translate="label" type="select" sortOrder="1000" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>ScheduleB Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="schedule_b_number_default" translate="label" type="text" sortOrder="1100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>ScheduleB Number default</label>
+                    <comment>A unique 10-digit commodity classification code for the item being exported.
+                    </comment>
+                    <depends>
+                        <field id="schedule_b">1</field>
+                    </depends>
+                </field>
+                <field id="schedule_b_number_attribute_id" translate="label" type="select" sortOrder="1200"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ScheduleB Number product attribute</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ProductAttributes</source_model>
+                    <depends>
+                        <field id="schedule_b">1</field>
+                    </depends>
+                </field>
+                <field id="schedule_b_unitOfMeasurement" translate="label" type="select" sortOrder="1300"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ScheduleB Unit Of Measurement default</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\SchedulebUnitofmeasurement</source_model>
+                    <depends>
+                        <field id="schedule_b">1</field>
+                    </depends>
+                </field>
+                <field id="schedule_b_unitOfMeasurement_attribute_id" translate="label" type="select" sortOrder="1400"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ScheduleB Unit Of Measurement product attribute</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\ProductAttributes</source_model>
+                    <depends>
+                        <field id="schedule_b">1</field>
+                    </depends>
+                </field>
+                <field id="declaration_statement" translate="label" type="textarea" sortOrder="1500" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Declaration Statement</label>
+                </field>
+            </group>
+            <group id="frontend_autocreate_label" translate="label" type="text" sortOrder="2700" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Automatic labels creation</label>
+                <field id="frontend_order_autocreate_label_enable" translate="label" type="select" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="apply_to" translate="label" type="multiselect" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Create labels for Shipping Methods</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\FrontShippingMethod</source_model>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="frontend_order_autocreate_label_enable">1</field>
+                    </depends>
+                </field>
+                <field id="orderstatus" translate="label" type="multiselect" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Create labels for Orders Statuses</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\OrderStatuses</source_model>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="frontend_order_autocreate_label_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="bulk_create_labels" translate="label" type="text" sortOrder="2800" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Settings for bulk labels creation</label>
+                <comment>
+                    <![CDATA[<b>To create labels for many orders simultaneously:</b><br>
+                        On the order's page select all orders you want to create labels.<br>
+                        Then in Actions select "Create UPS labels for orders" and click Submit.<br>
+                        Labels will be created for selected orders in accordance with these settings.<br><br>]]>
+                </comment>
+                <field id="bulk_shipping_methods" translate="label" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Create labels for Shipping Methods</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\BulkSpecifyTypes</source_model>
+                </field>
+                <field id="apply_to" translate="label" type="multiselect" sortOrder="200" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Specify Shipping Methods</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\FrontShippingMethod</source_model>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="bulk_shipping_methods">specify</field>
+                    </depends>
+                </field>
+                <field id="bulk_order_status" translate="label" type="select" sortOrder="300" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Create labels for Order Statuses</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\BulkSpecifyTypes</source_model>
+                </field>
+                <field id="orderstatus" translate="label" type="multiselect" sortOrder="400" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Specify Order Statuses</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\OrderStatuses</source_model>
+                    <comment>Required field</comment>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="bulk_order_status">specify</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="additional_settings" translate="label" type="text" sortOrder="2900" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Additional settings</label>
+                <field id="orderstatuses" translate="label" type="select" sortOrder="500" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Order status after label creation</label>
+                    <source_model>Infomodus\Upslabel\Model\Config\OrderCustomStatuses</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

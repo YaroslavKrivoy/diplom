@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+/* @var $block \Magento\Backend\Block\Template */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+    $order = $block->getOrder();
+?>
+
+<?php $orderNote = $order->getAwOrderNote(); ?>
+<?php if ($orderNote): ?>
+    <section class="admin__page-section order-note edit-order-comments">
+        <div class="edit-order-comments-block-title">
+            <span class="title"><?php echo /* @escapeNotVerified */ $block->escapeHtml(__('Note left by the customer')) ?></span>
+        </div>
+        <div class="comments-block-item">
+            <div class="comments-block-item-comment">
+                <?php echo /* @escapeNotVerified */ nl2br($block->escapeHtml($orderNote)) ?>
+            </div>
+            <span class="comments-block-item-date-time">
+                <?php echo /* @escapeNotVerified */ __('Note added') ?>
+                <?php echo /* @escapeNotVerified */ $order->getCreatedAtFormatted(2) ?>
+            </span>
+        </div>
+    </section>
+<?php endif; ?>

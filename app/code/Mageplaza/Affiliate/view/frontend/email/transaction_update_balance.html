@@ -1,0 +1,37 @@
+<!--@subject {{trans "Your balance has been updated!"}} @-->
+<!--@vars
+"var customer.name":"Customer Name",
+"var transaction.title":"Transaction Title",
+"var transaction.amount":"Transaction Amount",
+"var transaction.getStatusLabel()":"Transaction Status",
+"var transaction.getAmountFormated($store)":"Transaction Amount Formated",
+"var account.balance":"Account Balance",
+"var account.getBalanceFormated($store)":"Account Balance Formated"
+@-->
+
+{{template config_path="design/email/header_template"}}
+
+<p class="greeting">Dear {{trans "%name," name=$customer.name}}</p>
+<p>{{trans "We have updated the balance for you so that you can have relevant information of your commission or paid. This email help you control your activities actively."}}</p>
+<p>{{trans "The transaction detail"}}</p>
+<ul>
+    <li>{{trans "Transaction title: %title" title=$transaction.title}}</li>
+    <li>{{trans "Transaction amount: %amount" amount=$transaction.getAmountFormated($store)}}</li>
+    <li>{{trans "Transaction status: %status" status=$transaction.getStatusLabel()}}</li>
+    <li>{{trans "Current balance: %balance" balance=$account.getBalanceFormated($store)}}</li>
+</ul>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <table width="100%" class="inner-wrapper" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr width="100%">
+                    <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;">
+                        <p>{{trans "Thank you again, %store_name" store_name=$store.getFrontendName()}}</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

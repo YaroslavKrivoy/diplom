@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <plugin name="sales_order_add_company_column" type="Webfitters\CustomerCompany\Plugin\SalesOrderCompany" sortOrder="10" disabled="false" />
+    </type>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Invoice\Grid">
+	    <arguments>
+	        <argument name="columns" xsi:type="array">
+	            <item name="customer_id" xsi:type="string">sales_invoice.customer_id</item>
+	        </argument>
+	    </arguments>
+	</virtualType>
+	<virtualType name="ShipmentGridAggregator" type="Magento\Sales\Model\ResourceModel\Grid">
+	    <arguments>
+	        <argument name="columns" xsi:type="array">
+	            <item name="customer_id" xsi:type="string">sales_shipment.customer_id</item>
+	        </argument>
+	    </arguments>
+	</virtualType>
+ </config>

@@ -1,0 +1,21 @@
+<div class="box-account box-info box-affiliate-summary">
+	<div class="box-head">
+		<h2><?php echo __('Credit Information') ?></h2>
+	</div>
+    <div class="info-summary">
+		<ul>
+			<?php foreach ($block->getTotalShow() as $total): ?>
+			<li>
+				<span class="title"><?php echo $total['label'] ?></span>
+				<span class="price-box">
+					<span class="regular-price">
+						<span class="price"><?php echo $block->formatPrice($total['value']) ?></span>
+					</span>
+        		</span>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+    </div>
+</div>
+
+<?php echo $this->getChildHtml('credit.transaction') ?>

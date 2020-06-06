@@ -1,0 +1,20 @@
+<div class="slider-wrap">
+	<div class="bxslider">
+	<?php foreach($this->getSlides() as $slide): ?>
+		<div class="slide" style="background-image: url('<?php echo $slide->image; ?>');">
+			<div class="slide-background"></div>
+			<div class="slide-content">
+				<h2><?php echo $slide->heading; ?></h2>
+				<p><?php echo $slide->text; ?></p>
+				<?php if($slide->button): ?>
+				<a href="<?php echo $slide->link; ?>" class="btn btn-default"><?php echo $slide->button; ?></a>
+				<?php endif; ?>
+			</div>
+		</div>
+	<?php endforeach; ?>
+	</div>
+	<div class="box-content">
+		<a class="prev"></a>
+		<a class="next"></a>
+	</div>
+</div>

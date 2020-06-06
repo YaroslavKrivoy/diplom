@@ -1,0 +1,48 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+
+<div class="admin__page-section-title <?= /* @escapeNotVerified */ $block->getHeaderCssClass() ?>">
+    <span class="title"><?= /* @escapeNotVerified */ $block->getHeaderText() ?></span>
+    <div class="actions"></div>
+</div>
+<div id="customer_account_fieds" class="admin__page-section-content">
+    <?= $block->getForm()->getHtml() ?>
+</div>
+
+<script>
+    require(["prototype", "Magento_Sales/order/create/form"], function(){
+        order.accountFieldsBind($('customer_account_fieds'));
+    });
+</script>
+
+<script>
+    require([
+        "jquery",
+        "Magento_Sales/order/create/form"
+    ], function ($) {
+        var elem = '<input type="hidden" name="reset_shipping" value="1">';
+
+        order.updateCustomerGroup = function(){
+            var data = this.serializeData('edit_form');
+            data._object = {};
+            data._object.json = true;
+            data._object['order[customer_group]'] = $('#group_id option:selected').attr('value');
+            this.loadArea(['shipping_method', 'totals'], true, data);
+        };
+
+        $('a.action-default').removeAttr('onclick');
+
+        $('select#group_id').on('change',function () {
+            $(elem).insertAfter($('#group_id'));
+
+        });
+
+        $('a.action-default').on('click',function () {
+            order.updateCustomerGroup();
+        });
+    });
+</script>

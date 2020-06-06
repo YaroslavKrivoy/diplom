@@ -1,0 +1,59 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<!-- ko if: (isVisible()) -->
+<div class="shipping-information">
+	<!-- ko if: (isStoreSelected() == 0) -->
+    <div class="ship-to"  >
+        <div class="shipping-information-title">
+            <span data-bind="i18n: 'Ship To:'"></span>
+            <button class="action action-edit" data-bind="click: back">
+                <span data-bind="i18n: 'edit'"></span>
+            </button>
+        </div>
+        <div class="shipping-information-content">
+            <!-- ko foreach: getRegion('ship-to') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+    </div>
+	<!--/ko-->
+	<!-- ko if: (isStoreSelected() == 1) -->
+	<div class="ship-to">
+        <div class="shipping-information-title">
+            <span data-bind="i18n: 'Pick From:'"></span>
+            <button class="action action-edit" data-bind="click: back">
+                <span data-bind="i18n: 'edit'"></span>
+            </button>
+        </div>
+        <div class="shipping-information-content">
+           <div class="custom-address">  
+				<!-- ko text: getDetail().firstname --><!-- /ko --> 
+				<!-- ko text: getDetail().lastname --><!-- /ko --> <br/>
+				<!-- ko text: getDetail().street --><!-- /ko --><br/>
+				<!-- ko text: getDetail().city --><!-- /ko -->, <span data-bind="html: getDetail().region"></span> <!-- ko text: getDetail().postcode --><!-- /ko --><br/>
+				<!-- ko text: getCountryName(getDetail().countryId) --><!-- /ko --><br/>
+				<!-- ko if: (getDetail().telephone) -->
+				<a data-bind="text: getDetail().telephone, attr: {'href': 'tel:' + getDetail().telephone}"></a>
+				<!-- /ko --><br/>
+			</div>
+        </div>
+    </div>
+	<!--/ko-->
+    <div class="ship-via">
+        <div class="shipping-information-title">
+            <span data-bind="i18n: 'Shipping Method:'"></span>
+            <button class="action action-edit" data-bind="click: backToShippingMethod">
+                <span data-bind="i18n: 'edit'"></span>
+            </button>
+        </div>
+        <div class="shipping-information-content">
+            <span class="value" data-bind="text: getShippingMethodTitle()"></span>
+        </div>
+    </div>
+</div>
+<!--/ko-->

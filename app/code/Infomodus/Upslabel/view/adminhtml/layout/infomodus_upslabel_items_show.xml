@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Infomodus. All rights reserved.
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Infomodus_Upslabel::css/showlabels.css"/>
+        <link src="Infomodus_Upslabel::js/printer.js"/>
+    </head>
+    <body>
+        <referenceContainer name="left">
+            <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Show\Tabs" name="infomodus_upslabel_items_show_tabs">
+                <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Show\Tab\Direct" name="infomodus_upslabel_items_show_tab_direct" template="items/showlabels.phtml"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">direct_section</argument>
+                    <argument name="block" xsi:type="string">infomodus_upslabel_items_show_tab_direct</argument>
+                </action>
+                <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Show\Tab\Refund" name="infomodus_upslabel_items_show_tab_refund" template="items/showlabels.phtml"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">refund_section</argument>
+                    <argument name="block" xsi:type="string">infomodus_upslabel_items_show_tab_refund</argument>
+                </action>
+                <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Show\Tab\Invert" name="infomodus_upslabel_items_show_tab_invert" template="items/showlabels.phtml"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">invert_section</argument>
+                    <argument name="block" xsi:type="string">infomodus_upslabel_items_show_tab_invert</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Show" name="upslabel_items_show"/>
+        </referenceContainer>
+    </body>
+</page>

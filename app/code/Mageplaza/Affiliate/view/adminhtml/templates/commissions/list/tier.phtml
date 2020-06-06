@@ -1,0 +1,108 @@
+<?php
+$element = $block->getElement();
+$commissionType=$block->getCommissionType();
+$commissionData=$block->getCommissionData();
+
+?>
+<?php $_htmlId      = $block->getElement()->getHtmlId() ?>
+<?php $_htmlClass   = $block->getElement()->getClass() ?>
+<?php $_htmlName    = $block->getElement()->getName() ?>
+<?php $_readonly    = $block->getElement()->getReadonly() ?>
+<?php $_testvalue    = 1 ?>
+<div class="field" id="attribute-<?php /* @escapeNotVerified */ echo $_htmlId?>-container" data-attribute-code="<?php /* @escapeNotVerified */ echo $_htmlId?>"
+	 data-apply-to="<?php echo $block->escapeHtml(
+		 $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode(
+			 $element->hasEntityAttribute() ? $element->getEntityAttribute()->getApplyTo() : []
+		 )
+	 )?>">
+    <label class="commission-list-label"><span><?php /* @escapeNotVerified */ echo $block->getElement()->getLabel() ?></span></label>
+    <div class="control">
+        <table class="admin__control-table commission_tiers_table" id="commission_tiers_table">
+            <thead>
+                <tr>
+                    <th class="col-tier-number"><?php /* @escapeNotVerified */ echo __('Tier') ?></th>
+                    <th class="col-1st-order-type"><?php /* @escapeNotVerified */ echo __('Type (1st Order)') ?></th>
+                    <th class="col-1st-value"><?php /* @escapeNotVerified */ echo __('Value (1st Order)') ?></th>
+                    <th class="col-next-order-type"><?php /* @escapeNotVerified */ echo __('Type (Next orders)') ?></th>
+                    <th class="col-next-order-value"><?php /* @escapeNotVerified */ echo __('Value (Next orders)') ?></th>
+                    <th class="col-tier-action"><?php /* @escapeNotVerified */ echo __('Action') ?></th>
+                </tr>
+            </thead>
+            <tbody id="<?php /* @escapeNotVerified */ echo $_htmlId ?>_container"></tbody>
+        </table>
+		<button title="<?php /* @escapeNotVerified */ echo $block->escapeHtml(__('Add')); ?>" type="button" class="action- scalable add icon-btn add-commission-option" id="commission-add" ><span><?php /* @escapeNotVerified */ echo __("Add") ?></span></button>
+<script>
+require([
+	"jquery",
+	"jquery/ui"
+], function ($) {
+	var countOption=1;
+ $( document ).ready(function() {
+
+	 <?php if($commissionData){
+	 foreach ($commissionData as $key => $value){
+	 ?>
+	 var commission ='<tr>' +
+		 '<td><span class="tier-number">Tier '+countOption+'</span></td>' +
+		 "<td><select name='commission[tier_"+countOption+'][type]'+"'>"+
+		 <?php foreach($commissionType as $type):?>
+		 '<option value="<?php echo $type['value']?>" <?php if($type['value']==$value['type']){echo ' selected';} ?>><?php echo $type['label']?></option>'+
+		 <?php endforeach;?>
+		 "</select></td>" +
+		 "<td><input type='text' value='<?php echo $value['value'] ?>' name='commission[tier_"+countOption+'][value]'+"'/></td>" +
+		 "<td><select name='commission[tier_"+countOption+'][type_second]'+"'>"+
+		 <?php foreach($commissionType as $type):?>
+		 '<option value="<?php echo $type['value']?>" <?php if($type['value']==$value['type_second']){echo ' selected';} ?>><?php echo $type['label']?></option>'+
+		 <?php endforeach;?>
+		 "</select></td>" +
+		 "<td><input type='text' value='<?php echo $value['value_second'] ?>' name='commission[tier_"+countOption+'][value_second]'+"'/></td>" +
+		 '<td><button title="<?php /* @escapeNotVerified */ echo $block->escapeHtml(__('Delete')); ?>" type="button" class="action- scalable delete icon-btn delete-commission-option"><span><?php /* @escapeNotVerified */ echo __("Delete") ?></span></button> </td>' +
+		 '</tr>';
+	 $('#commission_tiers_table tr:last').after(commission);
+	 countOption++;
+	 <?php
+	 }
+	 }
+	 ?>
+
+  });
+	$('#commission-add').click(function () {
+		var commissionTemplate ='<tr>' +
+			'<td><span class="tier-number">Tier '+countOption+'</span></td>' +
+			"<td><select name='commission[tier_"+countOption+'][type]'+"'>"+
+			<?php foreach($commissionType as $type):?>
+			'<option value="<?php echo $type['value']?>"><?php echo $type['label']?></option>'+
+			<?php endforeach;?>
+			"</select></td>" +
+			"<td><input type='text' name='commission[tier_"+countOption+'][value]'+"'/></td>" +
+			"<td><select name='commission[tier_"+countOption+'][type_second]'+"'>"+
+			<?php foreach($commissionType as $type):?>
+			'<option value="<?php echo $type['value']?>"><?php echo $type['label']?></option>'+
+			<?php endforeach;?>
+			"</select></td>" +
+			"<td><input type='text' name='commission[tier_"+countOption+'][value_second]'+"'/></td>" +
+			'<td><button title="<?php /* @escapeNotVerified */ echo $block->escapeHtml(__('Delete')); ?>" type="button" class="action- scalable delete icon-btn delete-commission-option"><span><?php /* @escapeNotVerified */ echo __("Delete") ?></span></button> </td>' +
+			'</tr>';
+		$('#commission_tiers_table tr:last').after(commissionTemplate);
+		countOption++;
+	});
+
+	$(".delete-commission-option").live('click', function(event) {
+		countOption--;
+		$(this).parent().parent().remove();
+		updateStt();
+	});
+
+	function updateStt() {
+		var tmpOption=1;
+			obj=$('table tr').find('.tier-number');
+			$.each( obj, function( key, value ) {
+
+				value.innerHTML='Tier '+tmpOption;
+				tmpOption++;
+			});
+		}
+	});
+</script>
+</div>
+

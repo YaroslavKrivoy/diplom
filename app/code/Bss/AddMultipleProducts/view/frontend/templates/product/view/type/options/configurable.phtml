@@ -1,0 +1,45 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_AddMultipleProducts
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+
+<?php
+/** @var $block \Magento\ConfigurableProduct\Block\Product\View\Type\Configurable*/
+$_product    = $block->getProduct();
+$_attributes = $block->decorateArray($block->getAllowAttributes());
+?>
+<?php if ($_product->isSaleable() && count($_attributes)):?>
+    <?php foreach ($_attributes as $_attribute): ?>
+        <div class="field configurable required">
+            <label class="label" for="attribute<?php /* @escapeNotVerified */ echo $_attribute->getAttributeId() ?>">
+                <span><?php echo $block->escapeHtml($_attribute->getProductAttribute()->getStoreLabel()) ?></span>
+            </label>
+            <div class="control">
+                <select name="super_attribute[<?php /* @escapeNotVerified */ echo $_attribute->getAttributeId() ?>]"
+                        data-selector="super_attribute[<?php /* @escapeNotVerified */ echo $_attribute->getAttributeId() ?>]"
+                        data-validate="{required:true}"
+                        id="attribute<?php /* @escapeNotVerified */ echo $_attribute->getAttributeId() ?>"
+                        class="super-attribute-select-<?php echo $_product->getId()?>">
+                    <option value=""><?php /* @escapeNotVerified */ echo __('Choose an Option...') ?></option>
+                </select>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <script type="text/javascript">
+    var spConfig_<?php echo $_product->getId()?> = new Bss_Product.Config(<?php echo $this->getJsonConfig() ?>);
+</script>
+<?php endif;?>

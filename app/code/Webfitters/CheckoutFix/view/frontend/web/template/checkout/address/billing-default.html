@@ -1,0 +1,29 @@
+<div class="shipping-address-item" data-bind="css: element.isSelected() ? 'selected-item' : 'not-selected-item'">
+    <!-- ko text: element.prefix --><!-- /ko --> <!-- ko text: element.firstname --><!-- /ko --> <!-- ko text: element.middlename --><!-- /ko -->
+    <!-- ko text: element.lastname --><!-- /ko --> <!-- ko text: element.suffix --><!-- /ko --><br/>
+    <!-- ko text: _.values(element.street).join(", ") --><!-- /ko --><br/>
+    <!-- ko text: element.city --><!-- /ko -->, <span data-bind="html: element.region"></span> <!-- ko text: element.postcode --><!-- /ko --><br/>
+    <!-- ko text: getCountryName(element.countryId) --><!-- /ko --><br/>
+    <!-- ko if: (element.telephone) -->
+    <a data-bind="text: element.telephone, attr: {'href': 'tel:' + element.telephone}"></a>
+    <!-- /ko --><br/>
+    <!-- ko foreach: { data: element.customAttributes, as: 'elem' } -->
+        <!-- ko foreach: { data: Object.keys(elem), as: 'attribute' } -->
+            <!-- ko if: (typeof elem[attribute] === "object") -->
+                <!-- ko text: elem[attribute].value --><!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: (typeof elem[attribute] === "string") -->
+                <!-- ko text: elem[attribute] --><!-- /ko -->
+            <!-- /ko --><br/>
+        <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: (element.isEditable()) -->
+    <div visible="element.isFormPopUpVisible()" render="element.getPopupTemplate()" data-bind="element: element, attr: {'id': 'opc-billing-address-edit-' + element.customerAddressId}"></div>
+    <button type="button" class="action edit-address-link" data-bind="click: editAddress, visible: element.isEditable()">
+        <span data-bind="i18n: 'Edit'"></span>
+    </button>
+    <!-- /ko -->
+    <button type="button" data-bind="click: selectAddress, visible: !element.isSelected()" class="action action-select-shipping-item">
+        <span data-bind="i18n: 'Use For Billing'"></span>
+    </button>
+</div>

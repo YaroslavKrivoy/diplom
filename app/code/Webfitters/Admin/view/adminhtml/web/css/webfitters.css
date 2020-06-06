@@ -1,0 +1,76 @@
+body .action-primary {background-color: #7DB742; border-color: #7DB742; -webkit-transition: all 200ms linear 0s; transition: all 200ms linear 0s;}
+body .action-primary:hover, body .action-primary:active, body .action-primary:focus {background-color: #7DB742; border-color: #7DB742; box-shadow: none; opacity: 0.7;}
+body.page-layout-admin-login .admin__legend {color: #7DB742;}
+body .dashboard-item-primary:first-child .dashboard-sales-value, body .dashboard-totals-item:first-child .price {color: #7DB742;}
+body .page-footer a, body .page-footer a:hover {color: #7DB742;}
+body .tabs-horiz .ui-state-active .ui-tabs-anchor {border-color: #7DB742;}
+body .admin__page-nav-item._active, body .admin__page-nav-item.ui-state-active {border-color: #7DB742;}
+body .abs-action-primary, 
+body button.primary, 
+body .page-actions > button.action-primary, 
+body .page-actions .page-actions-buttons > button.action-primary, 
+body .page-actions .page-actions-buttons > .action.action-primary, 
+body .page-actions > button.primary, 
+body .page-actions .page-actions-buttons > button.primary, 
+body .page-actions .page-actions-buttons > .action.primary, 
+body .block-footer .action-add.primary, 
+body .page-actions > .block-footer .action-add.action-primary, 
+body .page-actions .page-actions-buttons > .block-footer .action-add.action-primary, 
+body .page-actions > .block-footer .action-add.primary, 
+body .page-actions .page-actions-buttons > .block-footer .action-add.primary
+{background-color: #7DB742; border-color: #7DB742; -webkit-transition: all 200ms linear 0s; transition: all 200ms linear 0s;}
+body .abs-action-primary:hover, 
+body .abs-action-primary:active, 
+body .abs-action-primary:focus, 
+body button.primary:hover, 
+body button.primary:active, 
+body button.primary:focus, 
+body .page-actions > button.action-primary:hover, 
+body .page-actions > button.action-primary:active, 
+body .page-actions > button.action-primary:focus, 
+body .page-actions .page-actions-buttons > button.action-primary:hover, 
+body .page-actions .page-actions-buttons > button.action-primary:active, 
+body .page-actions .page-actions-buttons > button.action-primary:focus, 
+body .page-actions .page-actions-buttons > .action.action-primary:hover, 
+body .page-actions .page-actions-buttons > .action.action-primary:active, 
+body .page-actions .page-actions-buttons > .action.action-primary:focus, 
+body .page-actions > button.primary:hover, 
+body .page-actions > button.primary:active, 
+body .page-actions > button.primary:focus, 
+body .page-actions .page-actions-buttons > button.primary:hover, 
+body .page-actions .page-actions-buttons > button.primary:active, 
+body .page-actions .page-actions-buttons > button.primary:focus, 
+body .page-actions .page-actions-buttons > .action.primary:hover, 
+body .page-actions .page-actions-buttons > .action.primary:active, 
+body .page-actions .page-actions-buttons > .action.primary:focus, 
+body .block-footer .action-add.primary:hover, 
+body .block-footer .action-add.primary:active, 
+body .block-footer .action-add.primary:focus, 
+body .page-actions > .block-footer .action-add.action-primary:hover, 
+body .page-actions > .block-footer .action-add.action-primary:active, 
+body .page-actions > .block-footer .action-add.action-primary:focus, 
+body .page-actions .page-actions-buttons > .block-footer .action-add.action-primary:hover, 
+body .page-actions .page-actions-buttons > .block-footer .action-add.action-primary:active, 
+body .page-actions .page-actions-buttons > .block-footer .action-add.action-primary:focus, 
+body .page-actions > .block-footer .action-add.primary:hover, 
+body .page-actions > .block-footer .action-add.primary:active, 
+body .page-actions > .block-footer .action-add.primary:focus, 
+body .page-actions .page-actions-buttons > .block-footer .action-add.primary:hover, 
+body .page-actions .page-actions-buttons > .block-footer .action-add.primary:active, 
+body .page-actions .page-actions-buttons > .block-footer .action-add.primary:focus
+{opacity: 0.7; box-shadow: none; background-color: #7DB742; border-color: #7DB742;}
+.adminhtml-auth-login .login-footer {margin-top: 10px;}
+.webfitters-help h2 {color: #FFF; margin-bottom: 5px; font-size: 3rem;}
+.webfitters-help h4 {font-size: 2rem; color: #FFF;}
+.webfitter-actions a.left {padding: 10px 20px; box-sizing: border-box; display: inline-block; width: 49%; margin-right: 1%; text-decoration: none; font-size: 14px; text-align: center; font-weight: bold;}
+.webfitter-actions a.right {padding: 10px 20px; box-sizing: border-box; display: inline-block; width: 49%; text-decoration: none; font-size: 14px; text-align: center; font-weight: bold;}
+.webfitter-actions a.green {color: #FFF; background-color: #7EB542; -webkit-transition: all 200ms linear 0s; transition: all 200ms linear 0s;}
+.webfitter-actions a.orange {color: #FFF; background-color: #F37024; -webkit-transition: all 200ms linear 0s; transition: all 200ms linear 0s;}
+.webfitter-actions a.green:hover {color: #FFF; background-color: #7EB542; opacity: 0.7;}
+.webfitter-actions a.orange:hover {color: #FFF; background-color: #F37024; opacity: 0.7;}
+
+.notices-wrapper {display: none !important;}
+.notifications-wrapper {display: none !important;}
+aside.modal-system-messages {display: none !important;}
+aside.modal-system-messages + .modals-overlay {display: none !important;}
+#menu-menuamasty-base-menu {display: none !important;}

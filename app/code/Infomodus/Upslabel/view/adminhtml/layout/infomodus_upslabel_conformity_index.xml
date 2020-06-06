@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Infomodus. All rights reserved.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Infomodus\Upslabel\Block\Adminhtml\Conformity" name="adminhtml.block.promo.quote.grid.container">
+                <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.block.promo.quote.grid" as="grid">
+                    <arguments>
+                        <argument name="id" xsi:type="string">infomodus_upslabel_conformity_grid</argument>
+                        <argument name="dataSource" xsi:type="object">Infomodus\Upslabel\Model\ResourceModel\Conformity\Collection</argument>
+                        <argument name="default_sort" xsi:type="string">created_time</argument>
+                        <argument name="default_dir" xsi:type="string">DESC</argument>
+                        <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="adminhtml.promo.quote.grid.columnSet">
+                        <arguments>
+                            <argument name="rowUrl" xsi:type="array">
+                                <item name="path" xsi:type="string">infomodus_upslabel/*/edit</item>
+                                <item name="extraParamsTemplate" xsi:type="array">
+                                    <item name="id" xsi:type="string">getId</item>
+                                </item>
+                            </argument>
+                        </arguments>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="conformity_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">ID</argument>
+                                <argument name="index" xsi:type="string">conformity_id</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="method_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Shipping Method from</argument>
+                                <argument name="index" xsi:type="string">method_id</argument>
+                                <argument name="type" xsi:type="string">options</argument>
+                                <argument name="options" xsi:type="options" model="Infomodus\Upslabel\Model\Config\ShippingMethods"/>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="upsmethod_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Shipping Method to</argument>
+                                <argument name="index" xsi:type="string">upsmethod_id</argument>
+                                <argument name="type" xsi:type="string">options</argument>
+                                <argument name="options" xsi:type="options" model="Infomodus\Upslabel\Model\Config\Upsmethod"/>
+                            </arguments>
+                        </block>
+                        <block class="Infomodus\Upslabel\Block\Adminhtml\Widget\Conformity\Grid\ActionsColumn" as="actions">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Actions</argument>
+                                <argument name="renderer" xsi:type="string">Infomodus\Upslabel\Block\Adminhtml\Widget\Conformity\Grid\Column\Renderer\DeleteConformity</argument>
+                                <argument name="filter" xsi:type="string">0</argument>
+                                <argument name="sortable" xsi:type="string">0</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

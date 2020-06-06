@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_content_top_product" as="awarp_content_top_product" before="product.info.main" />
+        </referenceContainer>
+
+        <referenceContainer name="content.aside">
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_related_before_product" before="awarp_related_inside_product" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_related_inside_product" before="catalog.product.related" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_related_after_product" after="catalog.product.related" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_up_sells_before_product" before="awarp_up_sells_inside_product" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_up_sells_inside_product" before="product.info.upsell" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_up_sells_after_product" after="product.info.upsell" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_content_bottom_product" as="awarp_content_bottom_product" after="-" />
+        </referenceContainer>
+
+        <referenceContainer name="sidebar.additional">
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_content_sidebar_top_product" as="awarp_content_sidebar_top_product" before="-" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_content_sidebar_bottom_product" as="awarp_content_sidebar_bottom_product" after="-" />
+        </referenceContainer>
+    </body>
+</page>

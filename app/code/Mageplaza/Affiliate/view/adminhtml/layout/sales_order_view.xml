@@ -1,0 +1,10 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="order_totals">
+            <block class="Mageplaza\Affiliate\Block\Totals" name="affiliate_discount"/>
+        </referenceBlock>
+        <referenceContainer name="extra_customer_info">
+            <block class="Mageplaza\Affiliate\Block\Adminhtml\Order\View\Affiliate" template="Mageplaza_Affiliate::order/view/affiliate.phtml" name="affiliate" />
+        </referenceContainer>
+    </body>
+</page>

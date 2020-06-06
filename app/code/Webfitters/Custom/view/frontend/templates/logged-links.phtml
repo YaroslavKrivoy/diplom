@@ -1,0 +1,18 @@
+<?php if($block->customerLoggedIn()): ?>
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "customer": {
+                        "component": "Magento_Customer/js/view/customer"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+    <?php if($block->getChildHtml()):?>
+        <?php echo $block->getChildHtml();?>
+    <?php endif; ?>
+<?php endif; ?>

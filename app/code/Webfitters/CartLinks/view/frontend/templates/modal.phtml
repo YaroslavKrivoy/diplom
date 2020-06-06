@@ -1,0 +1,18 @@
+<div id="product-success-modal" class="add-success">
+    <div class="modal-back modal-close"></div>
+    <div class="modal-front">
+        <div>
+          <?php echo $this->getImage($this->getProduct(), 'category_page_grid')->toHtml(); ?>
+          <h4><?php echo $this->getProduct()->getName(); ?> successfully added to your cart!</h4>
+        </div>
+        <div>
+          <a href="#" class="action action-secondary modal-close">Close</a>
+          <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="action action-primary">Go to Cart</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+  requirejs(["Webfitters_CartLinks/js/links"], function(links){
+      links.init();
+  });
+</script>

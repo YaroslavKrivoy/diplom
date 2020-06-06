@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mageworx_order_management>
+            <order_editor>
+                <invoice_shipment_refund>
+                    <shipments_update_mode>nothing</shipments_update_mode>
+                    <invoice_update_mode>rebuild</invoice_update_mode>
+                </invoice_shipment_refund>
+                <order_items>
+                    <return_to_stock>1</return_to_stock>
+                </order_items>
+                <shipping>
+                    <auto_recalculate>1</auto_recalculate>
+                </shipping>
+                <main>
+                    <checkout_path>checkout</checkout_path>
+                </main>
+            </order_editor>
+        </mageworx_order_management>
+        <payment>
+            <mageworx_ordereditor_payment_method>
+                <active>1</active>
+                <title>MageWorx Payment method</title>
+                <model>MageWorxOrderEditorPaymentGatewayFacade</model>
+                <group>offline</group>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_void>1</can_void>
+                <can_use_checkout>0</can_use_checkout>
+                <can_use_internal>1</can_use_internal>
+                <is_offline>1</is_offline>
+                <is_gateway>1</is_gateway>
+                <sort_order>20</sort_order>
+            </mageworx_ordereditor_payment_method>
+        </payment>
+    </default>
+</config>

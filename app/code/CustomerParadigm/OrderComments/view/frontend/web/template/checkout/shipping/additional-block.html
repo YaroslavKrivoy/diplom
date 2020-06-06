@@ -1,0 +1,33 @@
+<!--
+/**
+ * Copyright © 2015 CustomerPradigm. All rights reserved.
+ * See COPYING.txt for license details.
+ * @version 1.0.0
+ * @since 1.0.0
+ */
+-->
+<div data-bind="visible: canVisibleBlock">
+    <div class="payment-option _collapsible opc-payment-additional discount-code"
+         data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+        <div class="payment-option-title field choice" data-role="title">
+            <span class="action action-toggle" id="block-comment-heading" role="heading" aria-level="2">
+                <!-- ko i18n: 'Leave Comment'--><!-- /ko -->
+            </span>
+        </div>
+        <div class="payment-option-content" data-role="content">
+            <form class="form form-discount" id="comment-form">
+                <div class="payment-option-inner">
+                    <div class="field">
+                        <label class="label" for="comment-code">
+                            <span data-bind="i18n: 'Enter comment'"></span>
+                        </label>
+                        <div class="control">
+                            <textarea class="input-text" id="comment-code" name="comment-code" rows="2" maxlength="200" data-bind="attr:{placeholder: $t('Enter comment')} " ></textarea>
+                            <input type="hidden" id="quote-id" data-bind="value:quoteId">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

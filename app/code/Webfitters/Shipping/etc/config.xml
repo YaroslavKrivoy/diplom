@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <webfitters_shipping>
+            <general>
+                <one_day_weight>0</one_day_weight>
+                <two_day_weight>0</two_day_weight>
+                <three_day_weight>0</three_day_weight>
+                <four_day_weight>0</four_day_weight>
+            </general>
+        </webfitters_shipping>
+    </default>
+</config>

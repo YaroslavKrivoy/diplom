@@ -1,0 +1,69 @@
+<?php if($block->isAllowWithdraw()): ?>
+	<form action="<?= $block->getWithdrawPostUrl() ?>" method="post" id="form-validate" class="form form-edit-account form-affiliate form-affiliate-withdraw">
+		<fieldset class="fieldset request">
+			<legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Request Withdraw') ?></span></legend><br>
+			<div class="field amount required">
+				<label class="label" for="withdraw_amount"><span><?php /* @escapeNotVerified */ echo __('Amount') ?></span></label>
+				<div class="control">
+					<input type="text" name="amount" id="withdraw_amount" value="<?php echo $block->getFormData('amount') ?>" title="<?php echo __('Request Amount') ?>" class="input-text required-entry validate-greater-than-zero" />
+				</div>
+				<div id="withdraw_estimate_fee_container">
+                    <div class="password-strength-meter">
+						<?= __('Fee') ?>:
+                        <span id="withdraw_estimate_fee"></span>
+                    </div>
+                </div>
+			</div>
+			<div class="field payment-method required">
+				<label for="withdraw-payment-method" class="label"><span><?php echo __('Select Payment Method') ?></span></label>
+				<div class="control">
+					<select name="payment_method" class="withdraw-payment-method" id="withdraw-payment-method">
+						<?php foreach($block->getMethods() as $code => $method): ?>
+							<option value="<?= $code ?>" <?= ($block->getFormData('payment_method') == $code) ? 'selected' : '' ?>><?= $method['label'] ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+			</div>
+			<?php foreach($block->getMethods() as $code => $method): ?>
+				<?= $block->getChildHtml($code) ?>
+			<?php endforeach; ?>
+		</fieldset>
+		<?php $policies = $this->getWithdrawPolicy();
+		if(sizeof($policies)): ?>
+		<fieldset class="fieldset info">
+			<legend class="legend"><span data-title="withdraw-introduction"><?php /* @escapeNotVerified */ echo __('Withdraw Policy') ?></span></legend><br>
+			<div class="field payment-method">
+				<ul>
+					<?php foreach($policies as $policy): ?>
+					<li>
+						<?= $policy ?>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</fieldset>
+		<?php endif; ?>
+		<div class="actions-toolbar affiliate-clear">
+			<div class="primary">
+				<button type="button" id="withdraw-submit-button" class="action save primary" title="<?php /* @escapeNotVerified */ echo __('Send Request') ?>"><span><?php /* @escapeNotVerified */ echo __('Send Request') ?></span></button>
+				<span class="please-wait" id="withdraw-please-wait" style="display:none;">
+					<img src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>" alt="Loading..." style="height: 30px">
+				</span>
+			</div>
+		</div>
+	</form>
+	<script type="text/x-magento-init">
+		{
+			"#form-validate": {
+				"validation": {},
+				"Mageplaza_Affiliate/js/withdraw":{
+					"feeConfig": <?php echo $block->getFeeConfig() ?>,
+					"priceFormatJs": <?php /* @escapeNotVerified */ echo $this->helper('Magento\Tax\Helper\Data')->getPriceFormat($block->getStore()); ?>
+				}
+			}
+		}
+	</script>
+<?php endif; ?>
+
+<?php echo $this->getChildHtml('withdraw.transaction') ?>
+<?php echo $this->getChildHtml('extra') ?>

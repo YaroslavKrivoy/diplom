@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="affiliate_account_create_customer_block"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Mageplaza\Affiliate\Block\Adminhtml\Account\Create" name="affiliate_account_create">
+                <block class="Mageplaza\Affiliate\Block\Adminhtml\Account\Create\Form" template="account/create/form.phtml" name="account_create_form" as="form">
+                    <block class="Mageplaza\Affiliate\Block\Adminhtml\Account\Create\Customer" template="create_abstract.phtml" name="customer.grid.container"/>
+                    <block class="Mageplaza\Affiliate\Block\Adminhtml\Account\Create\Tab\Info" name="data"/>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,139 @@
+.table.table-striped {
+
+}
+
+.table.table-striped thead {
+	background-color: #EEE;
+	text-align: left;
+}
+
+.table.table-striped th, 
+.table.table-striped td {
+	padding: 5px;
+}
+
+.table.table-striped tbody > tr:nth-of-type(2n) {
+	background-color: #EEE;
+}
+
+.table.table-striped tbody > tr > td, 
+.table.table-striped thead > tr > th {
+	border-right: 1px solid #CCC;
+}
+
+.table.table-striped tbody > tr > td:last-of-type, 
+.table.table-striped thead > tr > th:last-of-type {
+	border-right: none;
+}
+
+.reporting-reporting-financial #container {
+	display: flex;
+}
+
+.block {
+	display: inline-block; 
+	float: left; 
+	background-color: #eee; 
+	padding: 15px; 
+	width: 15.666%; 
+	margin-right: 1%;
+}
+
+.block .heading {
+	text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.heading {
+	background-color: #999;
+	color: #FFF;
+	border-bottom: 1px solid #FFF;
+}
+
+.container-fluid {
+	margin-bottom: 20px;
+}
+
+.text-center {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.btn-go {
+	display: inline-block; 
+	width: 100%;
+}
+
+.row {
+	display: flex;
+	width: 100%;
+}
+
+.form-control {
+	width: 100%;
+	display: inline-block;
+}
+
+.margined {
+	margin-bottom: 20px;
+}
+
+.col-md-1 {
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	width: 8.3333%;
+}
+
+.col-md-2 {
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	width: 16.6666%;
+}
+
+.col-md-3 {
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	width: 25%;
+}
+
+.col-md-4 {
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	width: 33.3333%;
+}
+
+.col-md-5 {
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	width: 41.6666%;
+}
+
+.col-md-6 {
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	width: 50%;
+}
+
+.col-md-12 {
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 100%;
+	flex-wrap: wrap;
+	display: flex;
+}

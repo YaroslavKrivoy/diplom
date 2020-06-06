@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="customergroup" xsi:type="object">Webfitters\Importer\Console\Commands\CustomerGroupCreate</item>
+				<item name="customer" xsi:type="object">Webfitters\Importer\Console\Commands\CustomerCreate</item>
+				<item name="product" xsi:type="object">Webfitters\Importer\Console\Commands\ProductCreate</item>
+				<item name="recipe" xsi:type="object">Webfitters\Importer\Console\Commands\RecipeCreate</item>
+				<item name="orders" xsi:type="object">Webfitters\Importer\Console\Commands\OrderCreate</item>
+				<item name="splitorders" xsi:type="object">Webfitters\Importer\Console\Commands\SplitOrders</item>
+				<item name="affiliates" xsi:type="object">Webfitters\Importer\Console\Commands\AffiliateCreate</item>
+				<item name="fixgrids" xsi:type="object">Webfitters\Importer\Console\Commands\FixGrids</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

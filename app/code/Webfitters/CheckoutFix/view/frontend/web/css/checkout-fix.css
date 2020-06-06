@@ -1,0 +1,16 @@
+.opc-step-shipping .opc-sidebar.opc-summary-wrapper {display: none;}
+.opc-step-shipping #checkout .opc-wrapper {width: 100%; float: none; padding-right: 0;}
+.checkout-billing-address {width: 48%; display: inline-block; vertical-align: top; margin-right: 2%;}
+#checkout #shipping {width: 48%; display: inline-block; vertical-align: top;}
+#checkout .opc-wrapper .shipping-address-item {width: 50%;}
+#checkout .opc-wrapper .shipping-address-item:first-of-type:before { display: inline-block; background: #cccccc; height: calc(100% - 20px); content: ''; left: 0; position: absolute; top: 0; width: 1px;}
+.store-pickup {line-height: 16px; text-transform: none; display: inline-block; font-size: 16px; font-weight: normal; font-family: 'Roboto Condensed'; vertical-align: middle; margin-left: 15px;}
+
+@media screen and (max-width: 767px){
+	.checkout-billing-address {width: 100%; display: inline-block; vertical-align: top;}
+	#checkout #shipping {width: 100%; display: inline-block; vertical-align: top;}	
+}
+
+@media screen and (max-width: 550px){
+	#checkout .opc-wrapper .shipping-address-item {width: 100%;}
+}

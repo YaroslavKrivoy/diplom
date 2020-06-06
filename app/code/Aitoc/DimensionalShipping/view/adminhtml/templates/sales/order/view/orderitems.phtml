@@ -1,0 +1,378 @@
+<?php
+/**
+ * Copyright © 2017 Aitoc. All rights reserved.
+ */
+
+//$boxList      = $this->getBoxesList('array');
+$orderId      = $this->getOrderId();
+$boxListItems = $this->getOrderBoxesList();
+$boxChangeUrl = $this->getBoxChangeUrl();
+
+$orderBoxes   = $this->getBoxOrder();
+$allBoxesList = $this->getAllBoxesList();
+
+$notPackedItems = $this->getNotPackedItemsInOrder();
+?>
+
+<?php if($this->checkInvoice()): ?>
+<?php if ($boxListItems): ?>
+    <section class="admin__page-section order-view-account-information">
+        <div class="admin__page-section-title">
+        <span class="title">
+            <?php /* @escapeNotVerified */
+            echo __('Box Items'); ?>
+            <div class="actions"><?php /* if need add click edit action */ ?></div>
+        </span>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="admin__page-section-item order-invoice-additional-fields-block-a">
+                <div class="admin__page-section-item-content">
+                    <div class="admin__table-wrapper">
+                        
+                        <?php 
+                        //Items packed in box
+                        $countBoxesGLobal = 1; 
+                        ?>
+                        <?php foreach ($orderBoxes as $box): ?>
+                            <?php $boxItems = $this->getBoxItems($box->getItemId()); ?>
+                            <?php $boxData = $this->getBox($box->getBoxId()) ?>
+                            <?php if ($boxData != false): ?>
+                                <h4><?php echo __('Box #') . $countBoxesGLobal . ": " . $boxData->getName() ?>
+                                    (Weight: <?php echo $box->getWeight(). " ". $this->getWeightUnit(); ?>)</h4>
+                                <?php $countBoxesGLobal++; ?>
+                                <table class="data-table admin__table-primary edit-order-table">
+                                    <thead>
+                                    <tr class="headings">
+                                        <th class="col"><span><?php echo __("Product") ?></span></th>
+                                        <th class="col"><span><?php echo __("SKU") ?></span></th>
+                                        <th class="col"><span><?php echo __("Qty") ?></span></th>
+                                        <th class="col"><span><?php echo __("Action") ?></span></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="even">
+                                    <?php foreach ($boxItems as $itemBox): ?>
+                                        <?php $item = $this->getItemById($itemBox->getOrderItemId()) ?>
+                                        <tr>
+                                            <td width="300">
+                                                <?php echo $item->getName(); ?>
+                                            </td>
+                                            <td width="200">
+                                                <?php echo $item->getSku(); ?>
+                                            </td>
+                                            <td width="50">
+                                                <?php echo $this->getBoxItemQty($item->getSku(), $box->getItemId()); ?>
+                                            </td>
+                                            <td>
+                                                <select name="dimensional[change_box]" id="change_box_<?php echo $itemBox->getId(
+                                                ); ?>" class="admin__control-select">
+                                                    <option value=""><?php echo __(
+                                                            "Select existing box..."
+                                                        ); ?></option>
+                                                    <?php $countBoxesForSelect = 1; ?>
+                                                    <?php foreach ($boxListItems as $boxElement): ?>
+                                                        <?php $boxDataOption = $this->getBox(
+                                                            $boxElement->getBoxId()
+                                                        ); ?>
+                                                        <option <?php if ($box->getId() == $boxElement->getId()) {
+                                                            echo "disabled";
+                                                        } ?> value="<?php echo $boxElement->getItemId(
+                                                        ); ?>"><?php echo __('Box #') . $countBoxesForSelect . ": "
+                                                                . $boxDataOption->getName(); ?></option>
+                                                        <?php $countBoxesForSelect++; ?>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                                <input class="admin__control-text" placeholder="qty" style="width: 50px; display:none"; name="dimensional[qty_boxed]" id="qty_boxed_<?php echo $itemBox->getId(); ?>">
+                                                <button title="Save" type="button" class="action-default scalable action-save action-secondary aitoc_items_button_box" id="aitoc_items_button_change_box_<?php echo $itemBox->getId(
+                                                ); ?>" style="display: none;">
+                                                    <span>Save</span>
+                                                </button>
+                                                <select name="dimensional[add_box]" id="add_box_<?php echo $itemBox->getId(
+                                                ); ?>" class="admin__control-select">
+                                                    <option value=""><?php echo __("Select new box..."); ?></option>
+                                                    <?php foreach ($allBoxesList as $boxElement): ?>
+                                                        <?php $boxData = $this->getBox($boxElement->getItemId()); ?>
+                                                        <option value="<?php echo $boxElement->getItemId(
+                                                        ); ?>"><?php echo $boxData->getName(); ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                                <input class="admin__control-text" placeholder="qty" style="width: 50px; display:none"; name="dimensional[qty_boxed]" id="qty_boxed_new_<?php echo $itemBox->getId(); ?>"/>
+                                                <button title="Save" type="button" class="action-default scalable action-save action-secondary aitoc_items_button_box" id="aitoc_items_button_new_box_<?php echo $itemBox->getId(
+                                                ); ?>" style="display: none;">
+                                                    Save
+                                                </button>
+                                                <script>
+                                                    require([
+                                                        'jquery'
+                                                    ], function ($) {
+                                                        $(document).ready(function () {
+                                                            $('#change_box_<?php echo $itemBox->getId(
+                                                            ); ?>').change(function () {
+                                                                if ($('#change_box_<?php echo $itemBox->getId(
+                                                                    ); ?>').val() == '') {
+                                                                    $(this).next('input').hide();
+                                                                    $(this).next('input').next('button').hide();
+                                                                }
+                                                                else {
+                                                                    $(this).next('input').show();
+                                                                    $(this).next('input').next('button').show();
+                                                                }
+
+                                                            });
+                                                            $('#add_box_<?php echo $itemBox->getId(
+                                                            ); ?>').change(function () {
+                                                                if ($('#add_box_<?php echo $itemBox->getId(
+                                                                    ); ?>').val() == '') {
+                                                                    $(this).next('input').hide();
+                                                                    $(this).next('input').next('button').hide();
+                                                                }
+                                                                else {
+                                                                    $(this).next('input').show();
+                                                                    $(this).next('input').next('button').show();
+                                                                }
+
+                                                            });
+                                                            $('#aitoc_items_button_change_box_<?php echo $itemBox->getId(
+                                                            ); ?>').click(function (event) {
+                                                                var t = event.target.id;
+                                                                box_id = $('#change_box_<?php echo $itemBox->getId(
+                                                                ); ?>').val();
+                                                                qty_boxed = $('#qty_boxed_<?php echo $itemBox->getId(
+                                                                ); ?>').val();
+                                                                $.ajax({
+                                                                    showLoader: true,
+                                                                    url       : "<?php echo $boxChangeUrl; ?>",
+                                                                    data      : {
+                                                                        order_box_id : box_id,
+                                                                        order_id     : <?php echo $orderId; ?> ,
+                                                                        order_item_box_id: <?php echo $itemBox->getId(); ?>,
+                                                                        order_item_id: <?php echo $itemBox->getOrderItemId(); ?>,
+                                                                        new_element   : 0,
+                                                                        sku          : '<?php echo $item->getSku(); ?>',
+                                                                        qty_boxed : qty_boxed
+                                                                    },
+
+                                                                    type    : "POST",
+                                                                    dataType: 'json'
+                                                                }).success(function (data) {
+                                                                    if (data.errors) {
+                                                                        alert(data.message);
+                                                                    } else {
+                                                                        $('#aitoc_item_set_button_<?php echo $itemBox->getId(
+                                                                        ); ?>').hide();
+                                                                        location.reload();
+                                                                    }
+                                                                });
+
+                                                            })
+                                                            $('#aitoc_items_button_new_box_<?php echo $itemBox->getId(
+                                                            ); ?>').click(function (event) {
+                                                                var t = event.target.id;
+                                                                box_id = $('#add_box_<?php echo $itemBox->getId(
+                                                                ); ?>').val();
+                                                                qty_boxed = $('#qty_boxed_new_<?php echo $itemBox->getId(
+                                                                ); ?>').val();
+                                                                $.ajax({
+                                                                    showLoader: true,
+                                                                    url       : "<?php echo $boxChangeUrl; ?>",
+                                                                    data      : {
+                                                                        order_box_id : box_id,
+                                                                        order_id     : <?php echo $orderId; ?> ,
+                                                                        order_item_box_id: <?php echo $itemBox->getId(); ?>,
+                                                                        order_item_id: <?php echo $itemBox->getOrderItemId(); ?>,
+                                                                        sku          : '<?php echo $item->getSku(); ?>',
+                                                                        new_element  : 1,
+                                                                        qty_boxed : qty_boxed
+                                                                    },
+
+                                                                    type    : "POST",
+                                                                    dataType: 'json'
+                                                                }).success(function (data) {
+                                                                    if (data.errors) {
+                                                                        alert(data.message);
+                                                                    } else {
+                                                                        $('#aitoc_item_set_button_<?php echo $itemBox->getId(
+                                                                        ); ?>').hide();
+                                                                        location.reload();
+                                                                    }
+                                                                });
+
+                                                            })
+                                                        });
+                                                    });
+                                                </script>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+    <?php if($notPackedItems): ?>
+    <section class="admin__page-section order-view-account-information">
+        <div class="admin__page-section-title">
+        <span class="title">
+            <?php /* @escapeNotVerified */
+            echo __('Items without box'); ?>
+            <div class="actions"><?php /* if need add click edit action */ ?></div>
+        </span>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="admin__page-section-item order-invoice-additional-fields-block-a">
+                <div class="admin__page-section-item-content">
+                    <div class="admin__table-wrapper">
+                        <table class="data-table admin__table-primary edit-order-table">
+                            <thead>
+                            <tr class="headings">
+                                <th class="col"><span><?php echo __("Product") ?></span></th>
+                                <th class="col"><span><?php echo __("SKU") ?></span></th>
+                                <th class="col"><span><?php echo __("Qty") ?></span></th>
+                                <th class="col"><span><?php echo __("Message") ?></span></th>
+                                <th class="col"><span><?php echo __("Action") ?></span></th>
+                            </tr>
+                            <?php foreach ($notPackedItems as $item): ?>
+                                <?php $orderItem = $this->getItemById($item->getOrderItemId()) ?>
+                                <tr>
+                                    <td width="200"><?php echo $orderItem->getName(); ?></td>
+                                    <td width="200"><?php echo $item->getSku(); ?></td>
+                                    <td width="50"><?php echo $this->getBoxItemQty($orderItem->getSku()); ?></td>
+                                    <td width="200"><?php echo __($item->getErrorMessage()); ?></td>
+                                    <td>
+                                        <select name="dimensional[change_box]" id="pack_in_box_<?php echo $orderItem->getItemId(); ?>" class="admin__control-select">
+                                                    <option value=""><?php echo __("Select existing box..."); ?></option>
+                                                    <?php $countBoxesForSelect = 1; ?>
+                                                    <?php foreach ($boxListItems as $boxElement): ?>
+                                                        <?php $boxDataOption = $this->getBox($boxElement->getBoxId()); ?>
+                                                        <option value="<?php echo $boxElement->getItemId(); ?>"><?php echo __('Box #') . $countBoxesForSelect . ": " . $boxDataOption->getName(); ?></option>
+                                                        <?php $countBoxesForSelect++; ?>
+                                                    <?php endforeach; ?>
+                                        </select>
+                                            <input class="admin__control-text" placeholder="qty" style="width: 50px; display:none"; name="dimensional[qty_boxed]" id="qty_pack_in_box_<?php echo $orderItem->getItemId(); ?>">
+                                                <button title="Save" type="button" class="action-default scalable action-save action-secondary aitoc_items_button_box" id="aitoc_items_button_add_box_<?php echo $orderItem->getItemId(); ?>" style="display: none;">
+                                                    <span>Save</span>
+                                                </button>
+                                                
+                                        <select name="dimensional[add_box]" id="pack_in_box_new_<?php echo $orderItem->getItemId(); ?>" class="admin__control-select">
+                                                    <option value=""><?php echo __("Select new box..."); ?></option>
+                                                    <?php foreach ($allBoxesList as $boxElement): ?>
+                                                        <?php $boxData = $this->getBox($boxElement->getId()); ?>
+                                                        <option value="<?php echo $boxElement->getItemId(
+                                                        ); ?>"><?php echo $boxData->getName(); ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                                <input class="admin__control-text" placeholder="qty" style="width: 50px; display:none"; name="dimensional[qty_boxed]" id="qty_pack_in_box_new_<?php echo $orderItem->getItemId(); ?>"/>
+                                                <button title="Save" type="button" class="action-default scalable action-save action-secondary aitoc_items_button_box" id="aitoc_items_button_add_new_box_<?php echo $orderItem->getItemId(); ?>" style="display: none;">
+                                                    Save
+                                                </button>
+                                        <script>
+                                            require([
+                                                'jquery'
+                                            ], function ($) {
+                                                $(document).ready(function () {
+                                                    $('#pack_in_box_<?php echo $orderItem->getItemId(); ?>').change(function () {
+                                                        if ($('#pack_in_box_<?php echo $orderItem->getItemId(); ?>').val() == '') {
+                                                            $(this).next('input').hide();
+                                                            $(this).next('input').next('button').hide();
+                                                        }
+                                                        else {
+                                                            $(this).next('input').show();
+                                                            $(this).next('input').next('button').show();
+                                                        }
+
+                                                    });
+                                                    $('#pack_in_box_new_<?php echo $orderItem->getItemId(); ?>').change(function () {
+                                                                if ($('#pack_in_box_new_<?php echo $orderItem->getItemId();; ?>').val() == '') {
+                                                                    $(this).next('input').hide();
+                                                                    $(this).next('input').next('button').hide();
+                                                                }
+                                                                else {
+                                                                    $(this).next('input').show();
+                                                                    $(this).next('input').next('button').show();
+                                                                }
+
+                                                            });
+                                                    $('#aitoc_items_button_add_box_<?php echo $orderItem->getItemId(); ?>').click(function (event) {
+                                                        var t = event.target.id;
+                                                        box_id = $('#pack_in_box_<?php echo $orderItem->getItemId(); ?>').val();
+                                                        qty_boxed = $('#qty_pack_in_box_<?php echo $orderItem->getItemId(); ?>').val();
+                                                        $.ajax({
+                                                            showLoader: true,
+                                                            url       : "<?php echo $boxChangeUrl; ?>",
+                                                            data      : {
+                                                                order_box_id     : box_id,
+                                                                order_id         : <?php echo $orderId; ?> ,
+                                                                order_item_id    : <?php echo $orderItem->getItemId(); ?>,
+                                                                order_item_box_id: <?php echo $item->getId(); ?>,
+                                                                sku          : '<?php echo $orderItem->getSku(); ?>',
+                                                                new_element       : 0,
+                                                                qty_boxed        : qty_boxed,
+                                                                not_packed       : true
+                                                            },
+
+                                                            type    : "POST",
+                                                            dataType: 'json'
+                                                        }).success(function (data) {
+                                                            if (data.errors) {
+                                                                alert(data.message);
+                                                            } else {
+                                                                location.reload();
+                                                            }
+                                                        });
+
+                                                    })
+                                                    $('#aitoc_items_button_add_new_box_<?php echo $orderItem->getItemId(); ?>').click(function (event) {
+                                                        var t = event.target.id;
+                                                        box_id = $('#pack_in_box_new_<?php echo $orderItem->getItemId(); ?>').val();
+                                                        qty_boxed = $('#qty_pack_in_box_new_<?php echo $orderItem->getItemId();; ?>').val();
+                                                        $.ajax({
+                                                            showLoader: true,
+                                                            url       : "<?php echo $boxChangeUrl; ?>",
+                                                            data      : {
+                                                                order_box_id     : box_id,
+                                                                order_id         : <?php echo $orderId; ?> ,
+                                                                order_item_box_id: <?php echo $item->getId(); ?>,
+                                                                order_item_id    : <?php echo $orderItem->getItemId(); ?>,
+                                                                sku          : '<?php echo $orderItem->getSku(); ?>',
+                                                                new_element       : 1,
+                                                                qty_boxed        : qty_boxed,
+                                                                not_packed       : true
+                                                            },
+
+                                                            type    : "POST",
+                                                            dataType: 'json'
+                                                        }).success(function (data) {
+                                                            if (data.errors) {
+                                                                alert(data.message);
+                                                            } else {
+                                                                location.reload();
+                                                            }
+                                                        });
+
+                                                    })
+                                                });
+                                            });
+                                        </script>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+
+
+                            </thead>
+                            <tbody class="even">
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <?php endif; ?>
+<?php endif; ?>
+

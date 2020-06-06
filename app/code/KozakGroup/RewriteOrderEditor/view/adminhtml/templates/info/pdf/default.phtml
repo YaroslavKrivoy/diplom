@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/**
+ * @see \Magento\Payment\Block\Info
+ * @var \Magento\Payment\Block\Info $block
+ */
+?>
+<?= $block->escapeHtml($block->getMethod()->getTitle()) ?>
+<?php if ($block->getInfo()->getMethod() == "pmclain_authorizenetcim"):?>
+    <?= 'ending ' . $block->escapeHtml($block->getInfo()->getCcLast4()) ?>
+<?php endif;?>
+<?php if ($block->getInfo()->getMethod() == "purchaseorder"):?>
+    <?= 'number: ' . $block->escapeHtml($block->getInfo()->getPoNumber()) ?>
+<?php endif;?>
+<?php if ($specificInfo = $block->getSpecificInformation()):?>
+    <?php foreach ($specificInfo as $label => $value):?>
+        <?= $block->escapeHtml($label) ?>:
+        <?= $block->escapeHtml(implode(' ', $block->getValueAsArray($value))) ?>
+        {{pdf_row_separator}}
+    <?php endforeach; ?>
+<?php endif;?>
+
+<?= $block->escapeHtml(implode('{{pdf_row_separator}}', $block->getChildPdfAsArray())) ?>

@@ -1,0 +1,198 @@
+<form method="get" action="">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<label class="control-label" style="margin-right: 5px;">
+					<input type="radio" name="type" value="all"<?php echo (!$this->getRequest()->get('type')||$this->getRequest()->get('type') == 'all')?' checked':''; ?>/>
+					Show All
+				</label>
+				<label class="control-label" style="margin-right: 5px;">
+					<input type="radio" name="type" value="wholesale"<?php echo ($this->getRequest()->get('type')&&$this->getRequest()->get('type') == 'wholesale')?' checked':''; ?>/>
+					Wholesale Only
+				</label>
+				<label class="control-label" style="margin-right: 5px;">
+					<input type="radio" name="type" value="retail"<?php echo ($this->getRequest()->get('type')&&$this->getRequest()->get('type') == 'retail')?' checked':''; ?>/>
+					Retail Only
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label class="control-label">Start Date</label>
+				<input type="date" name="start_date" class="form-control" value="<?php echo $this->getStartDate()->format('Y-m-d'); ?>" />
+			</div>
+			<div class="col-md-3">
+				<label class="control-label">End Date</label>
+				<input type="date" name="end_date" class="form-control" value="<?php echo $this->getEndDate()->format('Y-m-d'); ?>" />
+			</div>
+			<div class="col-md-2">
+				<label class="control-label">&nbsp;</label>
+				<button type="submit" class="btn btn-default btn-go">Go</button>
+			</div>
+		</div>
+	</div>
+</form>
+<div class="container-fluid">
+	<div class="row">
+		<div class="text-center col-md-12 heading">
+			Gross Sales Summary for <?php echo $this->getStartDate()->format('m/d/Y'); ?> - <?php echo $this->getEndDate()->format('m/d/Y'); ?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="text-center col-md-2 heading">Number of Orders</div>
+		<div class="text-center col-md-2 heading">Total Value</div>
+		<div class="text-center col-md-2 heading">Avg Value</div>
+		<div class="text-center col-md-6 heading">Gross Sales to Repeat Customers</div>
+	</div>
+	<div class="row">
+		<div class="text-center col-md-2"><?php echo $this->getTotalOrderCount(); ?></div>
+		<div class="text-center col-md-2">$<?php echo number_format($this->getTotalOrderValue(), 2); ?></div>
+		<div class="text-center col-md-2">$<?php echo number_format($this->getTotalOrderAvg(), 2); ?></div>
+		<div class="text-center col-md-6">
+			<?php echo $this->getGrossToRepeat()->total; ?> sales 
+			(<?php echo number_format((($this->getTotalOrderCount()>0)?($this->getGrossToRepeat()->total/$this->getTotalOrderCount()*100):0), 2); ?>%)
+			worth $<?php echo number_format($this->getGrossToRepeat()->sales, 2); ?>
+			(<?php echo number_format((($this->getTotalOrderValue()>0)?($this->getGrossToRepeat()->sales/$this->getTotalOrderValue()*100):0), 2); ?>%)			
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 text-center heading">Gross Sales Summary for Tell a Friend Program</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 text-center heading">Referrers</div>
+		<div class="col-md-6 text-center heading">Referees</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 text-center">
+			0 sales (0.00%) worth $0.00 (0.00%)
+		</div>
+		<div class="col-md-6 text-center">
+			<?php echo $this->getReferralSales()->total; ?> sales
+			(<?php echo number_format((($this->getTotalOrderCount()>0)?($this->getReferralSales()->total/$this->getTotalOrderCount()*100):0), 2); ?>%)
+			worth $<?php echo number_format($this->getReferralSales()->sales, 2); ?> 
+			(<?php echo number_format((($this->getTotalOrderValue()>0)?($this->getReferralSales()->sales/$this->getTotalOrderValue()*100):0), 2); ?>%)
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row margined">
+		<div class="col-md-4">
+			<div class="row">
+				<div class="col-md-12 text-center heading">Top Ten Species</div>
+			</div>
+			<div class="row">
+				<div class="col-md-1 text-center heading">#</div>
+				<div class="col-md-5 text-center heading">Species</div>
+				<div class="col-md-3 text-center heading">Gross Sales</div>
+				<div class="col-md-3 text-center heading">%</div>
+			</div>
+			<?php $count = 1; foreach($this->getOrdersBySpecies() as $row): ?>
+			<div class="row">
+				<div class="col-md-1 text-center"><?php echo $count; ?></div>
+				<div class="col-md-5 text-center"><?php echo $row->species; ?></div>
+				<div class="col-md-3 text-center">$<?php echo number_format($row->sales, 2); ?></div>
+				<div class="col-md-3 text-center"><?php echo number_format((($this->getTotalOrderValue()>0)?($row->sales/$this->getTotalOrderValue())*100:0), 2); ?>%</div>
+			</div>
+			<?php $count++; endforeach; ?>
+		</div>
+		<div class="col-md-4">
+			<div class="row">
+				<div class="col-md-12 text-center heading">Top Ten States</div>
+			</div>
+			<div class="row">
+				<div class="col-md-1 text-center heading">#</div>
+				<div class="col-md-5 text-center heading">State</div>
+				<div class="col-md-3 text-center heading">Gross Sales</div>
+				<div class="col-md-3 text-center heading">%</div>
+			</div>
+			<?php $count=1; foreach($this->getOrdersByState() as $row): ?>
+			<div class="row">
+				<div class="col-md-1 text-center"><?php echo $count; ?></div>
+				<div class="col-md-5 text-center"><?php echo $row->state; ?></div>
+				<div class="col-md-3 text-center">$<?php echo number_format($row->sales, 2); ?></div>
+				<div class="col-md-3 text-center"><?php echo number_format((($this->getTotalOrderValue()>0)?(($row->sales/$this->getTotalOrderValue())*100):0), 2); ?>%</div>
+			</div>
+			<?php $count++; endforeach; ?>
+		</div>
+		<div class="col-md-4">
+			<div class="row">
+				<div class="col-md-12 text-center heading">Top Ten Affiliates</div>
+			</div>
+			<div class="row">
+				<div class="col-md-1 text-center heading">#</div>
+				<div class="col-md-5 text-center heading">Affiliate</div>
+				<div class="col-md-3 text-center heading">Gross Sales</div>
+				<div class="col-md-3 text-center heading">%</div>
+			</div>
+			<?php $count=1; foreach($this->getAffiliateOrders() as $row): ?>
+			<div class="row">
+				<div class="col-md-1 text-center"><?php echo $count; ?></div>
+				<div class="col-md-5 text-center"><?php echo $row->first_name.' '.$row->last_name; ?></div>
+				<div class="col-md-3 text-center">$<?php echo number_format($row->sales, 2); ?></div>
+				<div class="col-md-3 text-center"><?php echo number_format((($this->getTotalOrderValue()>0)?($row->sales/$this->getTotalOrderValue()*100):0), 2); ?>%</div>
+			</div>
+			<?php $count++; endforeach; ?>
+		</div>
+	</div>
+	<div class="row margined">
+		<div class="col-md-4">
+			<div class="row">
+				<div class="col-md-12 text-center heading">Top Ten Shipper Services</div>
+			</div>
+			<div class="row">
+				<div class="col-md-1 text-center heading">#</div>
+				<div class="col-md-5 text-center heading">Shipper Service</div>
+				<div class="col-md-3 text-center heading">Gross Sales</div>
+				<div class="col-md-3 text-center heading">%</div>
+			</div>
+			<?php $count=1; foreach($this->getShippingSales() as $row): ?>
+			<div class="row">
+				<div class="col-md-1 text-center"><?php echo $count; ?></div>
+				<div class="col-md-5 text-center"><?php echo $row->shipping_description; ?></div>
+				<div class="col-md-3 text-center">$<?php echo number_format($row->sales, 2); ?></div>
+				<div class="col-md-3 text-center"><?php echo number_format((($this->getTotalOrderValue()>0)?(($row->sales/$this->getTotalOrderValue())*100):0), 2); ?>%</div>
+			</div>
+			<?php $count++; endforeach; ?>
+		</div>
+		<div class="col-md-4">
+			<div class="row">
+				<div class="col-md-12 text-center heading">Top Ten Products On Special</div>
+			</div>
+			<div class="row">
+				<div class="col-md-1 text-center heading">#</div>
+				<div class="col-md-5 text-center heading">Special</div>
+				<div class="col-md-3 text-center heading">Gross Sales</div>
+				<div class="col-md-3 text-center heading">%</div>
+			</div>
+			<?php $count=1; foreach($this->getOrdersBySpecial() as $row): ?>
+			<div class="row">
+				<div class="col-md-1 text-center"><?php echo $count; ?></div>
+				<div class="col-md-5 text-center"><?php echo $row->product; ?></div>
+				<div class="col-md-3 text-center">$<?php echo number_format($row->sales, 2); ?></div>
+				<div class="col-md-3 text-center"><?php echo number_format((($this->getTotalOrderValue()>0)?($row->sales/$this->getTotalOrderValue()*100):0), 2); ?>%</div>
+			</div>
+			<?php $count++; endforeach; ?>
+		</div>
+		<div class="col-md-4">
+			<div class="row">
+				<div class="col-md-12 text-center heading">Customers with Repeat Orders</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 text-center heading"># of Reorders</div>
+				<div class="col-md-3 text-center heading"># of Customers</div>
+				<div class="col-md-3 text-center heading">Orders Total</div>
+				<div class="col-md-3 text-center heading">Avg. Order</div>
+			</div>
+			<?php foreach($this->getCustomerReorders() as $key => $reorder): ?>
+			<div class="row">
+				<div class="col-md-3 text-center"><?php echo $key; ?></div>
+				<div class="col-md-3 text-center"><?php echo $reorder->customers; ?></div>
+				<div class="col-md-3 text-center">$<?php echo number_format($reorder->sales, 2); ?></div>
+				<div class="col-md-3 text-center">$<?php echo number_format((($reorder->total > 0)?($reorder->sales/$reorder->total):0), 2); ?></div>
+			</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</div>

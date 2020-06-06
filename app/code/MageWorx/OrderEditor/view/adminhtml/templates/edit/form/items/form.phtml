@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /** @var $block \MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Form */ ?>
+<form id="order_items_edit_form"
+      data-order-config='<?php echo $block->getOrderDataJson() ?>'
+      data-load-base-url="<?php echo $block->escapeHtml($block->getLoadBlockUrl()) ?>"
+      action="<?php echo $block->escapeHtml($block->getSaveUrl()) ?>"
+      method="post"
+      enctype="multipart/form-data">
+    <?php echo $block->getBlockHtml('formkey')?>
+    <div id="order-data">
+        <?php echo $block->getChildHtml('data') ?>
+    </div>
+</form>

@@ -1,0 +1,16 @@
+.modal {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; display: none; overflow-y: auto;}
+.modal .modal-back {background-color: rgba(0,0,0,0.3); position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 999;}
+.modal .modal-front {background-color: #FFF; position: absolute; width: 500px; left: 50%; top: 20px; -webkit-transform: translateX(-50%); transform: translateX(-50%); padding: 10px; z-index: 1001;}
+.form-control {width: 100%; padding: 5px; border: 1px solid #CCC; margin-bottom: 5px;}
+.nicer-image {margin-bottom: 5px;}
+.control-label {font-weight: bold;}
+.header-close {float: right; font-size: 18px; cursor: pointer; padding: 5px; display: inline-block; padding-top: 0;}
+.nicer-image img {width: 100%; margin-bottom: 5px;}
+.type-holder {margin-top: 10px; margin-bottom: 10px;}
+.type-row {margin-top: 5px; margin-bottom: 5px; border-bottom: 1px solid #CCC;}
+.category-row {margin-top: 5px; margin-bottom: 5px;}
+.row {margin-left: 0; margin-right: 0;}
+.row > [class^="col-"]:first-of-type {padding-left: 0;}
+.row > [class^="col-"]:last-of-type {padding-right: 0;}
+.groupify {border-bottom: 1px solid #CCC;}
+.product-row {margin-top: 5px; margin-bottom: 5px;}

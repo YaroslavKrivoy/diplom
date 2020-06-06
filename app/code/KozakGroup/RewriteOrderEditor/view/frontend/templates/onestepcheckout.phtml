@@ -1,0 +1,15 @@
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+        setTimeout(function () {
+            var el = $('.shipping-method-title input:checked');
+            if(el.attr('value') === 'storepickup_storepickup'){
+                $('.shipping-method-delivery').css('display','block');
+                $('.osc-datepicker').prop('required',true);
+                $('.shipping-method-delivery .control .select').prop('required',true);
+            }
+        },10000);
+
+    });
+</script>

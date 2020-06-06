@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="MageWorx_OrdersGrid::grid" sortOrder="40" title="MageWorx Extended Orders Grid">
+                        <resource id="MageWorx_OrdersGrid::mass_actions" sortOrder="40" title="Mass Actions">
+                            <resource id="MageWorx_OrdersGrid::invoice" sortOrder="40" title="Mass Invoice Action" />
+                            <resource id="MageWorx_OrdersGrid::ship" sortOrder="50" title="Mass Ship Action" />
+                            <resource id="MageWorx_OrdersGrid::delete" sortOrder="60" title="Delete Action" />
+                            <resource id="MageWorx_OrdersGrid::resend_emails" sortOrder="70" title="Re-send emails" />
+                        </resource>
+                        <resource id="MageWorx_OrdersGrid::sync" sortOrder="50" title="Sync orders data" />
+                        <resource id="MageWorx_OrdersGrid::config_ordersgrid" sortOrder="60" title="Orders Grid Configuration" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

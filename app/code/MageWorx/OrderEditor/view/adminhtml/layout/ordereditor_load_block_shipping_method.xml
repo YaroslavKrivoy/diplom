@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Shipping" name="mageworx_ordereditor_shipping_form" template="MageWorx_OrderEditor::edit/form/shipping.phtml">
+            <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Shipping\Method" template="MageWorx_OrderEditor::edit/form/shipping/method.phtml" name="shipping_method"/>
+            <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Totals" template="edit/totals.phtml" name="temp_totals" />
+        </block>
+        </referenceContainer>
+    </body>
+</page>

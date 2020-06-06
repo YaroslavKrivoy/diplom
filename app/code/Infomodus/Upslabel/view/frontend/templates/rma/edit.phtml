@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Edit customer address template
+ *
+ * @var $block \Magento\Customer\Block\Address\Edit
+ */
+?>
+<form class="form-rma-edit" action="<?php /* @escapeNotVerified */ echo $block->getSaveUrl() ?>" method="post" id="form-validate">
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('UPS RMA Information') ?></span></legend><br>
+        <?php echo $block->getBlockHtml('formkey')?>
+        <?php foreach($block->_order->getAllVisibleItems() as $product): if($product->getQtyShipped()==0){continue;}?>
+        <div class="field product">
+            <label class="label" for="product<?php echo $product->getId() ?>"><span><?php echo $product->getName() ?></span></label>
+            <div class="control">
+                <input type="text" name="product[<?php echo $product->getId() ?>]" id="product<?php echo $product->getId() ?>" title="<?php /* @escapeNotVerified */ echo __('Product') ?>" value="1" class="input-text"
+                       data-validate="{number:true, 'less-than-equals-to':'#qty_to<?php echo $product->getId() ?>'}" />
+                <input type="hidden" value="<?php echo $product->getQtyShipped() ?>" id="qty_to<?php echo $product->getId() ?>"/>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action save primary" title="<?php /* @escapeNotVerified */ echo __('Create labels') ?>">
+                <span><?php /* @escapeNotVerified */ echo __('Create labels') ?></span>
+            </button>
+        </div>
+        <div class="secondary">
+            <a class="action back" href="<?php echo $block->escapeUrl($block->getBackUrl()) ?>"><span><?php /* @escapeNotVerified */ echo __('Go back') ?></span></a>
+        </div>
+    </div>
+</form>
+<script>
+    require([
+        "jquery",
+        "mage/mage",
+        "mage/validation"
+    ], function($){
+        $('#form-validate').mage('validation', {
+            errorPlacement: function (error, element) {
+                var parent = element.parent();
+                if (parent.hasClass('range')) {
+                    parent.find(this.errorElement + '.' + this.errorClass).remove().end().append(error);
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+            messages: {
+                'price[from]': {'less-than-equals-to': 'Please enter a valid price range.'}
+            }
+        });
+    });
+</script>

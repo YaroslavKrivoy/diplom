@@ -1,0 +1,53 @@
+.post-list-item {
+	display: inline-block;
+	width: 32%;
+	vertical-align: top;
+}
+
+body.mpblog-post-view .post-view-image {
+	display: inline-block;
+	float: left;
+	width: auto;
+}
+
+.mpblog-post-view #sharing {
+	background: transparent;
+}
+
+body .mp-post-info {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+body .post-short-description {
+	display: none;
+}
+
+body .post-item-wraper {
+	border: none;
+}
+
+body .post-item-list .post-image {
+	display: block;
+	width: 100%;
+	float: left;
+	min-width: 0px;
+}
+
+body .post-item-wrapper .post-image img {
+	margin: none;
+	max-width: 100% !important;
+}
+
+body .post-item-wraper:hover {
+	box-shadow: none;
+	border: none;
+}
+
+@media screen and (max-width: 767px){
+	.post-list-item {width: 48%;}
+}
+
+@media screen and (max-width: 450px){
+	.post-list-item {width: 100%;}
+}

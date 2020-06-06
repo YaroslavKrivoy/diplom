@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="\Magento\Backend\Block\Widget\Button\Toolbar">
+        <plugin name="add_upslabel_button_sales_views" type="\Infomodus\Upslabel\Plugin\AddToolbarButtons" />
+    </type>
+    <type name='\Magento\Framework\Data\Form\Element\AbstractElement'>
+        <plugin
+                name='Infomodus\Upslabel\Data\Form\Element\AbstractElementPlugin'
+                type='Infomodus\Upslabel\Data\Form\Element\AbstractElementPlugin'
+                sortOrder='100'
+        />
+    </type>
+</config>

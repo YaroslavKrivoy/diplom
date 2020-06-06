@@ -1,0 +1,46 @@
+<?php $withdraws = $this->getWithdraws() ?>
+<div class="box-account box-info box-affiliate box-affiliate-withdraw-transaction">
+	<div class="box-head">
+		<h2><?php echo __('Withdraw History') ?></h2>
+	</div>
+	<table class="data-table" id="affiliate-withdraws-history">
+		<thead>
+			<tr>
+				<th class="col id">#</th>
+				<th class="col requested_at"><?php echo __('Requested Date') ?></th>
+				<th class="col amount"><?php echo __('Amount') ?></th>
+				<th class="col fee"><?php echo __('Fee') ?></th>
+				<th class="col payment_method"><?php echo __('Withdraw Method') ?></th>
+				<th class="col status"><?php echo __('Status') ?></th>
+				<th class="col action"><?php echo __('Action') ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php if (sizeof($withdraws)): ?>
+				<?php foreach ($withdraws as $_withdraw): ?>
+					<tr>
+						<td class="col a-right first"><?php echo $_withdraw->getId() ?></td>
+						<td class="col"><span class="nobr"><?php echo $block->formatDate($_withdraw->getCreatedAt(), \IntlDateFormatter::MEDIUM, true) ?></span></td>
+						<td class="col a-right"><span class="price"><?php echo $block->formatPrice($_withdraw->getAmount()) ?></span></td>
+						<td class="col a-right"><span class="price"><?php echo $block->formatPrice($_withdraw->getFee()) ?></span></td>
+						<td class="col"><?php echo $_withdraw->getPaymentLabel() ?></td>
+						<td class="col"><em><?php echo $_withdraw->getStatusLabel() ?></em></td>
+						<td class="col">
+							<a href="<?php echo $block->getUrl('affiliate/account_withdraw/view', array('id' => $_withdraw->getId())) ?>"><?php echo __('View') ?></a>
+							<?php if($_withdraw->canCancel()) : ?>
+							| <a href="<?php echo $block->getUrl('affiliate/account_withdraw/cancel', array('id' => $_withdraw->getId())) ?>" onclick="return confirm('<?php echo __('Are you sure you want to cancel this withdraw?') ?>')"><?php echo __('Cancel') ?></a>
+							<?php endif; ?>
+						</td>
+					</tr>
+				<?php endforeach ?>
+			<?php else: ?>
+				<tr>
+					<td colspan="7">
+						<span><?php echo __('No withdraw found!') ?></span>
+					</td>
+				</tr>
+			<?php endif; ?>
+		</tbody>
+	</table>
+	<?php echo $this->getPagerHtml() ?>
+</div>

@@ -1,0 +1,75 @@
+#order_shipping_view
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.input_tracking_admin
+{
+    width: 60%;
+    margin-top: 5px;
+}
+
+.title_form
+{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.container_input_tracking,.form_tracking_submit,.admin_form_title
+{
+    margin-top: 20px;
+}
+
+.label_admin_input
+{
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.order-view-billing-shipping .order-payment-method .admin__page-section-item-title #ordereditor-payment-link,
+.order-view-billing-shipping .order-shipping-method .admin__page-section-item-title #ordereditor-shipping-link,
+.admin__page-section .admin__page-section-title .block-edit-link {
+    background-color: #7DB742;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.order-view-billing-shipping .order-payment-method .admin__page-section-item-title #ordereditor-payment-link a,
+.order-view-billing-shipping .order-shipping-method .admin__page-section-item-title #ordereditor-shipping-link a,
+.admin__page-section .admin__page-section-title .block-edit-link a {
+    color: white;
+}
+
+.admin__field-control .admin__control-text.validate-cc-number{
+    width: 50%;
+}
+
+.admin__field-control .validate-cc-cvn.admin__control-cvn.admin__control-text{
+    width: 20%;
+}
+
+#payment-method-submit{
+    margin-right: 45%;
+}
+
+#payment-method-cancel{
+    margin-left: 30px;
+}
+
+#fooman_print{
+    background-color: #7DB742;
+    border-color: #7DB742;
+    -webkit-transition: all 200ms linear 0s;
+    transition: all 200ms linear 0s;
+    color: #ffffff;
+}
+
+.action-default.primary {
+    height: 100%;
+}
+
+#show_ups_labels_for_order {
+    height: inherit;
+}

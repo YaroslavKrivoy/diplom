@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <webfitters_paylater>
+                <active>1</active>
+                <model>Webfitters\Checkout\Model\Payment\Later</model>
+                <order_status>pending</order_status>
+                <title>Pay at order completion</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </webfitters_paylater>
+            <webfitters_terms>
+                <active>1</active>
+                <model>Webfitters\Checkout\Model\Payment\Terms</model>
+                <order_status>pending</order_status>
+                <title>Net Terms</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </webfitters_terms>
+        </payment>
+    </default>
+</config>

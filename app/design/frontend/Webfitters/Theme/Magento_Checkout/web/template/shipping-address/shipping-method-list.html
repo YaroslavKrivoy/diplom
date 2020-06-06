@@ -1,0 +1,25 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div id="checkout-shipping-method-load">
+    <table class="table-checkout-shipping-method">
+        <thead>
+        <tr class="row">
+            <th class="col col-method" translate="'Choose'"></th>
+            <th class="col col-price" translate="'Price'"></th>
+            <th class="col col-method" translate="'Method'"></th>
+            <th class="col col-carrier" translate="'Carrier'"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: { data: rates(), as: 'method'} -->
+                <!-- ko if:(method.carrier_code != 'storepickup') -->
+                    <!--ko template: { name: element.shippingMethodItemTemplate} --><!-- /ko -->
+                <!--/ko-->
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>

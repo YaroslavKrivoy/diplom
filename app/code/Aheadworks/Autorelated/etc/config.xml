@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <aw_arp>
+            <general>
+                <show_miltiple_blocks>0</show_miltiple_blocks>
+                <number_days_build_bestsellers_list>30</number_days_build_bestsellers_list>
+            </general>
+            <wvtav>
+                <enable_functionality>0</enable_functionality>
+                <process_sessions_period>90</process_sessions_period>
+            </wvtav>
+        </aw_arp>
+    </default>
+</config>

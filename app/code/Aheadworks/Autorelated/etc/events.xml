@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="aheadworks_autorelated_api_data_ruleinterface_save_after">
+        <observer name="legacy_model_aw_arp_rule_after_save" instance="Magento\Framework\EntityManager\Observer\AfterEntitySave" />
+    </event>
+    <event name="aheadworks_autorelated_api_data_ruleinterface_delete_after">
+        <observer name="legacy_modelaw_arp_rule_after_delete" instance="Magento\Framework\EntityManager\Observer\AfterEntityDelete" />
+    </event>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<update id="MageArray_Core::core" title="MageArray Extensions" module="MageArray_StorePickup" sortOrder="40" resource="MageArray_StorePickup::storepickup"/>
+		<add id="MageArray_StorePickup::storepickup" title="Store Pickup" module="MageArray_StorePickup" sortOrder="20" parent="MageArray_Core::core" dependsOnModule="MageArray_StorePickup" resource="MageArray_Core::core"/>	
+		<add id="MageArray_StorePickup::store" title="Manage Store" module="MageArray_StorePickup" sortOrder="30" resource="MageArray_StorePickup::store" action="storepickup/store" parent="MageArray_StorePickup::storepickup" />
+		<add id="MageArray_StorePickup::settings" title="Settings" module="MageArray_StorePickup" sortOrder="40" resource="MageArray_StorePickup::settings" action="adminhtml/system_config/edit/section/storepickup" parent="MageArray_StorePickup::storepickup"/> 
+    </menu>
+</config>

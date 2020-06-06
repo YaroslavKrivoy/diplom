@@ -1,0 +1,19 @@
+{
+    "name": "mageworx/module-ordersbase",
+    "description": "Extended Orders module for the Magento 2",
+    "require": {
+        "piwik/device-detector" : "@stable"
+    },    
+    "type": "magento2-module",
+    "version": "1.1.1",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "MageWorx\\OrdersBase\\": ""
+        }
+    }
+}

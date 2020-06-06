@@ -1,0 +1,21 @@
+MageArray_StorePickup
+
+-------------
+  CHANGELOG
+-------------
+
+===== 1.0.0 =====
+ * Initial stable M2 release
+
+===== 1.0.1 =====
+ * Magento 2.2 Compatibility
+ * Bug Fixes
+ * New Features - tax calculation as per shipping address, pickup date show or not on checkout
+ 
+===== 1.0.2 =====
+ * Bug Fixes
+ * New Features - customer can select pickup time on checkout, No need to add shipping address if store pickup selected 
+ 
+===== 1.0.3 =====
+ * Bug Fixes
+ * New Features - store pickup functionality product wise 

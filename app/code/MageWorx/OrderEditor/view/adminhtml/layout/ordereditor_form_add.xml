@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\NewItem\Form" name="ordereditor_order_items_form_container" template="MageWorx_OrderEditor::edit/form/items/new_items.phtml">
+                <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\NewItem\Simple" name="ordereditor_order_simple_item_form" template="MageWorx_OrderEditor::edit/form/items/type/simple.phtml">
+                    <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Options" name="ordereditor_order_item_options" template="MageWorx_OrderEditor::edit/form/items/options.phtml">
+                        <arguments>
+                            <argument name="item_type" xsi:type="string">quote</argument>
+                        </arguments>
+                    </block>
+                </block>
+                <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\NewItem\Bundle" name="ordereditor_order_bundle_item_form" template="MageWorx_OrderEditor::edit/form/items/type/bundle.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

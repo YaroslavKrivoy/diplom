@@ -1,0 +1,23 @@
+<!-- ko foreach: {data: elems, as: 'element'} -->
+    <div class="gift-message-field">
+        <span class="label"><text args="label"/>:</span>
+        <span class="preview"><text args="getPreview()"/></span>
+    </div>
+<!-- /ko -->
+
+<div class="actions-toolbar">
+    <div class="primary">
+        <button type="button" class="action action-delete" data-bind="
+                            click: $data.deleteOptions.bind($data),
+                            attr: {title: $t('Delete')">
+            <span data-bind="i18n: 'Delete'"></span>
+        </button>
+    </div>
+    <div class="secondary">
+        <button type="button" class="action action-edit" data-bind="
+                            click: $data.editOptions.bind($data),
+                            attr: {title: $t('Edit')">
+            <span data-bind="i18n: 'Edit'"></span>
+        </button>
+    </div>
+</div>

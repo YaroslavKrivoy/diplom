@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_postdispatch_catalog_product_view">
+        <observer name="check_related_product" instance="Aheadworks\Autorelated\Observer\CheckRelatedProduct" />
+    </event>
+    <event name="controller_action_postdispatch_checkout_cart_add">
+        <observer name="add_to_cart_after" instance="Aheadworks\Autorelated\Observer\CheckRelatedProduct" />
+    </event>
+    <event name="controller_action_postdispatch_wishlist_index_add">
+        <observer name="add_to_witshlist_after" instance="Aheadworks\Autorelated\Observer\CheckRelatedProduct" />
+    </event>
+    <event name="controller_action_postdispatch_catalog_product_compare_add">
+        <observer name="add_to_compare_after" instance="Aheadworks\Autorelated\Observer\CheckRelatedProduct" />
+    </event>
+</config>

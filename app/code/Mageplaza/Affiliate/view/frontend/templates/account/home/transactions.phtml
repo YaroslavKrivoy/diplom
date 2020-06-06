@@ -1,0 +1,37 @@
+<?php $transactions = $block->getTransactions() ?>
+<div class="box-account box-info box-affiliate-transaction">
+	<div class="box-head">
+		<h2><?php echo __('Transactions') ?></h2>
+	</div>
+	<table class="data-table" id="affiliate-transactions-history">
+		<thead>
+			<tr>
+				<th class="col id">#</th>
+				<th class="col title"><?php echo __('Title') ?></th>
+				<th class="col amount"><?php echo __('Amount') ?></th>
+				<th class="col status"><?php echo __('Status') ?></th>
+				<th class="col created_at"><?php echo __('Created Date') ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php if ($transactions->getSize()): ?>
+				<?php foreach ($transactions as $transaction): ?>
+					<tr>
+						<td class="col"><?php echo $transaction->getId() ?></td>
+						<td class="col"><?php echo $transaction->getTitle() ?></td>
+						<td class="col a-right"><span class="price"><?php echo $block->formatPrice($transaction->getAmount()) ?></span></td>
+						<td class="col"><em><?php echo $transaction->getStatusLabel() ?></em></td>
+						<td class="col"><span class="nobr"><?php echo $block->formatDate($transaction->getCreatedAt(), \IntlDateFormatter::MEDIUM, true) ?></span></td>
+					</tr>
+				<?php endforeach ?>
+			<?php else: ?>
+				<tr>
+					<td colspan="6">
+						<span><?php echo __('No transaction found!') ?></span>
+					</td>
+				</tr>
+			<?php endif; ?>
+		</tbody>
+	</table>
+	<?php echo $block->getPagerHtml() ?>
+</div>

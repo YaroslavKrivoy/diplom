@@ -1,0 +1,8 @@
+<div data-bind="blockLoader: isLoading, afterRender: onRender" data-role="payment-methods-load">
+    <!-- ko foreach: getRegion('payment-methods-items') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <div class="no-quotes-block" data-bind="visible: !isPaymentMethodsAvailable()">
+        <!-- ko i18n: 'No Payment method available.'--><!-- /ko -->
+    </div>
+</div>

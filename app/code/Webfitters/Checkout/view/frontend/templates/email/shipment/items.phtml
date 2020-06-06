@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php $_shipment = $block->getShipment() ?>
+<?php $_order    = $block->getOrder() ?>
+<?php if ($_shipment && $_order): ?>
+    <table class="email-items">
+        <thead>
+            <tr>
+                <th class="item-info">
+                    <?= /* @escapeNotVerified */  __('Items') ?>
+                </th>
+                <th class="item-qty">
+                    <?= /* @escapeNotVerified */  __('Qty/Cases') ?>
+                </th>
+                <th class="item-weight">
+                    <?= __('Wgt.') ?>
+                </th>
+                <th class="item-price-lb">
+                    <?= __('Price/lb') ?>
+                </th>
+                <th class="item-unit-weight">
+                    <?= __('Unit Wgt.') ?>
+                </th>
+                <th class="item-price">
+                    <?= /* @escapeNotVerified */  __('Price') ?>
+                </th>
+            </tr>
+        </thead>
+        <?php foreach ($_shipment->getAllItems() as $_item): ?>
+            <?php if (!$_item->getOrderItem()->getParentItem()) : ?>
+                <tbody>
+                    <?= $block->getItemHtml($_item) ?>
+                </tbody>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <!--<tfoot>
+            <tr>
+                <th colspan="5" style="text-align: right;">
+
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </tfoot>-->
+        <tfoot class="order-totals" style="background-color: #EDEBEB;">
+            <?= $block->getChildHtml('order_totals') ?>
+        </tfoot>
+    </table>
+<?php endif; ?>

@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Infomodus. All rights reserved.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Infomodus\Upslabel\Block\Adminhtml\Address" name="adminhtml.block.upslabel.address.grid.container">
+                <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.block.upslabel.address.grid" as="grid">
+                    <arguments>
+                        <argument name="id" xsi:type="string">infomodus_upslabel_address_grid</argument>
+                        <argument name="dataSource" xsi:type="object">Infomodus\Upslabel\Model\ResourceModel\Address\Collection</argument>
+                        <argument name="default_sort" xsi:type="string">address_id</argument>
+                        <argument name="default_dir" xsi:type="string">DESC</argument>
+                        <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="adminhtml.upslabel.address.grid.columnSet">
+                        <arguments>
+                            <argument name="rowUrl" xsi:type="array">
+                                <item name="path" xsi:type="string">infomodus_upslabel/*/edit</item>
+                                <item name="extraParamsTemplate" xsi:type="array">
+                                    <item name="id" xsi:type="string">getId</item>
+                                </item>
+                            </argument>
+                        </arguments>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="address_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">ID</argument>
+                                <argument name="index" xsi:type="string">address_id</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="name">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Name</argument>
+                                <argument name="index" xsi:type="string">name</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="company">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Company</argument>
+                                <argument name="index" xsi:type="string">company</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="attention">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Attention Name</argument>
+                                <argument name="index" xsi:type="string">attention</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="phone">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Phone Number</argument>
+                                <argument name="index" xsi:type="string">phone</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="street_one">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Address Line 1</argument>
+                                <argument name="index" xsi:type="string">street_one</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="street_two">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Address Line 2</argument>
+                                <argument name="index" xsi:type="string">street_two</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="city">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">City</argument>
+                                <argument name="index" xsi:type="string">city</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="province_code">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">State\Province Code</argument>
+                                <argument name="index" xsi:type="string">province_code</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="postal_code">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Postal Code</argument>
+                                <argument name="index" xsi:type="string">postal_code</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="country">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Country</argument>
+                                <argument name="index" xsi:type="string">country</argument>
+                                <argument name="type" xsi:type="string">options</argument>
+                                <argument name="options" xsi:type="options" model="Magento\Directory\Model\Config\Source\Country"/>
+                            </arguments>
+                        </block>
+                        <block class="Infomodus\Upslabel\Block\Adminhtml\Widget\Address\Grid\ActionsColumn" as="actions">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Actions</argument>
+                                <argument name="renderer" xsi:type="string">Infomodus\Upslabel\Block\Adminhtml\Widget\Address\Grid\Column\Renderer\DeleteAddress</argument>
+                                <argument name="filter" xsi:type="string">0</argument>
+                                <argument name="sortable" xsi:type="string">0</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

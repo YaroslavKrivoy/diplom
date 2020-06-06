@@ -1,0 +1,201 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_AddMultipleProducts
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php /** @var $block \Bss\AddMultipleProducts\Block\OptionProduct */ ?>
+<?php 
+	$product = $block->getProduct();
+	$errormessageCart = $block->getErrorMessageCart();
+	$type_add = $block->getTypeadd();
+	$product_success = isset($product['success'])? $product['success'] : null;
+	$product_fail = isset($product['errors'])? $product['errors'] : null;
+	$cart = $block->getCart();
+?>
+<div class="popup">
+	<div class="header">
+		<span><?php echo __('Shopping Cart'); ?></span>
+	</div>
+	<?php if ($errormessageCart): ?>
+		<p class="message error">
+			<?php echo $errormessageCart; ?>
+		</p>
+	<?php else: ?>
+		<?php if ($block->getTypeadd() == 'single' && !$product_fail ): ?>
+		<p class="message">
+			<?php echo __('You added '); ?>
+
+				<a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $product->getName(); ?>">
+			            <?php echo $product->getName();?>
+			    </a>
+	        <?php echo $block->getRelatedAdded() ? __(' and related products') : ''; ?>
+	        <?php echo __(' to your shopping cart'); ?>
+		</p>
+		<?php endif ?>
+
+		<?php if($block->isShowProductImage()) :?>
+			<?php if ($block->getTypeadd() == 'muntiple' && $product_success): ?>
+				<p class="message"><span><?php echo __('You have added the following items to the cart: '); ?></span></p>
+				<div class="product-image">
+					<div id="product-slider" class="content-slider">
+				<?php foreach ($product_success as  $productss): ?>
+					<?php $products = $block->getLoadProduct($productss['id']);?>
+						<div  class="item product-info">
+							<div class="product-image-aj">
+								<img  class="" src="<?php echo $block->resizeImage($products, 'category_page_list', $block->getImageSizemt())->getUrl();?>">
+							</div>
+							<a href="<?php echo $products->getProductUrl() ?>" title="<?php echo $products->getName(); ?>">
+			            		<span><?php echo $products->getName();?></span>
+			        		</a>
+			        		<?php if($block->isShowProductPrice()) :?>
+								<span><?php echo $block->fomatPricePopup($productss['price']);?></span>
+							<?php endif; ?>
+						</div>				
+				<?php endforeach ?>
+					</div>
+				</div>
+			<?php endif; ?>
+			<?php if ($block->getTypeadd() == 'single' && !$product_fail): ?>
+				<div class="product-image">
+					<img src="<?php echo $block->resizeImage($product, 'category_page_list',$block->getImageSizesg())->getUrl();?>">
+					<?php if($block->isShowProductPrice()) :?>
+						<div>
+							<span><?php echo $block->fomatPricePopup($block->getPrice());?></span>
+						</div>
+					<?php endif; ?>
+				</div>
+			<?php endif ?>
+		<?php endif; ?>
+	<?php endif ?>
+	<?php if ($product_fail): ?>
+	<form action="<?php echo $block->geturlAddMultipleToCart() ?>" method="post" id="product_addmuntile_form_popup" data-mage-init='{"validation":{}}'>
+		<?php echo $this->getBlockHtml('formkey')?>
+		<div class="product-info-er">
+			<?php $i = 1 ;foreach ($product_fail as $productId => $data): ?>
+		    <?php $_product = $block->getLoadProduct($productId); ?>
+			<div class="item-er-pu">
+				<p class="messages-error">
+		            <span ><?php echo $data['mess'] ?></span>
+				</p>
+				<div class="item-info-er">
+					<div class="item-img-er">
+						<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image-<?php echo $_product->getId(); ?>">
+		                    <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+		                    src="<?php echo $block->resizeImage($_product, 'category_page_list',$block->getImageSizeer())->getUrl();?>"
+		                    alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+		                </a>
+					</div>
+					<div class="info-er-pu">
+						<p><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName(); ?>"><?php echo $_product->getName(); ?></a></p>
+		                <?php echo $block->getProductPriceHtml($_product) ?>
+		               <input type="hidden" name="rate" id='rate_<?php echo $_product->getId() ?>' value="<?php echo $block->taxRate($_product) ?>" readonly>
+		                <div class="option-er-pu er-pu-<?php echo $_product->getId() ?>">
+		               		<input type="hidden" name="productid" value="<?php echo $_product->getId() ?>">
+		                        <?php echo $block->getProductOptionsHtml($_product,$configurable = true); ?>
+		                </div>
+		                <input type="hidden" name="product-select[]" class="product-select" id="product-select-<?php echo $_product->getId() ?>" value="<?php echo $_product->getId() ?>">
+		                <div class="product-qty-er">
+		                <span><?php echo __('Qty'); ?></span>               
+		                <input type="text" class="quantity" name="<?php echo $_product->getId() ?>_qty" id="qty-<?php echo $_product->getId() ?>" value="<?php echo $data['qty'] ?>">
+		                </div>
+		                <div style="display: none;" class="fixed-price-ad-pu">
+		                	<span class="finalPrice"></span>
+		                	<span class="basePrice"></span>
+		                	<span class="oldPrice"></span>
+		                </div>
+					</div>
+					<div class="remove-er-pu">
+						<span class="remove"></span>
+					</div>
+					<div style="clear: both"></div>
+				</div>
+			</div>
+			<?php $i++; endforeach; ?>
+		</div>
+		<button type="submit" title="Add to Cart" class="action primary addmanytocart-popup" id="product-addtocart-button-er-pu">
+                <span><?php echo $block->getTextbuttonaddmt() ;?></span>
+        </button>
+	</form>
+	<?php endif ?>
+	<?php if($block->isShowCartInfo()) :?>
+		<div class="cart-info">
+			<div class="items-count">
+				<span>
+					<?php echo ($cart['qty'] > 1) ? __('There are ') : __('There is '); ?>
+					<a href="<?php echo $block->getUrl('checkout/cart'); ?>">
+						<?php 
+							echo $cart['qty'];
+							echo ($cart['qty'] > 1) ? __(' items') : __(' item'); 
+						?>
+					</a>
+					<?php echo __(' in your cart.'); ?>
+				</span>
+			</div>
+			<div class="subtotal">
+				<span>
+					<?php 
+						echo __('Cart Subtotal: ');
+						echo $block->fomatPricePopup($cart['subtotal']);
+					?>
+					<span data-bind="html: getCartParam('subtotal')"></span>
+				</span>
+			</div>
+			<?php if($block->isShowCheckoutLink() && $cart['qty'] > 0) : ?>
+			<div class="checkout-link">
+				<a href="<?php echo $block->getUrl('checkout')?>">
+					<span><?php echo __('Go to checkout'); ?></span>
+				</a>
+			</div>
+			<?php endif; ?>
+		</div>
+	<?php endif; ?>
+
+	<div class="action clearfix" style="margin-top: 10px;">
+		<div class="btn-viewcart <?php if(!$block->isShowContinueBtn()) { echo 'full-width'; }?>">
+			<a href="<?php echo $block->getUrl('checkout/cart') ?>" title="<?php echo __($block->getBtnViewcartText()); ?>" class="view-cart">
+                <button class="viewcart" type="button" title="<?php echo __($block->getBtnViewcartText()); ?>" style="background: #<?php echo $block->getBtnViewcartBackground() ?>; border:1px solid #<?php echo $block->getBtnViewcartBackground() ?>;color: #<?php echo $block->getBtnTextColor();?>" onmouseover="this.style='background:#<?php echo $block->getBtnViewcartHover() ?>;color: #<?php echo $block->getBtnTextColor()?>';" onmouseout="this.style='background:#<?php echo $block->getBtnViewcartBackground() ?>;color: #<?php echo $block->getBtnTextColor()?>';">
+                	<span><?php echo __($block->getBtnViewcartText()); ?></span>
+                	<?php if($block->getCountDownActive() == '2') :?>
+                		<span class="<?php echo ($block->getCountDownActive() == '2') ? 'countdown' : ''; ?>">(<?php echo $block->getCountDownTime(); ?>)</span>
+                	<?php endif; ?>
+                </button>
+            </a>
+		</div>
+
+		<?php if($block->isShowContinueBtn()) : ?>
+		<div class="btn-continue">
+			<button class="continue" type="button" title="<?php echo __($block->getBtnContinueText()); ?>" style="background: #<?php echo $block->getBtnContinueBackground() ?>; border:1px solid #<?php echo $block->getBtnContinueBackground() ?>;color: #<?php echo $block->getBtnTextColor();?>" onmouseover="this.style='background:#<?php echo $block->getBtnContinueHover() ?>;color: #<?php echo $block->getBtnTextColor()?>;';" onmouseout="this.style='background:#<?php echo $block->getBtnContinueBackground() ?>;color: #<?php echo $block->getBtnTextColor()?>';">
+            	<span><?php echo __($block->getBtnContinueText()); ?></span>
+            		<?php if($block->getCountDownActive() == '1') :?>
+                		<span class="<?php echo ($block->getCountDownActive() == '1') ? 'countdown' : ''; ?>">(<?php echo $block->getCountDownTime(); ?>)</span>
+                	<?php endif; ?>
+            </button>
+		</div>
+		<?php endif; ?>
+	</div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#bss_ajaxmuntiple_cart_popup": {
+            "Bss_AddMultipleProducts/js/popup": {
+                "items": <?php echo $block->getItemonslide() ?>,
+                "slideSpeed": <?php echo $block->getSlidespeed() ?>,
+                "autoPlay": <?php echo $block->getSlideauto()? "true" : "false"; ?>,
+                "countDown": <?php echo $block->getCountDownTime(); ?>
+            }
+        }
+    }
+</script>

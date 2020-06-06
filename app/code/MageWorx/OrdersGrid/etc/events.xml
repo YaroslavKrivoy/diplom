@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- Order save (committed) save -->
+    <event name="sales_order_save_commit_after">
+        <observer
+                name="mageworx_orders_grid_sync_order_data"
+                instance="MageWorx\OrdersGrid\Observer\Synchronize"
+                shared="false"
+                />
+    </event>
+    <!-- Invoice save -->
+    <event name="sales_order_invoice_save_after">
+        <observer
+                name="mageworx_orders_grid_sync_invoice_data"
+                instance="MageWorx\OrdersGrid\Observer\Synchronize"
+                shared="false"
+                />
+    </event>
+    <!-- Shipment save -->
+    <event name="sales_order_shipment_save_after">
+        <observer
+                name="mageworx_orders_grid_sync_shipment_data"
+                instance="MageWorx\OrdersGrid\Observer\Synchronize"
+                shared="false"
+        />
+    </event>
+    <!-- Tracking number save -->
+    <event name="sales_order_shipment_track_save_after">
+        <observer
+                name="mageworx_orders_grid_sync_shipment_track_data"
+                instance="MageWorx\OrdersGrid\Observer\Synchronize"
+                shared="false"
+                />
+    </event>
+    <!-- Order Address save -->
+    <event name="sales_order_address_save_after">
+        <observer
+                name="mageworx_orders_grid_sync_address_data"
+                instance="MageWorx\OrdersGrid\Observer\Synchronize"
+                shared="false"
+                />
+    </event>
+    <!-- Order items save -->
+    <event name="sales_order_item_save_after">
+        <observer
+                name="mageworx_orders_grid_sync_items_data"
+                instance="MageWorx\OrdersGrid\Observer\Synchronize"
+                shared="false"
+                />
+    </event>
+    <!-- Tax save -->
+    <event name="core_abstract_save_after">
+        <observer
+                name="mageworx_orders_grid_sync_tax_data"
+                instance="MageWorx\OrdersGrid\Observer\SynchronizeTax"
+                shared="false"
+                disabled="false"
+        />
+    </event>
+</config>

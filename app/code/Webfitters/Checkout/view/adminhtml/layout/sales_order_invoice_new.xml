@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="order_items">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Webfitters_Checkout::invoice/create/items.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="order_items.default">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Webfitters_Checkout::invoice/create/items/renderer/default.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="content">
+            <block name="pmclain_authorizenetcim_payment_scrsipt" as="pmclain_authorizenetcim_payment_script" template="Webfitters_Checkout::pmclain/payment/script.phtml" class="Pmclain\AuthorizenetCim\Block\Payment" after="billing_method"/>
+        </referenceBlock>
+        <referenceBlock name="order.create.billing.method.form">
+            <action method="setMethodFormTemplate">
+                <argument name="method" xsi:type="string">pmclain_authorizenetcim</argument>
+                <argument name="template" xsi:type="string">Pmclain_AuthorizenetCim::form/cc.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="order.create.billing.method.form">
+            <action method="setMethodFormTemplate">
+                <argument name="method" xsi:type="string">pmclain_authorizenetcim_vault</argument>
+                <argument name="template" xsi:type="string">Magento_Vault::form/vault.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="submit_before">
+            <block before="-" class="Webfitters\Checkout\Block\Adminhtml\Invoice\Create\BillingMethod" template="Webfitters_Checkout::invoice/create/abstract.phtml" name="billing_method">
+                <block class="Webfitters\Checkout\Block\Adminhtml\Invoice\Create\BillingMethodForm" template="Webfitters_Checkout::invoice/create/billing/method/form.phtml" name="order.create.billing.method.form" as="form"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

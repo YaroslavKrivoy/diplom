@@ -1,0 +1,29 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_GiftCard
+ */
+?>
+<?php /* @var $block \Amasty\GiftCard\Block\Customer\CardForm */ ?>
+<div class="amgiftcard">
+    <form class="form amgiftcard-form" id="amgiftcard-form" action="<?= $block->getUrl('amgiftcard/account/addCard') ?>" method="post" enctype="multipart/form-data">
+        <?= $block->getBlockHtml('formkey')?>
+        <fieldset class="fieldset">
+            <legend class="legend">
+                <span><?= $block->escapeHtml(__('Specify Gift Code')) ?></span>
+            </legend>
+            <div class="field required" data-container="change-email">
+                <div class="control">
+                    <input type="text" class="required-entry input-text" id="am_giftcard_code" name="am_giftcard_code" value="" />
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="buttons-set form-buttons btn-only">
+            <button type="submit" class="action save primary" title="<?= $block->escapeHtml(__('Submit')) ?>">
+                <?= $block->escapeHtml(__('Submit')) ?>
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mageworx" sortOrder="2001">
+            <label>MageWorx</label>
+        </tab>
+        <section id="mageworx_order_management" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Order Management</label>
+            <tab>mageworx</tab>
+            <resource>MageWorx_OrderEditor::config_ordereditor</resource>
+            <group id="order_editor" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Order Editor</label>
+                <group id="invoice_shipment_refund" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Invoices / Shipments / Credit Memos</label>
+                    <field id="invoice_update_mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Update Invoices/Credit Memos</label>
+                        <source_model>MageWorx\OrderEditor\Model\Config\Source\Invoice\UpdateMode</source_model>
+                        <comment>Specify how invoices and credit memos are updated after modifying an order.</comment>
+                    </field>
+                    <field id="shipments_update_mode" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Update Shipments</label>
+                        <source_model>MageWorx\OrderEditor\Model\Config\Source\Shipments\UpdateMode</source_model>
+                        <comment>Specify how shipments are updated after modifying an order.</comment>
+                    </field>
+                </group>
+                <group id="order_items" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Items</label>
+                    <field id="return_to_stock" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Return Item To Stock</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Default value for "Back to stock" option. Return to stock after remove item or decrease item's quantity.</comment>
+                    </field>
+                </group>
+                <group id="shipping" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping</label>
+                    <field id="auto_recalculate" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <label>Recalculate Shipping Amount Automatically</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Apply new shipping amount automatically after updating ordered items or the shipping address.</comment>
+                    </field>
+                </group>
+            </group>
+        </section>
+        <section id="payment">
+            <group id="mageworx_ordereditor_payment_method" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>MageWorx Payment Method</label>
+                <field id="active" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
+                    <label>Title</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

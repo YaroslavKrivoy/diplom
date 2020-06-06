@@ -1,0 +1,10 @@
+<?php if($this->getAffiliateName()): ?>
+<tr>
+    <th>Affiliate:</th>
+    <td><?php echo $this->getAffiliateName(); ?></td>
+</tr>
+<tr>
+    <th>Commission Earned:</th>
+    <td>$<?php echo number_format($this->getCommission(), 2); ?></td>
+</tr>
+<?php endif; ?>

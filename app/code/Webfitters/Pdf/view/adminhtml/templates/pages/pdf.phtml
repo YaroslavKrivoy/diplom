@@ -1,0 +1,30 @@
+<div class="nice-uploader">
+	<button class="action-primary pdf-upload" data-action="<?php echo $this->getUrl('pdf/pdf/upload') ?>">Upload a PDF</button>
+</div>
+<div class="row" style="margin-top: 10px;">
+	<div class="row">
+		<div class="col-md-2">&nbsp;</div>
+	</div>
+</div>
+<div class="pdf-grid">
+<?php foreach($this->getPdfs() as $pdf): ?>
+	<div class="row pdf-holder" data-id="<?php echo $pdf->getId(); ?>">
+		<div class="col-md-2">
+			<img src="<?php echo $this->getImageUrl($pdf); ?>" />
+		</div>
+		<div class="col-md-7">
+			<?php echo $this->getBaseUrl(); ?>pdf/download/<span class="link-holder"><?php echo $pdf->getLink(); ?></span>
+			<input type="text" class="link-editor" style="display: none; width: 300px;" value="<?php echo $pdf->getLink(); ?>" />
+			
+		</div>
+		<div class="col-md-1">
+			<?php echo date('m/d/Y', strtotime($pdf->getCreatedAt())); ?>
+		</div>
+		<div class="col-md-2">
+			<button class="action-primary pull-right edit-pdf"><i class="fa fa-fw fa-pencil"></i></button>
+			<button class="action-primary save-pdf pull-right" data-action="<?php echo $this->getUrl('pdf/pdf/edit') ?>" style="display: none;"><i class="fa fa-fw fa-check"></i></button>
+			<button class="action-warning delete-pdf pull-right" data-action="<?php echo $this->getUrl('pdf/pdf/delete') ?>"><i class="fa fa-fw fa-trash-o"></i></button>
+		</div>
+	</div>
+<?php endforeach; ?>
+</div>

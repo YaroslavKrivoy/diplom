@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add 
+        	id="Webfitters_Wholesale::webfitters_wholesale" 
+        	title="Wholesale Content" 
+        	module="Webfitters_Wholesale" 
+        	sortOrder="9999" 
+        	parent="Magento_Backend::content_elements" 
+        	resource="Magento_Backend::content" action="wholesale/wholesale/index" 
+        />
+    </menu>
+</config>

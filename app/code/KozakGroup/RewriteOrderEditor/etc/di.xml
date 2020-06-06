@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Model\Order">
+        <plugin name="afterAddStatusHistoryComment" type="KozakGroup\RewriteOrderEditor\Plugin\Model\Order\AddUsernamePlugin"/>
+    </type>
+    <type name="Magento\Framework\Mail\Template\TransportBuilderByStore">
+        <plugin name="beforeSetFromByStore" type="KozakGroup\RewriteOrderEditor\Plugin\Model\Order\ClearFromMessagePlugin" disabled="true"/>
+    </type>
+    <type name="KozakGroup\RewriteOrderEditor\Controller\Adminhtml\Edit\Items">
+        <plugin name="afterUpdateItems" type="KozakGroup\RewriteOrderEditor\Plugin\Controller\Adminhtml\Reauthorize"/>
+    </type>
+    <type name="KozakGroup\RewriteOrderEditor\Controller\Adminhtml\Edit\Payment">
+        <plugin name="afterUpdatePaymentMethod" type="KozakGroup\RewriteOrderEditor\Plugin\Controller\Adminhtml\AuthorizeAfterChangePayment"/>
+    </type>
+    <type name="KozakGroup\RewriteOrderEditor\Controller\Adminhtml\Edit\Shipping">
+        <plugin name="afterUpdateShippingMethod" type="KozakGroup\RewriteOrderEditor\Plugin\Controller\Adminhtml\AuthorizeAfterChangeShipping"/>
+    </type>
+    <preference for="MageWorx\OrderEditor\Controller\Adminhtml\Edit\Items" type="KozakGroup\RewriteOrderEditor\Controller\Adminhtml\Edit\Items"/>
+    <preference for="MageWorx\OrderEditor\Controller\Adminhtml\Edit\Payment" type="KozakGroup\RewriteOrderEditor\Controller\Adminhtml\Edit\Payment"/>
+    <preference for="MageWorx\OrderEditor\Controller\Adminhtml\Edit\Shipping" type="KozakGroup\RewriteOrderEditor\Controller\Adminhtml\Edit\Shipping"/>
+    <preference for="Pmclain\AuthorizenetCim\Model\Adapter\AuthorizenetAdapter" type="KozakGroup\RewriteOrderEditor\Model\Adapter\AuthorizenetAdapter"/>
+    <preference for="MageWorx\OrderEditor\Model\Shipping" type="KozakGroup\RewriteOrderEditor\Model\Order\Shipping"/>
+    <type name="\Magento\Payment\Block\Info">
+        <plugin name="aroundToPdf" type="KozakGroup\RewriteOrderEditor\Plugin\Block\Adminhtml\PaymentInfo"/>
+    </type>
+    <preference for="Fooman\PrintOrderPdf\Model\Pdf\Order" type="KozakGroup\RewriteOrderEditor\Model\Pdf\Order"/>
+    <preference for="Infomodus\Upslabel\Controller\Adminhtml\Pdflabels\Many" type="KozakGroup\RewriteOrderEditor\Controller\Adminhtml\Pdflabels\Many"/>
+    <preference for="Infomodus\Upslabel\Controller\Adminhtml\Items\Bulk" type="KozakGroup\RewriteOrderEditor\Controller\Adminhtml\Items\Bulk"/>
+    <preference for="MageWorx\OrderEditor\Model\Order\Item" type="KozakGroup\RewriteOrderEditor\Model\Order\Item"/>
+    <preference for="Infomodus\Upslabel\Controller\Adminhtml\Items\Save" type="KozakGroup\RewriteOrderEditor\Controller\Adminhtml\Items\Save"/>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="save_hear_about_id" disabled="true"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="save_hear_about_id_rewrite" type="KozakGroup\RewriteOrderEditor\Plugin\Checkout\SaveHearAbout" />
+    </type>
+    <preference for="MageArray\StorePickup\Model\Checkout\ShippingInformationManagementPlugin" type="KozakGroup\RewriteOrderEditor\Model\Checkout\ShippingInformationManagementPlugin"/>
+    <preference for="Magento\Reports\Block\Product\Widget\Viewed" type="KozakGroup\RewriteOrderEditor\Block\Product\Widget\Viewed"/>
+    <preference for="Webfitters\CustomerEmails\Model\Email\Sender" type="KozakGroup\RewriteOrderEditor\Model\Email\Sender"/>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="save-in-quote" type="KozakGroup\RewriteOrderEditor\Model\Checkout\ShippingInformationPlugin" sortOrder="10"/>
+    </type>
+</config>

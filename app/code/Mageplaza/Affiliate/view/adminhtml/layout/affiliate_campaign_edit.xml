@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza_Affiliate extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the Mageplaza License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     https://www.mageplaza.com/LICENSE.txt
+ * 
+ *                     @category  Mageplaza
+ *                     @package   Mageplaza_Affiliate
+ *                     @copyright Copyright (c) 2016
+ *                     @license   https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit" name="mageplaza_affiliate_campaign_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit\Tabs" name="mageplaza_affiliate_campaign_tabs">
+                <block class="Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit\Tab\Campaign" name="mageplaza_affiliate_campaign_edit_tab_campaign"/>
+                <block class="Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit\Tab\Condition" name="mageplaza_affiliate_campaign_edit_tab_condition"/>
+                <block class="Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit\Tab\Discount" name="mageplaza_affiliate_campaign_edit_tab_discount"/>
+                <block class="Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit\Tab\Commissions" name="mageplaza_affiliate_campaign_edit_tab_commissions"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">campaign</argument>
+                    <argument name="block" xsi:type="string">mageplaza_affiliate_campaign_edit_tab_campaign</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">condition_section</argument>
+                    <argument name="block" xsi:type="string">mageplaza_affiliate_campaign_edit_tab_condition</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">discount_section</argument>
+                    <argument name="block" xsi:type="string">mageplaza_affiliate_campaign_edit_tab_discount</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">commission_section</argument>
+                    <argument name="block" xsi:type="string">mageplaza_affiliate_campaign_edit_tab_commissions</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

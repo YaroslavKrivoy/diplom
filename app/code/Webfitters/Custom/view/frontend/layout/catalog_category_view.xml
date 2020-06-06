@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    	<move element="breadcrumbs" destination="category.view.container" before="-" />
+    	<referenceBlock name="category.products.list">
+    		<action method="setTemplate">
+    			<argument name="template" xsi:type="string">Webfitters_Custom::product/list.phtml</argument>
+    		</action>
+    	</referenceBlock>
+    	<!--<referenceContainer name="sidebar.additional">
+    		<block class="Webfitters\Custom\Block\Categories" template="Webfitters_Custom::categories.phtml" />
+    	</referenceContainer>-->
+    </body>
+</page>

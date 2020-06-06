@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\Catalog\Model\ResourceModel\Product\Attribute\Backend\Tierprice" type="Webfitters\Checkout\Model\Product\ResourceModel\TierPrice" />
+	<preference for="Magento\Catalog\Model\Product\Attribute\Backend\Tierprice" type="Webfitters\Checkout\Model\Product\TierPrice" />
+	<type name="Magento\Catalog\Model\Product\Type\Price">
+      <plugin name="add_price_lb_to_tiers" type="Webfitters\Checkout\Plugin\Product\TierPricing"/>
+  </type>
+  <preference for="Magento\OfflinePayments\Model\Purchaseorder" type="Webfitters\Checkout\Model\Payment\Purchaseorder" />
+</config>

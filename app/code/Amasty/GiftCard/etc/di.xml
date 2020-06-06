@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_GiftCard
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="amgiftcard_codeset_listing_data_source" xsi:type="string">Amasty\GiftCard\Model\ResourceModel\CodeSet\Grid\Collection</item>
+                <item name="amgiftcard_account_listing_data_source" xsi:type="string">Amasty\GiftCard\Model\ResourceModel\Account\Grid\Collection</item>
+                <item name="amgiftcard_image_listing_data_source" xsi:type="string">Amasty\GiftCard\Model\ResourceModel\Image\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Helper\Product">
+        <plugin name="Amasty_GiftCard::HelperProduct" type="Amasty\GiftCard\Plugin\Helper\Product"/>
+    </type>
+
+    <virtualType name="Amasty\GiftCard\Model\ResourceModel\CodeSet\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">amasty_amgiftcard_code_set</argument>
+            <argument name="resourceModel" xsi:type="string">Amasty\GiftCard\Model\ResourceModel\CodeSet</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Amasty\GiftCard\Model\ResourceModel\Account\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">amasty_amgiftcard_account</argument>
+            <argument name="resourceModel" xsi:type="string">Amasty\GiftCard\Model\ResourceModel\Account</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Amasty\GiftCard\Model\ResourceModel\Image\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">amasty_amgiftcard_image</argument>
+            <argument name="resourceModel" xsi:type="string">Amasty\GiftCard\Model\ResourceModel\Image</argument>
+        </arguments>
+    </virtualType>
+
+    <!--<type name="Magento\Sales\Api\OrderItemRepositoryInterface">
+        <arguments>
+            <argument name="processorPool" xsi:type="array">
+                <item name="amgiftcard" xsi:type="object">Amasty\GiftCard\Model\ProductOptionProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\Repository">
+        <arguments>
+            <argument name="cartItemProcessors" xsi:type="array">
+                <item name="amgiftcard" xsi:type="object">Amasty\GiftCard\Model\CartItemProcessor\Proxy</item>
+            </argument>
+        </arguments>
+    </type>-->
+    <type name="Magento\Catalog\Helper\Product\Configuration">
+        <plugin name="Amasty_GiftCard::HelperProductConfiguration" type="Amasty\GiftCard\Plugin\Product\Configuration"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="AmgiftcardQuoteConvertToOrder" type="Amasty\GiftCard\Plugin\Quote\ConvertToOrder"/>
+    </type>
+
+    <type name="Magento\SalesRule\Model\Rule\Condition\Product">
+        <plugin name="AmgiftcardProductValidation" type="Amasty\GiftCard\Plugin\Product\Validation"/>
+    </type>
+
+    <type name="Magento\Quote\Model\Quote\Item">
+        <plugin name="Amasty_GiftCard::QuoteItem" type="Amasty\GiftCard\Plugin\Quote\Item"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="Amasty_GiftCard::CatalogItemPrice" type="Amasty\GiftCard\Plugin\Product\Price"/>
+    </type>
+    <type name="Magento\CatalogSearch\Block\SearchResult\ListProduct">
+        <plugin name="Amasty_GiftCard::CatalogSearchItemPrice" type="Amasty\GiftCard\Plugin\Product\Price"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote">
+        <plugin name="Amasty_GiftCard::UpdateItem" type="Amasty\GiftCard\Plugin\Quote\UpdateItem"/>
+    </type>
+    <type name="Magento\Sales\Model\OrderRepository">
+        <plugin sortOrder="1" name="Amasty_GiftCard::OrderRepository" type="\Amasty\GiftCard\Plugin\Order\OrderRepository"/>
+    </type>
+    <!--<preference for="Amasty\GiftCard\Api\Data\AmGiftCardOptionsInterface" type="Amasty\GiftCard\Model\Options" />-->
+    <preference for="Amasty\GiftCard\Api\Data\ImageInterface" type="Amasty\GiftCard\Model\Image" />
+    <preference for="Amasty\GiftCard\Api\ImageRepositoryInterface" type="Amasty\GiftCard\Model\Repository\ImageRepository" />
+    <preference for="Amasty\GiftCard\Api\Data\AccountInterface" type="Amasty\GiftCard\Model\Account" />
+    <preference for="Amasty\GiftCard\Api\AccountRepositoryInterface" type="Amasty\GiftCard\Model\Repository\AccountRepository" />
+    <preference for="Amasty\GiftCard\Api\Data\CodeSetInterface" type="Amasty\GiftCard\Model\CodeSet" />
+    <preference for="Amasty\GiftCard\Api\CodeSetRepositoryInterface" type="Amasty\GiftCard\Model\Repository\CodeSetRepository" />
+    <preference for="Amasty\GiftCard\Api\Data\CodeInterface" type="Amasty\GiftCard\Model\Code" />
+    <preference for="Amasty\GiftCard\Api\CodeRepositoryInterface" type="Amasty\GiftCard\Model\Repository\CodeRepository" />
+    <preference for="Amasty\GiftCard\Api\Data\CustomerCardInterface" type="Amasty\GiftCard\Model\CustomerCard" />
+    <preference for="Amasty\GiftCard\Api\CustomerCardRepositoryInterface" type="Amasty\GiftCard\Model\Repository\CustomerCardRepository" />
+    <preference for="Amasty\GiftCard\Api\Data\QuoteInterface" type="Amasty\GiftCard\Model\Quote" />
+    <preference for="Amasty\GiftCard\Api\QuoteRepositoryInterface" type="Amasty\GiftCard\Model\Repository\QuoteRepository" />
+    <preference for="Amasty\GiftCard\Api\GiftCardManagementInterface" type="Amasty\GiftCard\Model\GiftCardManagement" />
+    <preference for="Amasty\GiftCard\Api\GuestGiftCardManagementInterface" type="Amasty\GiftCard\Model\GuestGiftCardManagement" />
+    <type name="Amasty\GiftCard\Model\Rule">
+        <arguments>
+            <argument name="condCombineFactory" xsi:type="object">\Amasty\GiftCard\Model\Rule\Condition\CombineFactory</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\GiftCard\Model\Rule\Condition\CombineFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">\Amasty\GiftCard\Model\Rule\Condition\Combine</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\Delete">
+        <plugin name="Amasty_GiftCard::removeItemShoppingCart" type="Amasty\GiftCard\Plugin\Cart\RemoveItem"/>
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\UpdatePost">
+        <plugin name="Amasty_GiftCard::updateShoppingCart" type="Amasty\GiftCard\Plugin\Cart\Update"/>
+    </type>
+</config>

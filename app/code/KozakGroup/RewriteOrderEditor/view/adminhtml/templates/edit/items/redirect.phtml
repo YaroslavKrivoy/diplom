@@ -1,0 +1,16 @@
+<script>
+    require([
+        "jquery",
+        "mage/translate",
+        "Magento_Ui/js/modal/alert"
+    ], function ($) {
+        $('#save').on('click', function () {
+                var time = 7000;
+                alert($.mage.__('You will be redirected to the order viewing page %1 seconds after message confirmation').replace('%1',time / 1000));
+                setTimeout(function () {
+                    var url = '<?= $block->getBaseUrl() . $this->helper('Magento\Backend\Helper\Data')->getAreaFrontName() . '/sales/order/view/order_id/' . $block->getRequest()->getParam('order_id') . '/' ?>';
+                    $(location).attr('href',url);
+                },time);
+            });
+    });
+</script>

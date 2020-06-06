@@ -1,0 +1,240 @@
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-12">
+		<button class="new-type action-primary pull-right">Add New Type</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="type-holder">
+			<?php foreach($this->getTypes() as $type): ?>
+			<div class="type-group">
+				<div class="row type-row">
+					<div class="col-md-1">
+						<img src="<?php echo $this->getImageUrl($type->getImage()); ?>" class="image-holder" />
+					</div>
+					<div class="col-md-8">
+						<b class="title-holder"><?php echo $type->getTitle(); ?></b>
+					</div>
+					<div class="col-md-3">
+						<button 
+							class="pull-right action-secondary delete-type" 
+							data-id="<?php echo $type->getId(); ?>" 
+							data-action="<?php echo $this->getUrl('wholesale/types/delete') ?>"
+						><i class="fa fa-times fa-fw"></i></button>
+						<button 
+							class="pull-right action-primary edit-type"
+							data-type='<?php echo json_encode(array(
+								'image' => $this->getImageUrl($type->getImage()),
+								'content' => $type->getContent(),
+								'hero' => $this->getImageUrl($type->getHero()),
+								'title' => $type->getTitle(),
+								'id' => $type->getId()
+							)); ?>'
+						><i class="fa fa-pencil fa-fw"></i></button>
+						<button class="pull-right add-category" data-type-id="<?php echo $type->getId(); ?>"><i class="fa fa-fw fa-plus"></i></button>
+					</div>
+				</div>
+				<div class="category-holder">
+				<?php foreach($type->getCategories() as $category): ?>
+					<div class="category-group">
+						<div class="row category-row">
+							<div class="col-md-2">&nbsp;</div>
+							<div class="col-md-10 groupify">
+								<div class="row">
+									<div class="col-md-9">
+										<input type="text" placeholder="Protein Name" name="name" style="display: none;" value="<?php echo $category->getTitle(); ?>" class="form-control" />
+										<span class="category-name"><?php echo $category->getTitle(); ?></span>
+									</div>
+									<div class="col-md-3">
+										<input type="hidden" name="id" value="<?php echo $category->getId(); ?>" />
+										<input type="hidden" name="type_id" value="<?php echo $category->getTypeId(); ?>" />
+										<button class="delete-category pull-right action-secondary" data-action="<?php echo $this->getUrl('wholesale/categories/delete'); ?>"><i class="fa fa-fw fa-times"></i></button>
+										<button class="edit-category pull-right action-primary"><i class="fa fa-fw fa-pencil"></i></button>
+										<button 
+											class="save-category pull-right action-primary"
+											style="display: none;" 
+											data-action="<?php echo $this->getUrl('wholesale/categories/save'); ?>"
+										><i class="fa fa-fw fa-check"></i></button>
+										<button class="add-product pull-right" data-category-id="<?php echo $category->getId(); ?>" /><i class="fa fa-fw fa-plus"></i></button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="product-holder">
+						<?php foreach($category->getProducts() as $product): ?>
+							<div class="product-row row">
+								<div class="col-md-3">&nbsp;</div>
+								<div class="col-md-9 groupify">
+									<div class="row">
+										<div class="col-md-3">
+											<input type="text" style="display: none;" placeholder="Product Name" name="name" value="<?php echo $product->getDescription(); ?>" class="form-control" />
+											<span class="product-name"><?php echo $product->getDescription(); ?></span>
+										</div>
+										<div class="col-md-3">
+											<input type="text" style="display: none;" placeholder="Product Number" name="number" value="<?php echo $product->getItemNumber(); ?>" class="form-control" />
+											<span class="product-number"><?php echo $product->getItemNumber(); ?></span>
+										</div>
+										<div class="col-md-3">
+											<input type="text" style="display: none;" placeholder="Product Size" name="size" value="<?php echo $product->getSize(); ?>" class="form-control" />
+											<span class="product-size"><?php echo $product->getSize(); ?></span>
+										</div>
+										<div class="col-md-3">
+											<input type="hidden" name="id" value="<?php echo $product->getId(); ?>" />
+											<input type="hidden" name="category_id" value="<?php echo $product->getCategoryId(); ?>" />
+											<button class="delete-product pull-right action-secondary" data-action="<?php echo $this->getUrl('wholesale/product/delete'); ?>"><i class="fa fa-fw fa-times"></i></button>
+											<button class="edit-product pull-right action-primary"><i class="fa fa-fw fa-pencil"></i></button>
+											<button  
+												style="display: none;"
+												class="save-product pull-right action-primary"
+												data-action="<?php echo $this->getUrl('wholesale/product/save'); ?>"
+											><i class="fa fa-fw fa-check"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endforeach; ?>
+				</div>
+			</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</div>
+<div class="type-modal modal">
+	<div class="modal-back modal-close"></div>
+	<div class="modal-front">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>New Type <i class="fa fa-times modal-close header-close"></i></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<label class="control-label">Hero Image</label>
+				<div class="nicer-image">
+					<button class="image-upload action-primary">Upload</button>
+					<label class="control-label file-text"></label>
+					<input type="file" name="hero_image" style="display: none;" accept="image/*" />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label class="control-label">Image</label>
+				<div class="nicer-image">
+					<button class="image-upload action-primary">Upload</button>
+					<label class="control-label file-text"></label>
+					<input type="file" name="image" style="display: none;" allow="*/image" />
+				</div>
+			</div>
+			<div class="col-md-6">
+				<label class="control-label">Title</label>
+				<input type="text" class="form-control" name="title" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<label class="control-label">Content</label>
+				<textarea class="form-control" name="content" style="height: 300px;"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<input type="hidden" name="id" value="" />
+				<button class="action-primary save-type pull-right" data-action="<?php echo $this->getUrl('wholesale/types/save') ?>"><i class="fa fa-check"></i> Save</button>
+				<button class="modal-close pull-right"><i class="fa fa-ban"></i> Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+<template id="product-template">
+	<div class="product-row row">
+		<div class="col-md-3">&nbsp;</div>
+		<div class="col-md-9 groupify">
+			<div class="row">
+				<div class="col-md-3">
+					<input type="text" placeholder="Product Name" name="name" value="" class="form-control" />
+					<span class="product-name" style="display: none;"></span>
+				</div>
+				<div class="col-md-3">
+					<input type="text" placeholder="Product Number" name="number" value="" class="form-control" />
+					<span class="product-number" style="display: none;"></span>
+				</div>
+				<div class="col-md-3">
+					<input type="text" placeholder="Product Size" name="size" value="" class="form-control" />
+					<span class="product-size" style="display: none;"></span>
+				</div>
+				<div class="col-md-3">
+					<input type="hidden" name="id" value="" />
+					<input type="hidden" name="category_id" value="" />
+					<button class="delete-product pull-right action-secondary" data-action="<?php echo $this->getUrl('wholesale/product/delete'); ?>"><i class="fa fa-fw fa-times"></i></button>
+					<button class="edit-product pull-right action-primary" style="display: none;"><i class="fa fa-fw fa-pencil"></i></button>
+					<button 
+						class="save-product pull-right action-primary"
+						data-action="<?php echo $this->getUrl('wholesale/product/save'); ?>"
+					><i class="fa fa-fw fa-check"></i></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+<template id="category-template">
+	<div class="category-group">
+		<div class="row category-row">
+			<div class="col-md-2">&nbsp;</div>
+			<div class="col-md-10 groupify">
+				<div class="row">
+					<div class="col-md-9">
+						<input type="text" placeholder="Protein Name" name="name" value="" class="form-control" />
+						<span class="category-name" style="display: none;"></span>
+					</div>
+					<div class="col-md-3">
+						<input type="hidden" name="id" value="" />
+						<input type="hidden" name="type_id" value="" />
+						<button class="delete-category pull-right action-secondary" data-action="<?php echo $this->getUrl('wholesale/categories/delete'); ?>"><i class="fa fa-fw fa-times"></i></button>
+						<button class="edit-category pull-right action-primary" style="display: none;"><i class="fa fa-fw fa-pencil"></i></button>
+						<button 
+							class="save-category pull-right action-primary"
+							data-action="<?php echo $this->getUrl('wholesale/categories/save'); ?>"
+						><i class="fa fa-fw fa-check"></i></button>
+						<button class="add-product pull-right" data-category-id="" /><i class="fa fa-fw fa-plus"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="product-holder">
+
+		</div>
+	</div>
+</template>
+<template id="type-template">
+	<div class="type-group">
+		<div class="row type-row">
+			<div class="col-md-1">
+				<img src="" class="image-holder" />
+			</div>
+			<div class="col-md-8">
+				<b class="title-holder"></b>
+			</div>
+			<div class="col-md-3">
+				<button 
+					class="pull-right action-secondary delete-type" 
+					data-id="" 
+					data-action="<?php echo $this->getUrl('wholesale/types/delete') ?>"
+				><i class="fa fa-times fa-fw"></i></button>
+				<button 
+					class="pull-right action-primary edit-type"
+					data-type=''
+				><i class="fa fa-pencil fa-fw"></i></button>
+				<button class="pull-right add-category" data-type-id=""><i class="fa fa-fw fa-plus"></i></button>
+			</div>
+		</div>
+		<div class="category-holder">
+
+		</div>
+	</div>
+</template>
+</div>

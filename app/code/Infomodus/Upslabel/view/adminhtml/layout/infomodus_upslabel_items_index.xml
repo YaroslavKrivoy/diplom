@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Infomodus. All rights reserved.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="Infomodus_Upslabel::js/printer.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Infomodus\Upslabel\Block\Adminhtml\Items" name="adminhtml.block.promo.quote.grid.container">
+                <block class="Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid" name="adminhtml.block.promo.quote.grid" as="grid">
+                    <arguments>
+                        <argument name="id" xsi:type="string">infomodus_upslabel_items_grid</argument>
+                        <argument name="dataSource" xsi:type="object">Infomodus\Upslabel\Model\ResourceModel\Items\Collection</argument>
+                        <argument name="default_sort" xsi:type="string">created_time</argument>
+                        <argument name="default_dir" xsi:type="string">DESC</argument>
+                        <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\Massaction" name="infomodus_upslabel.items.grid.massaction" as="grid.massaction">
+                        <!--<arguments>
+                            <argument name="massaction_id_field" xsi:type="string">upslabel_id</argument>
+                            <argument name="form_field_name" xsi:type="string">search</argument>
+                            <argument name="use_select_all" xsi:type="string">1</argument>
+                            <argument name="options" xsi:type="array">
+                                <item name="delete" xsi:type="array">
+                                    <item name="label" xsi:type="string" translate="true">Delete</item>
+                                    <item name="url" xsi:type="string">*/*/massDelete</item>
+                                    <item name="confirm" xsi:type="string" translate="true">Are you sure?</item>
+                                </item>
+                            </argument>
+                        </arguments>-->
+                        <arguments>
+                            <argument name="massaction_id_field" xsi:type="string">upslabel_id</argument>
+                            <argument name="form_field_name" xsi:type="string">upslabel_id</argument>
+                            <argument name="use_select_all" xsi:type="string">1</argument>
+                            <argument name="options" xsi:type="array">
+                                <item name="print_ups_items_label" xsi:type="array">
+                                    <item name="label" xsi:type="string" translate="true">Print Labels</item>
+                                    <item name="url" xsi:type="string">*/pdflabels/many</item>
+                                </item>
+                            </argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="adminhtml.promo.quote.grid.columnSet">
+                        <!--<arguments>
+                            <argument name="rowUrl" xsi:type="array">
+                                <item name="path" xsi:type="string">infomodus_upslabel/*/edit</item>
+                                <item name="extraParamsTemplate" xsi:type="array">
+                                    <item name="id" xsi:type="string">getId</item>
+                                </item>
+                            </argument>
+                        </arguments>-->
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="upslabel_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">ID</argument>
+                                <argument name="index" xsi:type="string">upslabel_id</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="trackingnumber">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Tracking Number</argument>
+                                <argument name="index" xsi:type="string">trackingnumber</argument>
+                                <argument name="renderer" xsi:type="string">Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\AddNewLabelLinks</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="order_increment_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Order ID</argument>
+                                <argument name="index" xsi:type="string">order_increment_id</argument>
+                                <argument name="renderer" xsi:type="string">Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\OrderId</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="shipment_increment_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Shipment or Credit memos ID</argument>
+                                <argument name="index" xsi:type="string">shipment_increment_id</argument>
+                                <argument name="renderer" xsi:type="string">Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\ShipmentOrCreditmemo</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="printerman">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Print</argument>
+                                <argument name="index" xsi:type="string">printerman</argument>
+                                <argument name="renderer" xsi:type="string">Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\Printerman</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="type_2">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Type</argument>
+                                <argument name="type" xsi:type="string">options</argument>
+                                <argument name="index" xsi:type="string">type_2</argument>
+                                <argument name="options" xsi:type="options" model="Infomodus\Upslabel\Model\Config\ListsType"/>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="lstatus">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Status</argument>
+                                <argument name="index" xsi:type="string">lstatus</argument>
+                                <argument name="type" xsi:type="string">options</argument>
+                                <argument name="options" xsi:type="options" model="Infomodus\Upslabel\Model\Config\Statuslabels"/>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="rva_printed">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Print Status</argument>
+                                <argument name="index" xsi:type="string">rva_printed</argument>
+                                <argument name="type" xsi:type="string">options</argument>
+                                <argument name="options" xsi:type="options" model="Infomodus\Upslabel\Model\Config\PrintStatus"/>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="created_time">
+                            <arguments>
+                                <argument name="type" xsi:type="string">datetime</argument>
+                                <argument name="header" xsi:type="string" translate="true">Created</argument>
+                                <argument name="index" xsi:type="string">created_time</argument>
+                            </arguments>
+                        </block>
+                        <block class="Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\ActionsColumn" as="actions">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Actions</argument>
+                                <argument name="renderer" xsi:type="string">Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\DeleteLabel</argument>
+                                <argument name="filter" xsi:type="string">0</argument>
+                                <argument name="sortable" xsi:type="string">0</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

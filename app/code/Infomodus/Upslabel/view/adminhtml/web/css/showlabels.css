@@ -1,0 +1,6 @@
+fieldset .admin__field.field {
+    float: left;
+}
+fieldset label.label.admin__field-label {
+    min-width: 100px;
+}

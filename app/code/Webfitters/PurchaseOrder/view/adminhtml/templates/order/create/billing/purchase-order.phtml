@@ -1,0 +1,23 @@
+<div class="admin__page-section-title">
+    <span class="title">Purchase Order #</span>
+</div>
+<div class="admin__field field field-order-credit">
+	<div class="admin__field-control control" style="display: flex;">
+		<input id="order-po-number" name="order[po_number]" value="<?php echo $this->getPoNumber(); ?>" class="input-text admin__control-text" type="text"> 
+		<button class="action-secondary action-apply" type="button" id="apply_po_number"><span>Apply</span></button> 
+	</div>
+</div>
+<script type="text/javascript">
+	requirejs(['jquery', 'Magento_Sales/order/create/form'], function($){
+		order.updatePurchaseOrder = function(){
+			var data = this.serializeData('edit_form');
+			data._object = {};
+			data._object.json = true;
+			data._object['order[po_number]'] = $('#order-po-number').val();
+			this.loadArea(['billing_method', 'totals'], true, data);
+		};
+		$('#apply_po_number').on('click', function(event){
+			order.updatePurchaseOrder();
+		});
+	});
+</script>

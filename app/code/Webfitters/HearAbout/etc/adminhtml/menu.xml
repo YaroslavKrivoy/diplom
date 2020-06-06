@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add 
+    		id="Webfitters_HearAbout::webfitters_hearabout" 
+    		title="Hear About Sources" 
+    		translate="title" 
+    		module="Webfitters_HearAbout" 
+    		sortOrder="100" 
+    		parent="Magento_Backend::marketing_communications" 
+    		resource="Webfitters_HearAbout::webfitters_hearabout" 
+    		action="hearabout/hearabout/index" 
+    	/>
+    </menu>
+</config>

@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/** @var $block \Magento\Framework\View\Element\Html\Links */
+?>
+<?php /** @var $block \Magento\Customer\Block\Account\Navigation */ ?>
+<div class="block affiliate-nav">
+    <div class="title">
+        <strong><?php /* @escapeNotVerified */ echo __('My Affiliate'); ?></strong>
+    </div>
+    <div class="content">
+        <nav class="affiliate-nav">
+            <ul class="nav items">
+                <?php echo $block->renderNavigationLink(); ?>
+            </ul>
+        </nav>
+    </div>
+</div>

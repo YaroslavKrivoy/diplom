@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="aw_autorelated_wvtav_reindex_table" instance="Aheadworks\Autorelated\Model\Wvtav\Cron\Reindex" method="execute">
+            <schedule>0 0 * * *</schedule>
+        </job>
+        <job name="aw_autorelated_wvtav_flush_cache" instance="Aheadworks\Autorelated\Model\Wvtav\Cron\FlushCache" method="execute">
+            <schedule>30 2 * * *</schedule>
+        </job>
+    </group>
+</config>

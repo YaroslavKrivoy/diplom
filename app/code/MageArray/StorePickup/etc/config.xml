@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <storepickup>
+                <active>1</active>
+				<title>Store Pickup</title>
+				<name>Store Pickup</name>
+				<price>0.00</price>
+				<model>MageArray\StorePickup\Model\Carrier\Storepickup</model>
+                <sallowspecific>0</sallowspecific>
+				<type>I</type>
+                <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+            </storepickup>
+        </carriers>
+        <storepickup>
+            <general>
+                <enable>1</enable>
+            </general>
+        </storepickup>
+    </default>
+</config>

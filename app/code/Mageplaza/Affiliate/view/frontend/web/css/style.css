@@ -1,0 +1,13 @@
+/* ============ Affiliate Stylesheets ============ */
+.affiliate-clear{clear: both}
+.terms_condition_text{margin: 10px; border: 1px solid #c2c2c2; width: 100%; padding: 10px; background-color: #f5f5f5;}
+.form-affiliate .actions-toolbar{margin-top: 25px}
+.box-affiliate-withdraw-transaction{margin-top: 50px;}
+.affiliate-strength-meter {  background-color: #f4f4f4; line-height: 32px; padding: 0 9px; position: relative; z-index: 1; font-size: 10px}
+
+/* Banner */
+.affiliate-banner-content fieldset .link {height: 65px}
+.affiliate-banner-content fieldset .preview {height: 200px}
+.affiliate-banner-content fieldset .preview .control{height: 180px; overflow: auto}
+.affiliate-banner-content fieldset .preview img{max-height: 175px; }
+.affiliate-banner-content fieldset .content textarea{width: 100%}

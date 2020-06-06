@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<preference for="Magento\Newsletter\Controller\Adminhtml\Queue\Save" type="Emipro\CustomNewsletterSender\Controller\Adminhtml\Newsletter\Queue\Save" />	
+<preference for="Magento\Newsletter\Block\Adminhtml\Queue\Edit\Form" type="Emipro\CustomNewsletterSender\Block\Adminhtml\Newsletter\Queue\Edit\Form" />
+<preference for="Magento\Newsletter\Model\Queue" type="Emipro\CustomNewsletterSender\Model\Newsletter\Queue" />
+<preference for="Magento\Newsletter\Model\ResourceModel\Queue\Collection" 
+	type="Emipro\CustomNewsletterSender\Model\ResourceModel\Queue\Collection" />
+<preference for="Magento\Newsletter\Model\ResourceModel\Queue\Grid\Collection" 
+	type="Emipro\CustomNewsletterSender\Model\ResourceModel\Queue\Grid\Collection" />	
+</config>

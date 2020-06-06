@@ -1,0 +1,17 @@
+<form class="form form-edit-account form-affiliate form-affiliate-setting" id="affiliate-settings" method="post" action="<?php echo $block->getUrl('*/*/settingpost') ?>">
+    <fieldset class="fieldset request">
+        <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Affiliate Subscriptions') ?></span></legend><br>
+        <div class="field choice">
+            <input type="checkbox" name="account[email_notification]" id="email-notification" value="1" title="<?php /* @escapeNotVerified */ echo __('Email Notification') ?>"<?php if ($block->getEmailNotification()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+            <label class="label" for="email-notification"><span><?php /* @escapeNotVerified */ echo __('Receive affiliate email.') ?></span></label>
+        </div>
+    </fieldset>
+
+	<?php echo $block->getChildHtml('affiliate.setting.extra') ?>
+
+    <div class="actions-toolbar affiliate-clear">
+        <div class="primary">
+            <button type="submit" class="action save primary" title="<?php /* @escapeNotVerified */ echo __('Save') ?>"><span><?php /* @escapeNotVerified */ echo __('Save') ?></span></button>
+        </div>
+    </div>
+</form>

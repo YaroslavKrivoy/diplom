@@ -1,0 +1,8 @@
+<?php foreach($this->getTypes() as $type): ?>
+<a href="<?php echo $this->getUrl('wholesaler/type/'.$type->getSlug()); ?>" class="wholesale-link">
+	<div class="wholesale-block" style="background-image: url('<?php echo $this->getImageUrl($type->getImage()); ?>');">
+		<div class="wholesale-back"></div>
+		<h2><?php echo $type->getTitle(); ?></h2>
+	</div>
+</a>
+<?php endforeach; ?>

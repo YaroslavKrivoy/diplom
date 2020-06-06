@@ -1,0 +1,61 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<div class="admin__page-section-title">
+    <span class="title"><?= /* @escapeNotVerified */ $block->getHeaderText() ?></span>
+    <div class="admin__field admin__field-option" id="container-label" style="clear: left;">
+        <input name="order[uses_container_fee]" type="checkbox" id="order-uses_container_fee" value="1" class="admin__control-checkbox"<?php echo ($this->getQuote()->getUsesContainerFee())?' checked':''; ?>>
+        <label for="order-uses_container_fee" class="admin__field-label">Shipment uses container fee</label>
+    </div>
+    <script type="text/javascript">
+        requirejs(['jquery', 'Magento_Sales/order/create/form'], function($){
+            order.updateUsingContainerFee = function(){
+                var data = this.serializeData('edit_form');
+                data._object = {};
+                if($('#order-uses_container_fee').get(0).checked == true){
+                    data._object['order[uses_container_fee]'] = 1;
+                    $('.field-container-fee').css('display', 'block');
+                } else {
+                    data._object['order[uses_container_fee]'] = 0;
+                    $('.field-container-fee').css('display', 'none');
+                }
+                if($('#order-container_fee_additive').get(0).checked == true){
+                    data._object['order[container_fee_additive]'] = 1;
+                } else {
+                    data._object['order[container_fee_additive]'] = 0;
+                }
+                data._object['order[container_fee]'] = $('#order-container_fee').val();
+                data._object.json = true;
+                this.loadArea(['totals', 'shipping_method'], true, data);
+            };
+            $('#apply_order_credit').on('click', function(event){
+                order.updateUsingContainerFee();
+            });
+            $('#order-uses_container_fee').on('click', function(event){
+                order.updateUsingContainerFee();
+            });
+        });
+    </script>
+    <div class="admin__field field field-container-fee" style="display: <?php echo ($this->getQuote()->getUsesContainerFee())?'block':'none'; ?>;">
+        <div class="admin__field admin__field-option" id="container-label" style="clear: left;">
+            <input name="order[container_fee_additive]" type="checkbox" id="order-container_fee_additive" value="1" class="admin__control-checkbox"<?php echo ($this->getQuote()->getContainerFeeAdditive())?' checked':''; ?>>
+            <label for="order-container_fee_additive" class="admin__field-label">Container fee additive</label>
+        </div>
+        <label class="label admin__field-label" for="order-container_fee"><span>Container Fee:</span></label>
+        <div class="admin__field-control control" style="display: flex;">
+            <input id="order-container_fee" name="order[container_fee]" value="<?php echo number_format(floatval($this->getQuote()->getContainerFee()), 2); ?>" class=" input-text admin__control-text" type="text">    
+            <button class="action-secondary action-apply" type="button" id="apply_order_credit"><span>Apply</span></button>                        
+        </div>
+    </div>
+    <?php if($block->getButtonsHtml()): ?>
+        <div class="actions"><?= $block->getButtonsHtml() ?></div>
+    <?php endif; ?>
+</div>
+
+<?= $block->getChildHtml('', true) ?>

@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Sales\Block\Adminhtml\Order\Create\Form $block */
+?>
+<form id="edit_form" action="<?php /* @escapeNotVerified */ echo $block->getSaveUrl() ?>" method="post">
+    <?php echo $block->getBlockHtml('formkey')?>
+    <div id="account-create-data" data-load-base-url="<?php /* @escapeNotVerified */ echo $block->getLoadBlockUrl() ?>" style="display:<?php /* @escapeNotVerified */ echo $block->getDataSelectorDisplay() ?>">
+        <?php echo $block->getChildHtml('data') ?>
+    </div>
+    <script>
+        require(['Mageplaza_Affiliate/js/create'], function(){
+            window.account = new AffiliateCreate(
+                    {
+                        dataContainer: '#account-create-data',
+                        customerContainer: '#account-customer-selector',
+                        hideButton: '#back_account_top_button',
+                        showButton: "#save_account_top_button, #reset_account_top_button"
+                    }
+            );
+        });
+    </script>
+    <div id="account-customer-selector" class="fieldset-wrapper order-customer-selector" style="display:<?php /* @escapeNotVerified */ echo $block->getCustomerSelectorDisplay() ?>">
+        <?php echo $block->getChildHtml('customer.grid.container') ?>
+    </div>
+</form>

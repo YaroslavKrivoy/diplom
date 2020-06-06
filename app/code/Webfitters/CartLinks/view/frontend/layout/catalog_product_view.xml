@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Webfitters_CartLinks::css/links.css" />
+    </head>
+    <body>
+        <referenceBlock name="content">
+            <block class="Webfitters\CartLinks\Block\Modal" template="Webfitters_CartLinks::modal.phtml" />
+        </referenceBlock>
+    </body>
+</page>

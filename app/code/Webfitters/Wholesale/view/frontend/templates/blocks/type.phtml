@@ -1,0 +1,37 @@
+<?php $paragraphs = explode(PHP_EOL, $this->getType()->getContent()); ?>
+<?php foreach($paragraphs as $p): ?>
+	<p><?php echo $p; ?></p>
+<?php endforeach; ?>
+<?php foreach($this->getType()->getCategories() as $category): ?>
+<div class="wholesale-category">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3><?php echo $category->getTitle(); ?></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<b>Description</b>
+		</div>
+		<div class="col-xs-3">
+			<b>Item #</b>
+		</div>
+		<div class="col-xs-3">
+			<b>Pack/Size</b>
+		</div>
+	</div>
+	<?php foreach($category->getProducts() as $product): ?>
+	<div class="row">
+		<div class="col-xs-6">
+			<?php echo $product->getDescription(); ?>
+		</div>
+		<div class="col-xs-3">
+			<?php echo $product->getItemNumber(); ?>
+		</div>
+		<div class="col-xs-3">
+			<?php echo $product->getSize(); ?>
+		</div>
+	</div>
+	<?php endforeach; ?>
+</div>
+<?php endforeach; ?>

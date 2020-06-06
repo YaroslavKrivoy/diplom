@@ -1,0 +1,197 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block Magento\Shipping\Block\Adminhtml\Order\Tracking */
+$disable = 0;
+$order = $tmpBlock->getOrder();
+$invoiceId = $order->getInvoiceCollection()->getFirstItem()->getId();
+$shippingMethod = $order->getShippingMethod();
+$tracks = $order->getTracksCollection()->getItems();
+if (!empty($tracks)) {
+    $disable = 1;
+}
+?>
+
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+        $(document).ready(function () {
+            var shippingMethod = '<?= $shippingMethod ?>';
+            if(shippingMethod === 'storepickup_storepickup'){
+                $('#print_label').attr('disabled', 'true');
+                $('.widget-button-save button').attr('disabled', 'true');
+            }
+
+        });
+    });
+</script>
+
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+        $(document).ready(function () {
+            var shipContent = $('.admin__page-section-item-content strong').text();
+            var shipCarrier = shipContent.split(' - ')[0].toLowerCase();
+            var shipTitle = shipContent.split(' - ')[1];
+            if (shipCarrier == 'ups') {
+                $("#select_carrier option[value='ups']").attr("selected", "selected");
+                $("#input_title").val(shipTitle);
+            } else {
+                $("#select_carrier option[value='custom']").attr("selected", "selected");
+            }
+        });
+    });
+</script>
+
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+        $(document).ready(function () {
+            var flag = <?= $disable ?>;
+            if (flag) {
+                $('#form_submit').attr('disabled', 'true');
+            }
+        });
+    });
+</script>
+
+<div id="admin_order_container_tracking">
+    <form id="admin_order_form_tracking">
+        <div class="admin_form_title">
+            <span class="title_form">Tracking data</span>
+        </div>
+        <div class="container_input_tracking">
+            <label for="select_carrier" class="label_admin_input">Carrier</label><br>
+            <select id="select_carrier" class="select admin__control-select carrier input_tracking_admin"
+                    name="carrier_code">
+                <option value="custom">Custom Value</option>
+                <option value="dhl">DHL</option>
+                <option value="fedex">Fedex</option>
+                <option value="ups">UPS</option>
+                <option value="usps">USPS</option>
+                <option value="temando">Magento Shipping</option>
+            </select><br>
+        </div>
+        <div class="container_input_tracking">
+            <label for="input_title" class="label_admin_input">Title</label><br>
+            <input type="text" id="input_title" class="input_tracking_admin" name="title"><br>
+        </div>
+        <div class="container_input_tracking">
+            <label for="input_number" class="label_admin_input">Number</label><br>
+            <input type="text" id="input_number" class="input_tracking_admin" name="number"><br>
+        </div>
+    </form>
+    <div class="form_tracking_submit">
+        <button id="form_submit" class="primary">Submit tracking data</button>
+    </div>
+</div>
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+        $('#form_submit').on("click", function () {
+            var formData = {
+                carrier_code: $('#select_carrier option:selected').attr('value'),
+                title: $('#input_title').attr('value'),
+                number: $('#input_number').attr('value'),
+                invoice_id: '<?= $invoiceId ?>'
+            };
+            var urlInvoice = '<?= $block->getBaseUrl() . $this->helper('Magento\Backend\Helper\Data')->getAreaFrontName() . '/kozak/order/invoice/order_id/' . $block->getRequest()->getParam('order_id') . '/' ?>';
+            var urlShipment = '<?= $block->getBaseUrl() . $this->helper('Magento\Backend\Helper\Data')->getAreaFrontName() . '/kozak/order/shipment/order_id/' . $block->getRequest()->getParam('order_id') . '/' ?>';
+            $.ajax({
+                url: urlInvoice,
+                type: 'POST',
+                data: formData,
+                // success: function (data) {
+                //     var a = document.createElement('a');
+                //     var name = data.substring(data.lastIndexOf("/") + 1, data.length);
+                //     a.href = data;
+                //     a.download = name;
+                //     document.body.append(a);
+                //     $('a').attr("target", "_blank");
+                //     a.click();
+                //     a.remove();
+                // },
+                complete: function () {
+                    console.log('success');
+                    $.ajax({
+                        url: urlShipment,
+                        type: 'POST',
+                        data: formData,
+                        success: function (data) {
+                            var a = document.createElement('a');
+                            var name = data.substring(data.lastIndexOf("/") + 1, data.length);
+                            a.href = data;
+                            a.download = name;
+                            document.body.append(a);
+                            $('a').attr("target", "_blank");
+                            a.click();
+                            a.remove();
+                        },
+                        complete: function () {
+                            location.reload();
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+        var disable = <?= $disable ?>;
+        var flag = true;
+        $('#print_label').on("click", function () {
+            if (disable) {
+                var result = confirm('There is already a created label, want to create a new one?');
+                if(!result){
+                    flag = false;
+                }
+            }
+            if(flag){
+                var data = {
+                    order_id: '<?= $order->getId() ?>'
+                };
+                var url = '<?= $block->getBaseUrl() . $this->helper('Magento\Backend\Helper\Data')->getAreaFrontName() . '/infomodus_upslabel/pdflabels/many/' ?>';
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: data,
+                    success: function (data, textStatus, request) {
+                        var a = document.createElement('a');
+                        var filename = "";
+                        var disposition = request.getResponseHeader('Content-Disposition');
+                        if (disposition) {
+                            var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                            var matches = filenameRegex.exec(disposition);
+                            if (matches != null && matches[1]) {
+                                filename = matches[1].replace(/['"]/g, '');
+                            }
+                        }
+                        a.href = '<?= $block->getBaseUrl() . 'pub/media/upload/'?>' + filename;
+                        a.download = filename;
+                        document.body.append(a);
+                        $('a').attr("target", "_blank");
+                        a.click();
+                        a.remove();
+                    },
+                    complete: function () {
+                        location.reload();
+                    }
+                });
+            }
+        });
+    });
+</script>

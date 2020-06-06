@@ -1,0 +1,7 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="customer_grid">
+        <fieldset name="customer" source="Magento\Customer\Model\ResourceModel\Customer\Collection">
+            <field name="customer_note" xsi:type="filterable" dataType="varchar"/>
+        </fieldset>
+    </indexer>
+</config>

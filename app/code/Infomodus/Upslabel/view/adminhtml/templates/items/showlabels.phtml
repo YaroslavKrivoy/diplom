@@ -1,0 +1,87 @@
+<?php
+echo '<div class="entry-edit form-inline">';
+$isGif = false;
+$isThermal = false;
+$isWithoutError = false;
+$labels = $block->getForm()->getElements();
+$label=null;
+foreach ($labels as $el) {
+    $label = $block->elements[$el->getId()]['label_element'];
+    if ($label->getTypePrint() == 'GIF') {
+        $isGif = true;
+    }
+    if ($label->getTypePrint() != 'GIF' && $label->getTypePrint() != 'virtual' && $label->getTypePrint() != 'link') {
+        $isThermal = true;
+    }
+    if ($label->getLstatus() == 0) {
+        $isWithoutError = true;
+    }
+}
+$printersText = $block->_conf->getStoreConfig('upslabel/printing/printer_name');
+if ($label !== null && !empty($printersText) && $isThermal === true
+    && $block->_conf->getStoreConfig('upslabel/printing/automatic_printing', $label->getStoreId()) == 0) {
+    $printers = explode(",", $printersText);
+    echo '<label for="thermalPrinterName">'._('Printer name').':</label> <select id="thermalPrinterName">';
+    foreach ($printers as $printer) {
+        echo '<option value="'.trim($printer).'">'.trim($printer).'</option>';
+    }
+    echo '</select>';
+    echo '<br /><br />';
+}
+foreach ($labels as $el) {
+    echo '<fieldset class="fieldset admin__fieldset " id="' . $el->getId() . '">
+    <legend class="admin__legend legend">
+                <span>' . $el->getLegend() . '</span>
+            </legend>
+            <br />
+    ';
+    echo $el->getChildrenHtml();
+    $label = $block->elements[$el->getId()]['label_element'];
+    if ($label->getLstatus() == 0) {
+        $path_url = $block->_conf->getBaseUrl('media') . 'upslabel/label/';
+        $path_dir = $block->_conf->getBaseDir('media') . '/upslabel/label/';
+        $shipidnumber2 = $label->getShipmentidentificationnumber2();
+        if ($label->getTypePrint() === 'GIF') {
+            echo '<a href="' . $block->getUrl('infomodus_upslabel/pdflabels/one', ['label_id' => $label->getId()]) . '">' . __('PDF') . '</a>';
+            echo ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $block->getUrl('infomodus_upslabel/items/printer', ['imname' => $label->getLabelname()]) . '" target="_blank">' . __('Print Label Gif') . '</a>';
+        } elseif ($label->getTypePrint() === 'link') {
+                echo '<a href="'.$label->getLabelname().'" target="_blank">' . __('Print Return Label') . '</a>';
+        } elseif ($label->getTypePrint() != 'virtual') {
+            if($block->_conf->getStoreConfig('upslabel/printing/automatic_printing')==1) {
+                echo '<a href="' . $block->getUrl('infomodus_upslabel/items/autoprint', ['label_id' => $label->getId(), 'order_id' => $label->getOrderId(), 'type_print' => 'auto']) . '">' . __('Print thermal') . '</a>';
+            } else {
+                echo '<a class="thermal-print-file" href="' . $block->getUrl('infomodus_upslabel/items/autoprint', ['label_id' => $label->getId(), 'order_id' => $label->getOrderId(), 'type_print' => 'manual']) . '">' . __('Print thermal') . '</a>';
+            }
+        } elseif ($label->getType() == 'refund' || $label->getType2() == 'refund') {
+            echo 'The return label is created by UPS side successfully. The labels with this return type cannot be printed by admin. Only "Electronic Return Label" service code has a link to UPS.com where it will ask if you would like to print the label or email it to print later.  Please contact UPS support if you have an additional questions.';
+            echo '<br><br>';
+        }
+
+        if (file_exists($path_dir . $label->getTrackingnumber() . '.html')) {
+            echo ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $path_url . $label->getTrackingnumber() . '.html" target="_blank">'.__('Print Html image').'</a>';
+        }
+
+        if (file_exists($path_dir . 'HVR' . $shipidnumber2 . '.html')) {
+            echo ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $path_url . 'HVR' . $shipidnumber2 . '.html" target="_blank">'.__('Print High Value report').'</a>';
+        }
+
+        if (file_exists($block->_conf->getBaseDir('media'). '/upslabel/inter_pdf/' . $shipidnumber2 . ".pdf")) {
+            echo '&nbsp;&nbsp;&nbsp;<a href="' . $block->_conf->getBaseUrl('media'). 'upslabel/inter_pdf/' . $shipidnumber2 . '.pdf"" target="_blank">' . __('Print International Invoice') . '</a>';
+        }
+
+        if (file_exists($block->_conf->getBaseDir('media') . '/upslabel/turn_in_page/' . $shipidnumber2 . ".html")) {
+            echo '&nbsp;&nbsp;&nbsp;<a href="' . $block->_conf->getBaseUrl('media') . 'upslabel/turn_in_page/' . $shipidnumber2 . '.html" target="_blank">' . __('Print Turn-in Copy') . '</a>';
+        }
+
+        if ($label->getTypePrint() === 'GIF') {
+            echo '<br/><br/><img src="' . $path_url . $label->getLabelname() . '" alt="label" style="width: 50%;">';
+        }
+    } else {
+        echo '<span>'.__('Error').': '.$label->getStatustext().'</span><br />';
+        echo '<textarea>'.$label->getXmllog().'</textarea>';
+    }
+
+    echo '</fieldset>';
+}
+
+echo '</div>';

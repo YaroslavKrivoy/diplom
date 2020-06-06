@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="create_ups_creditmemo_label">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">create_ups_creditmemo_label</item>
+                        <item name="label" xsi:type="string" translate="true">Create UPS Shipping Labels</item>
+                        <item name="url" xsi:type="url" path="infomodus_upslabel/items/bulk"/>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+</listing>

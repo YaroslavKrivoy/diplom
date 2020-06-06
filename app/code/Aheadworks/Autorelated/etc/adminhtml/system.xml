@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aheadworks" translate="label" sortOrder="300">
+            <label>Aheadworks Extensions</label>
+        </tab>
+        <section id="aw_arp" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Automatic Related Products</label>
+            <tab>aheadworks</tab>
+            <resource>Aheadworks_Autorelated::config_aw_arp</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="show_miltiple_blocks" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show more than one block in one position</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="number_days_build_bestsellers_list" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>A number of days to build a list of bestsellers</label>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+            </group>
+            <group id="wvtav" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Who Viewed This Also Viewed</label>
+                <field id="enable_functionality" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable "Who Viewed This Also Viewed" functionality</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>Aheadworks\Autorelated\Block\Wvtav\Adminhtml\System\Config\EnableFunctionality</frontend_model>
+                    <backend_model>Aheadworks\Autorelated\Model\Wvtav\Config\Backend\EnableFunctionality</backend_model>
+                </field>
+                <field id="process_sessions_period" translate="label,comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Process sessions for the last X days</label>
+                    <comment><![CDATA[Empty = no limit. Please note that empty or big value can slow your website]]></comment>
+                    <frontend_class>validate-digits</frontend_class>
+                    <depends>
+                        <field id="enable_functionality">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

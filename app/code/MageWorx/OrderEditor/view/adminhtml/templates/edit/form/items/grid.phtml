@@ -1,0 +1,80 @@
+<?php
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /** @var $block \MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Grid */ ?>
+
+<?php $_items = $block->getItems() ?>
+
+<div class="admin__table-wrapper" id="order-items_grid">
+        <table class="data-table admin__table-primary order-tables">
+            <thead>
+                <tr class="headings">
+                    <th class="col-product">
+                        <span><?php echo $block->escapeHtml(__('Product')) ?></span>
+                    </th>
+                    <th class="col-item-status">
+                        <span><?php echo $block->escapeHtml(__('Item Status')) ?></span>
+                    </th>
+                    <th class="col-original-price">
+                        <span><?php echo $block->escapeHtml(__('Original Price')) ?></span>
+                    </th>
+                    <th class="col-price">
+                        <span><?php echo $block->escapeHtml(__('Price')) ?></span>
+                    </th>
+                    <th class="col-qty">
+                        <span><?php echo $block->escapeHtml(__('Qty')) ?></span>
+                    </th>
+                    <th class="col-subtotal">
+                        <span><?php echo $block->escapeHtml(__('Subtotal')) ?></span>
+                    </th>
+                    <th class="col-tax">
+                        <span><?php echo $block->escapeHtml(__('Tax')) ?></span>
+                    </th>
+                    <th class="col-discount">
+                        <span><?php echo $block->escapeHtml(__('Discount')) ?></span>
+                    </th>
+                    <th class="col-row-total">
+                        <span><?php echo $block->escapeHtml(__('Row Total')) ?></span>
+                    </th>
+                    <th class="col-action">
+                        <span><?php echo $block->escapeHtml(__('Action')) ?></span>
+                    </th>
+                </tr>
+            </thead>
+
+            <?php if (empty($_items)) : ?>
+                <tbody>
+                    <tr class="even">
+                        <td class="empty-text" colspan="100">
+                            <?php echo $block->escapeHtml(__('No ordered items')) ?>
+                        </td>
+                    </tr>
+                </tbody>
+            <?php else : ?>
+                <?php echo $block->getItemsForm(); ?>
+            <?php endif; ?>
+        </table>
+</div>
+
+<script type="text/javascript">
+    // <![CDATA[
+    require([
+            'MageWorx_OrderEditor/js/order/edit/form/items/form',
+            'MageWorx_OrderEditor/js/order/edit/form/items/grid'
+        ],
+        function(mageworxOrderEditorItemsForm, mageworxOrderEditorItemsGrid) {
+            var mageworxOrderEditorItemsForm = new mageworxOrderEditorItemsForm();
+            mageworxOrderEditorItemsForm.init(<?php echo $block->getJsonTaxConfigParams() ?>);
+
+            var mageworxOrderManagerItemsGrid = new mageworxOrderEditorItemsGrid();
+            mageworxOrderManagerItemsGrid.init(<?php echo $block->getJsonGridParams() ?>);
+        }
+    );
+    // ]]>
+</script>
+
+
+

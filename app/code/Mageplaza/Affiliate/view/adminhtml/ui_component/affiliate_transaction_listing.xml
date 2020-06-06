@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza_Affiliate extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the Mageplaza License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     https://www.mageplaza.com/LICENSE.txt
+ * 
+ *                     @category  Mageplaza
+ *                     @package   Mageplaza_Affiliate
+ *                     @copyright Copyright (c) 2016
+ *                     @license   https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing_data_source</item>
+            <item name="deps" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">affiliate_transaction_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Transaction</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/create</item>
+            </item>
+        </item>
+    </argument>
+    <dataSource name="affiliate_transaction_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">affiliate_transaction_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">transaction_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+                <item name="stickyTmpl" xsi:type="string">ui/grid/sticky/toolbar</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks"/>
+        <component name="columns_controls">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsData" xsi:type="array">
+                        <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.affiliate_transaction_columns</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                </item>
+            </argument>
+        </component>
+        <exportButton name="export_button"/>
+        <filterSearch name="fulltext">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing_data_source</item>
+                    <item name="chipsProvider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.listing_top.listing_filters_chips</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.search</item>
+                    </item>
+                </item>
+            </argument>
+        </filterSearch>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsProvider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.affiliate_transaction_columns</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.filters</item>
+                    </item>
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                    <item name="childDefaults" xsi:type="array">
+                        <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.listing_top.listing_filters</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="visible" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.affiliate_transaction_columns.${ $.index }:visible</item>
+                        </item>
+                    </item>
+                </item>
+                <item name="observers" xsi:type="array">
+                    <item name="column" xsi:type="string">column</item>
+                </item>
+            </argument>
+        </filters>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.affiliate_transaction_columns.ids</item>
+                    <item name="indexField" xsi:type="string">transaction_id</item>
+                </item>
+            </argument>
+            <action name="complete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">complete</item>
+                        <item name="label" xsi:type="string" translate="true">Complete</item>
+                        <item name="url" xsi:type="url" path="affiliate/transaction/massComplete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Complete Transactions</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to complete selected transactions?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+            <action name="cancel">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">cancel</item>
+                        <item name="label" xsi:type="string" translate="true">Cancel</item>
+                        <item name="url" xsi:type="url" path="affiliate/transaction/massCancel"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Cancel Transactions</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to cancel selected Transactions?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+        <paging name="listing_paging">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.paging</item>
+                    </item>
+                    <item name="selectProvider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.affiliate_transaction_columns.ids</item>
+                </item>
+            </argument>
+        </paging>
+    </container>
+    <columns name="affiliate_transaction_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current</item>
+                </item>
+                <item name="childDefaults" xsi:type="array">
+                    <item name="fieldAction" xsi:type="array">
+                        <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.affiliate_transaction_columns_editor</item>
+                        <item name="target" xsi:type="string">startEdit</item>
+                        <item name="params" xsi:type="array">
+                            <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                            <item name="1" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">affiliate_transaction_listing.affiliate_transaction_listing.listing_top.bookmarks</item>
+                        <item name="root" xsi:type="string">columns.${ $.index }</item>
+                        <item name="namespace" xsi:type="string">current.${ $.storageConfig.root}</item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">transaction_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="transaction_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                </item>
+            </argument>
+        </column>
+        <column name="title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <column name="email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Account</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <column name="type">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Mageplaza\Affiliate\Model\Transaction\Type</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Action Type</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                </item>
+            </argument>
+        </column>
+        <column name="action">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Action</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <column name="amount" class="Magento\Catalog\Ui\Component\Listing\Columns\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Amount</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <column name="amount_used" class="Magento\Catalog\Ui\Component\Listing\Columns\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Amount Used</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <column name="amount_hold" class="Magento\Catalog\Ui\Component\Listing\Columns\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Amount Hold</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <column name="current_balance" class="Magento\Catalog\Ui\Component\Listing\Columns\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Current Balance</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <column name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Mageplaza\Affiliate\Model\Transaction\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                </item>
+            </argument>
+        </column>
+        <column name="campaign_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Campaign</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="label" xsi:type="string" translate="true">Store</item>
+                </item>
+            </argument>
+        </column>
+        <column name="holding_to" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Holding Date</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Created Date</item>
+                </item>
+            </argument>
+        </column>
+        <column name="order_increment_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Order</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" class="Mageplaza\Affiliate\Ui\Component\Listing\Column\Actions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="action_list" xsi:type="array">
+                        <item name="view" xsi:type="array">
+                            <item name="label" xsi:type="string">View</item>
+                            <item name="url_path" xsi:type="string">affiliate/transaction/view</item>
+                        </item>
+                    </item>
+                    <item name="indexField" xsi:type="string">transaction_id</item>
+                    <item name="paramName" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

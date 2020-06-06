@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <type name="Magento\Catalog\Model\ResourceModel\Product\Collection">
+        <plugin name="limit_visibility" type="Webfitters\GroupVisibility\Plugin\VisibilityFilter"/>
+    </type>
+</config>

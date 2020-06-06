@@ -1,0 +1,22 @@
+<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Number</th>
+				<th>Name</th>
+				<th>Count</th>
+				<th>Weight</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach($this->getProducts() as $product): ?>
+			<tr>
+				<td><?php echo $product->number; ?></td>
+				<td><?php echo $product->name; ?></td>
+				<td><?php echo $product->qty; ?></td>
+				<td><?php echo $product->weight; ?></td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>

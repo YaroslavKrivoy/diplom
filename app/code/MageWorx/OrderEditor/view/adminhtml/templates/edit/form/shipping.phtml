@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<div id="shipping-result-form">
+    <form id="shipping-form">
+        <?php echo $block->getShippingForm(); ?>
+    </form>
+    <div id="ordereditor_new_totals" style="display: none" class="admin__page-section">
+        <?php echo $block->getChildHtml('temp_totals') ?>
+    </div>
+    <?php echo $block->getSubmitButtonHtml() ?>
+    <?php echo $block->getCancelButtonHtml() ?>
+</div>

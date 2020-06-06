@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<!--
+/**
+* BSS Commerce Co.
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the EULA
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://bsscommerce.com/Bss-Commerce-License.txt
+*
+* @category   BSS
+* @package    Bss_AddMultipleProducts
+* @author     Extension Team
+* @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+* @license    http://bsscommerce.com/Bss-Commerce-License.txt
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bss" translate="label" sortOrder="300">
+            <label>Bss Commerce</label>
+        </tab>
+        <section id="ajaxmuntiplecart" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Ajax AddMultipleProducts Cart</label>
+            <tab>bss</tab>
+            <resource>Bss_AddMultipleProducts::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Options</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Choose 'Yes' to enable module.<br>Version 1.0.5]]></comment>
+                </field>
+                <field id="active_for_customer_group" translate="label" type="multiselect" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable for Customer Group(s)</label>
+                    <source_model>Bss\AddMultipleProducts\Model\Config\Source\Group</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="display_addmuntiple" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Apply "Add Multiple Products"</label>
+                    <comment><![CDATA[Select class and ID to be applied (separated by a coma). Ex: .cms-home .products-grid,.catalog-category-view .products-grid,.catalog-category-view .products-list]]></comment>
+                </field>
+                <field id="default_qty" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Default Qty</label>
+                    <validate>validate-digits validate-zero-or-greater</validate>
+                </field>
+            </group>
+            <group id="button_grid" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Button, Checkbox, Qty Box</label>
+                <field id="position_button" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Position of "Add all products" Button</label>
+                    <source_model>Bss\AddMultipleProducts\Model\Config\Source\Button</source_model>
+                </field>
+                <field id="display_total" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Display Total Product or Total Qty</label>
+                    <source_model>Bss\AddMultipleProducts\Model\Config\Source\Total</source_model>
+                </field>
+                 <field id="show_select_product" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Product Checkbox</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_stick" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Selected Icon</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="background_stick" translate="label" type="image" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Selected Icon Image</label>
+                    <backend_model>Bss\AddMultipleProducts\Model\Config\Source\Image</backend_model>
+                    <base_url type="media" scope_info="1">addmunltipleproduct/stick</base_url>
+                </field>
+            </group>
+            <group id="success_popup" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Popup Setting</label>
+                <field id="product_image_size_sg" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Image Size (px)</label>
+                    <comment><![CDATA[For single product successfully added to Cart]]></comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+                <field id="product_image_size_mt" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Image Size (px)</label>
+                    <comment><![CDATA[For multiple products successfully added to Cart]]></comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+                <field id="product_image_size_er" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Image Size (px)</label>
+                    <comment><![CDATA[For selection popup]]></comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+                <field id="item_on_slide" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Number of Items </label>
+                    <comment><![CDATA[Number of items showing in a slide of Success Popup  <p class="note"><strong>Note</strong>: Apply for desktop only. The default Number of Items for tablet is 2 and for mobile is 1</p>]]></comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+                <field id="slide_speed" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Slide Speed</label>
+                    <comment><![CDATA[Transition duration (in milisecond) between two continuous slides. // ex = speed:400;]]></comment>
+                <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+                <field id="slide_auto" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Auto Slide</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="product_price" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Product Price</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="product_image" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Product Image</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="continue_button" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show "Continue" Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="active_countdown" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Countdown Time on Button</label>
+                    <source_model>Bss\AddMultipleProducts\Model\Config\Source\Countdown</source_model>
+                </field>
+                <field id="countdown_time" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Countdown Time: ...(s)</label>
+                    <validate>validate-digits validate-zero-or-greater</validate>
+                </field>
+                <field id="mini_cart" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Mini Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="mini_checkout" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Checkout Link in Mini Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="success_popup_design" translate="label" type="text" sortOrder="40" showInDefault="10" showInWebsite="1" showInStore="1" canRestore="1">
+                <label> Popup Design</label>
+                <field id="button_text_addmt" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Text on "Add Multiple to Cart" Button </label>
+                </field>
+                <field id="button_text_color" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Color of Text on Button</label>
+                    <validate>color</validate>
+                </field>
+                <field id="continue_text" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Text on "Continue" Button</label>
+                </field>
+                <field id="continue" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>"Continue" Button Color</label>
+                    <validate>color</validate>
+                </field>
+                <field id="continue_hover" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>"Continue" Button Color on Hover</label>
+                    <validate>color</validate>
+                </field>
+                <field id="viewcart_text" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Text on "View Cart" Button</label>
+                </field>
+                <field id="viewcart" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>"View Cart" Button Color</label>
+                    <validate>color</validate>
+                </field>
+                <field id="viewcart_hover" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>"View Cart" Button Color on Hover</label>
+                    <validate>color</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

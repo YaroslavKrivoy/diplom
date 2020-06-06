@@ -1,0 +1,33 @@
+<div class="block">
+	<div class="heading">Pending Orders</div>
+	<div>Total: <?php echo $this->getTotalPendingOrders(); ?> Orders: $<?php echo number_format($this->getTotalPendingOrderAmount(), 2); ?></div>
+	<div>> 5 days: <?php echo $this->getFiveDayOrderCount(); ?></div>
+	<div>> 10 days: <?php echo $this->getTenDayOrderCount(); ?></div>
+	<div>> 15 days: <?php echo $this->getFifteenDayOrderCount(); ?></div>
+</div>
+<div class="block">
+	<div class="heading">Shipped Orders</div>
+	<div>Today: <?php echo $this->getShipmentCount(date('Y-m-d 00:00:00')); ?> : $<?php echo number_format($this->getShipmentAmount(date('Y-m-d 00:00:00')), 2); ?></div>
+	<div>Total (30 days): <?php echo $this->getShipmentCount(date('Y-m-d H:i:s', strtotime('-30 days'))); ?> : $<?php echo number_format($this->getShipmentAmount(date('Y-m-d H:i:s', strtotime('-30 days'))), 2); ?></div>
+	<div>Total (60 days): <?php echo $this->getShipmentCount(date('Y-m-d H:i:s', strtotime('-60 days'))); ?> : $<?php echo number_format($this->getShipmentAmount(date('Y-m-d H:i:s', strtotime('-60 days'))), 2); ?></div>
+	<div>Total (YTD): <?php echo $this->getShipmentCount(date('Y-01-01 00:00:00')); ?> : $<?php echo number_format($this->getShipmentAmount(date('Y-01-01 00:00:00')), 2); ?></div>
+	<div>Total (All Time): <?php echo $this->getShipmentCount(); ?> : $<?php echo number_format($this->getShipmentAmount(), 2); ?></div>
+</div>
+<div class="block">
+	<div class="heading">Prob/Canc Orders</div>
+	<div>Total (30 days): <?php echo $this->getCancelledOrders(); ?> : $<?php echo number_format($this->getCancelledOrdersAmount(), 2); ?></div>
+</div>
+<div class="block">
+	<div class="heading">Affiliates Summary</div>
+	<div>Registered: <?php echo $this->getRegisteredAffiliates(); ?></div>
+</div>
+<div class="block">
+	<div class="heading">Customers Summary</div>
+	<div>Registered: <?php echo number_format($this->getCustomerCount(), 0); ?></div>
+	<div>Purchasers: <?php echo $this->getCustomerPurchasers(); ?></div>
+	<div>Repeat Purchasers: <?php echo $this->getCustomerRepeatPurchasers(); ?></div>
+</div>
+<div class="block">
+	<div class="heading">Received Orders</div>
+	<div>Today: <?php echo $this->getTotalOrdersToday(); ?>: $<?php echo number_format($this->getTotalOrdersAmountToday(), 2); ?></div>
+</div>

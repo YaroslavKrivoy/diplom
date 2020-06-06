@@ -1,0 +1,8 @@
+.hero-image {background-size: cover; background-repeat: no-repeat; background-position: center; width: 100%; padding-top: 22.76%; position: relative;}
+.hero-image h1.hero-title {color: #FFF; text-align: center; display: block; max-width: 1280px; margin: 0 auto; padding: 0; font-size: 62px; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 100%;}
+.hero-image .hero-overlay {background-color: rgba(0,0,0,0.4); position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.parallax-mirror {z-index: 0 !important;}
+
+@media screen and (max-width: 767px){
+	.hero-image {padding-top: 66%;}
+}

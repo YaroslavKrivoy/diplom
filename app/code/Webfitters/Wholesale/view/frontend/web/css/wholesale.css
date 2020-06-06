@@ -1,0 +1,10 @@
+.wholesale-link {display: inline-block; width: 47%; position: relative; margin-right: 5%; vertical-align: top; padding-top: 33%;}
+body:not(.cms-index-index) #maincontent .wholesale-block h2 {font-size: 48px; position: absolute; width: 100%; text-align: center; top: 50%; left: 0%; color: #FFF; text-transform: uppercase; -webkit-transform: translateY(-50%0); transform: translateY(-50%);}
+.wholesale-link:nth-of-type(2n) {margin-right: 0;}
+.wholesale-link .wholesale-block {width: 100%; position: absolute; top: 0; left: 0; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat;}
+.wholesale-category {margin-bottom: 40px;}
+.wholesale-block .wholesale-back {background-color: rgba(0,0,0,0.4); width: 100%; height: 100%; position: absolute; left: 0; top: 0;}
+
+@media screen and (max-width: 767px){
+	.wholesale-link {margin-right: 0; width: 100%; padding-top: 50%; margin-bottom: 30px;}
+}

@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aheadworks\Autorelated\Api\RuleRepositoryInterface" type="Aheadworks\Autorelated\Model\ResourceModel\RuleRepository" />
+    <preference for="Aheadworks\Autorelated\Api\BlockRepositoryInterface" type="Aheadworks\Autorelated\Model\ResourceModel\BlockRepository" />
+    <preference for="Aheadworks\Autorelated\Api\StatisticManagerInterface" type="Aheadworks\Autorelated\Model\Rule\StatisticManager" />
+    <preference for="Aheadworks\Autorelated\Api\Data\RuleInterface" type="Aheadworks\Autorelated\Model\Data\Rule" />
+    <preference for="Aheadworks\Autorelated\Api\Data\RuleStatisticInterface" type="Aheadworks\Autorelated\Model\RuleStatistic" />
+    <preference for="Aheadworks\Autorelated\Api\Data\BlockInterface" type="Aheadworks\Autorelated\Model\Data\Block" />
+    <preference for="Aheadworks\Autorelated\Api\Data\RuleTitleStoreValueInterface" type="Aheadworks\Autorelated\Model\Rule\BlockTitle\StoreValue" />
+    <preference for="Aheadworks\Autorelated\Api\Data\ConditionInterface" type="Aheadworks\Autorelated\Model\Data\Condition" />
+    <preference for="Aheadworks\Autorelated\Api\Data\RuleSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aheadworks\Autorelated\Api\Data\BlockSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aheadworks\Autorelated\Model\Serialize\SerializeInterface" type="Aheadworks\Autorelated\Model\Serialize\Json" />
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\Autorelated\Api\Data\RuleInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">aw_autorelated_rule</item>
+                    <item name="identifierField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\Autorelated\Api\Data\RuleStatisticInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">aw_autorelated_profit</item>
+                    <item name="identifierField" xsi:type="string">rule_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Aheadworks\Autorelated\Api\Data\RuleInterface" xsi:type="array">
+                    <item name="read" xsi:type="array">
+                        <item name="storeReader" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\Store\ReadHandler</item>
+                        <item name="customerGroupReader" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\CustomerGroup\ReadHandler</item>
+                        <item name="customerSegmentReader" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\CustomerSegment\ReadHandler</item>
+                        <item name="wvtavParamsReader" xsi:type="string">Aheadworks\Autorelated\Model\Wvtav\ResourceModel\Rule\Relation\WvtavParams\ReadHandler</item>
+                        <item name="blockTitleReader" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\BlockTitle\ReadHandler</item>
+                    </item>
+                    <item name="create" xsi:type="array">
+                        <item name="storeCreator" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\Store\SaveHandler</item>
+                        <item name="customerGroupCreator" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\CustomerGroup\SaveHandler</item>
+                        <item name="blockTitleCreator" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\BlockTitle\SaveHandler</item>
+                        <item name="customerSegmentCreator" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\CustomerSegment\SaveHandler</item>
+                        <item name="wvtavParamsCreator" xsi:type="string">Aheadworks\Autorelated\Model\Wvtav\ResourceModel\Rule\Relation\WvtavParams\SaveHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="storeUpdater" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\Store\SaveHandler</item>
+                        <item name="customerGroupUpdater" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\CustomerGroup\SaveHandler</item>
+                        <item name="customerSegmentUpdater" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\CustomerSegment\SaveHandler</item>
+                        <item name="wvtavParamsUpdater" xsi:type="string">Aheadworks\Autorelated\Model\Wvtav\ResourceModel\Rule\Relation\WvtavParams\SaveHandler</item>
+                        <item name="blockTitleUpdater" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Relation\BlockTitle\SaveHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Autorelated\Model\CustomerStatistic\Session" type="Magento\Framework\Session\SessionManager">
+        <arguments>
+            <argument name="storage" xsi:type="object">Aheadworks\Autorelated\Model\CustomerStatistic\Session\Storage</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Autorelated\Model\CustomerStatistic\Session\Storage" type="Magento\Framework\Session\Storage">
+        <arguments>
+            <argument name="namespace" xsi:type="string">aw_arp</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="aw_autorelated_rule_listing_data_source" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Autorelated\Model\ResourceModel\Rule\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aw_autorelated_rule</argument>
+            <argument name="eventPrefix" xsi:type="string">aw_autorelated_rule_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">rule_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Aheadworks\Autorelated\Model\ResourceModel\Rule</argument>
+        </arguments>
+    </type>
+    <virtualType name="AwAutorelatedRuleGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AwAutorelatedRuleGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Aheadworks\Autorelated\Model\ResourceModel\Rule\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">AwAutorelatedRuleGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\TargetRule\Block\Catalog\Product\ProductList\Related">
+        <plugin name="aw_arp_targetrule_productlist_related" type="Aheadworks\Autorelated\Plugin\Block\Product\ProductList\Related"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Related">
+        <plugin name="aw_arp_catalog_productlist_related" type="Aheadworks\Autorelated\Plugin\Block\Product\ProductList\Related"/>
+    </type>
+    <type name="Magento\TargetRule\Block\Catalog\Product\ProductList\Upsell">
+        <plugin name="aw_arp_catalog_productlist_upsell" type="Aheadworks\Autorelated\Plugin\Block\Product\ProductList\Upsell"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ProductList\Upsell">
+        <plugin name="aw_arp_catalog_productlist_upsell" type="Aheadworks\Autorelated\Plugin\Block\Product\ProductList\Upsell"/>
+    </type>
+    <type name="Magento\TargetRule\Block\Checkout\Cart\Crosssell">
+        <plugin name="aw_arp_targetrule_productlist_crosssell" type="Aheadworks\Autorelated\Plugin\Block\Checkout\Cart\Crosssell"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Crosssell">
+        <plugin name="aw_arp_checkout_productlist_crosssell" type="Aheadworks\Autorelated\Plugin\Block\Checkout\Cart\Crosssell"/>
+    </type>
+    <type name="Magento\GoogleTagManager\Block\ListJson">
+        <plugin name="aw_arp_googletagmanager_impression" type="Aheadworks\Autorelated\Plugin\Block\GoogleTagManager\ListJson"/>
+    </type>
+    <type name="Magento\Sales\Model\ResourceModel\Order">
+        <plugin name="aw-autorelated-wbtab-save-order-plugin" type="Aheadworks\Autorelated\Model\Wbtab\Plugin\Model\ResourceModel\Order" sortOrder="99" disabled="false"/>
+    </type>
+</config>

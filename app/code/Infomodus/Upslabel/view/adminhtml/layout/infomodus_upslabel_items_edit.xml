@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Infomodus. All rights reserved.
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="Infomodus_Upslabel::js/packages.js"/>
+        <css src="Infomodus_Upslabel::css/packages.css"/>
+    </head>
+    <body>
+        <referenceContainer name="left">
+            <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Edit\Tabs" name="infomodus_upslabel_items_edit_tabs">
+                <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Edit\Tab\Main" name="infomodus_upslabel_items_edit_tab_main"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">infomodus_upslabel_items_edit_tab_main</argument>
+                </action>
+                <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Edit\Tab\Package" name="infomodus_upslabel_items_edit_tab_package"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">package_section</argument>
+                    <argument name="block" xsi:type="string">infomodus_upslabel_items_edit_tab_package</argument>
+                </action>
+                <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Edit\Tab\Weightdimension" name="infomodus_upslabel_items_edit_tab_weightdimension"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">weightdimension_section</argument>
+                    <argument name="block" xsi:type="string">infomodus_upslabel_items_edit_tab_weightdimension</argument>
+                </action>
+                <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Edit\Tab\Customer" name="infomodus_upslabel_items_edit_tab_customer"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">customer_section</argument>
+                    <argument name="block" xsi:type="string">infomodus_upslabel_items_edit_tab_customer</argument>
+                </action>
+                <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Edit\Tab\International" name="infomodus_upslabel_items_edit_tab_international"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">international_section</argument>
+                    <argument name="block" xsi:type="string">infomodus_upslabel_items_edit_tab_international</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Infomodus\Upslabel\Block\Adminhtml\Items\Edit" name="upslabel_items_edit"/>
+        </referenceContainer>
+    </body>
+</page>

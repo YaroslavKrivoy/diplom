@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <upslabel>
+            <testmode>
+                <testing>1</testing>
+            </testmode>
+            <packaging>
+                <packagingtypecode>02</packagingtypecode>
+                <packagingdescription>Package</packagingdescription>
+                <frontend_multipackes_enable>0</frontend_multipackes_enable>
+                <packages_by_attribute_enable>0</packages_by_attribute_enable>
+            </packaging>
+            <shipping>
+                <defaultshipmentmethod>03</defaultshipmentmethod>
+                <shipmentdescription>1</shipmentdescription>
+                <defaultshipper>1</defaultshipper>
+                <defaultshipfrom>1</defaultshipfrom>
+                <addtrack>1</addtrack>
+                <track_send>1</track_send>
+                <saturday_delivery>0</saturday_delivery>
+                <validate>1</validate>
+            </shipping>
+            <return>
+                <frontend_customer_return>1</frontend_customer_return>
+                <refundaccess>1</refundaccess>
+                <default_return>0</default_return>
+                <default_return_method>03</default_return_method>
+                <return_service_code>8</return_service_code>
+            </return>
+            <weightdimension>
+                <weightunits>LBS</weightunits>
+                <unitofmeasurement>IN</unitofmeasurement>
+                <multipackes_attribute_width>width</multipackes_attribute_width>
+                <multipackes_attribute_height>height</multipackes_attribute_height>
+                <multipackes_attribute_length>length</multipackes_attribute_length>
+            </weightdimension>
+            <ratepayment>
+                <currencycode>USD</currencycode>
+                <shipmentcharge>0</shipmentcharge>
+                <negotiatedratesindicator>0</negotiatedratesindicator>
+                <cod>0</cod>
+                <additionalhandling>0</additionalhandling>
+                <insured_automaticaly>0</insured_automaticaly>
+                <invoicelinetotal>1</invoicelinetotal>
+                <carbon_neutral>0</carbon_neutral>
+                <dytytaxinternational>customer</dytytaxinternational>
+            </ratepayment>
+            <quantum>
+                <qvn>0</qvn>
+                <adult>0</adult>
+            </quantum>
+            <printing>
+                <automatic_printing>0</automatic_printing>
+                <printer>GIF</printer>
+                <papersize>A5</papersize>
+                <termal_width>6</termal_width>
+                <termal_width_return>6</termal_width_return>
+                <bulk_printing_all>0</bulk_printing_all>
+            </printing>
+            <pickup>
+                <RatePickupIndicator>Y</RatePickupIndicator>
+                <PickupDateYear>0</PickupDateYear>
+                <PickupDateMonth>0</PickupDateMonth>
+                <PickupDateDay>0</PickupDateDay>
+                <AlternateAddressIndicator>N</AlternateAddressIndicator>
+                <ServiceCode>003</ServiceCode>
+                <Quantity>1</Quantity>
+                <DestinationCountryCode>US</DestinationCountryCode>
+                <ContainerCode>01</ContainerCode>
+                <UnitOfMeasurement>LBS</UnitOfMeasurement>
+                <OverweightIndicator>N</OverweightIndicator>
+                <PaymentMethod>01</PaymentMethod>
+                <SpecialInstruction>No instructions</SpecialInstruction>
+                <ReferenceNumber>Order : Customer</ReferenceNumber>
+                <Notification>1</Notification>
+            </pickup>
+            <frontend_autocreate_label>
+                <frontend_order_autocreate_label_enable>0</frontend_order_autocreate_label_enable>
+            </frontend_autocreate_label>
+            <additional_settings>
+                <order_grid_column_enable>1</order_grid_column_enable>
+                <shipment_grid_column_enable>1</shipment_grid_column_enable>
+                <credit_grid_column_enable>1</credit_grid_column_enable>
+            </additional_settings>
+        </upslabel>
+    </default>
+</config>

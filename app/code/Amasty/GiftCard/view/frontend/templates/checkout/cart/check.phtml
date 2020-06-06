@@ -1,0 +1,25 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_GiftCard
+ */
+?>
+<?php /** @var $block \Amasty\GiftCard\Block\Checkout\Cart\CheckCard */?>
+<?php $card = $block->getCard() ?>
+<?php if ($card && $card->getId()) : ?>
+    <div class="amgiftcard-info">
+        <div><?= __("Status: %1", '<strong>' . $card->getStatus() . '</strong>'); ?></div>
+        <div><?php $currentBalance = $block->getCurrentBalance($card->getCurrentValue());
+            echo __('Current Balance: %1', '<strong>' . $currentBalance . '</strong>'); ?></div>
+        <?php if ($card->getExpiredDate()) : ?>
+            <?php $_validTill = $block->getExpiredDate($card->getExpiredDate()); ?>
+        <?php else : ?>
+            <?php $_validTill = $block->escapeHtml(__('unlimited')); ?>
+        <?php endif; ?>
+        <div><?= __('Valid till: %1', '<strong>' . $_validTill . '</strong>'); ?></div>
+
+    </div>
+<?php else : ?>
+    <div><?= $block->escapeHtml(__('Wrong Gift Card Code.')); ?></div>
+<?php endif; ?>

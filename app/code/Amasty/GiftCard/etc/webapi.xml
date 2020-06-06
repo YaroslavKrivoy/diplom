@@ -1,0 +1,126 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/amasty_giftCard/account" method="POST">
+        <service class="Amasty\GiftCard\Api\AccountRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_account" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/account/:accountId" method="PUT">
+        <service class="Amasty\GiftCard\Api\AccountRepositoryInterface" method="saveCurrent"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_account" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/account/:accountId" method="DELETE">
+        <service class="Amasty\GiftCard\Api\AccountRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_account" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/account" method="GET">
+        <service class="Amasty\GiftCard\Api\AccountRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_account" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/account/all" method="GET">
+        <service class="Amasty\GiftCard\Api\AccountRepositoryInterface" method="getList" />
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_account" />
+        </resources>
+    </route>
+
+    <route url="/V1/amasty_giftCard/image" method="POST">
+        <service class="Amasty\GiftCard\Api\ImageRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_image" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/image/:imageId" method="PUT">
+        <service class="Amasty\GiftCard\Api\ImageRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_image" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/image/:imageId" method="DELETE">
+        <service class="Amasty\GiftCard\Api\ImageRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_image" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/image" method="GET">
+        <service class="Amasty\GiftCard\Api\ImageRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_image" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/image/all" method="GET">
+        <service class="Amasty\GiftCard\Api\ImageRepositoryInterface" method="getList" />
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_image" />
+        </resources>
+    </route>
+
+    <route url="/V1/amasty_giftCard/codeSet" method="POST">
+        <service class="Amasty\GiftCard\Api\CodeSetRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_code" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/codeSet/:codeSetId" method="PUT">
+        <service class="Amasty\GiftCard\Api\CodeSetRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_code" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/codeSet/:codeSetId" method="DELETE">
+        <service class="Amasty\GiftCard\Api\CodeSetRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_code" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/codeSet" method="GET">
+        <service class="Amasty\GiftCard\Api\CodeSetRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_code" />
+        </resources>
+    </route>
+    <route url="/V1/amasty_giftCard/codeSet/all" method="GET">
+        <service class="Amasty\GiftCard\Api\CodeSetRepositoryInterface" method="getList" />
+        <resources>
+            <resource ref="Amasty_GiftCard::giftcard_code" />
+        </resources>
+    </route>
+
+    <route url="/V1/carts/mine/gift-card/:giftCard" method="DELETE">
+        <service class="Amasty\GiftCard\Api\GiftCardManagementInterface" method="remove"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/carts/mine/gift-card/:giftCard" method="PUT">
+        <service class="Amasty\GiftCard\Api\GiftCardManagementInterface" method="set"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/V1/guest-carts/:cartId/gift-card/:giftCard" method="DELETE">
+        <service class="Amasty\GiftCard\Api\GuestGiftCardManagementInterface" method="remove"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/guest-carts/:cartId/gift-card/:giftCard" method="PUT">
+        <service class="Amasty\GiftCard\Api\GuestGiftCardManagementInterface" method="set"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+</routes>

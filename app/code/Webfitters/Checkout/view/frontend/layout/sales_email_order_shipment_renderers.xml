@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    	<referenceBlock name="sales.email.order.shipment.renderers.default">
+    		<action method="setTemplate">
+    			<argument name="template" xsi:type="string">Webfitters_Checkout::email/shipment/item.phtml</argument>
+    		</action>
+    	</referenceBlock>
+        <!--<referenceBlock name="sales.email.order.shipment.renderers">
+            <block class="Magento\Sales\Block\Order\Email\Items\DefaultItems" name="sales.email.order.shipment.renderers.default" as="default" template="Magento_Sales::email/items/shipment/default.phtml"/>
+        </referenceBlock>-->
+    </body>
+</page>

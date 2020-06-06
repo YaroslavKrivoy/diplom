@@ -1,0 +1,7 @@
+<config>
+    <router id="standard">
+        <route id="specials" frontName="specials">
+            <module name="Webfitters_Specials" />
+        </route>
+    </router>
+</config>

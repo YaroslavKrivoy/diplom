@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Wholesale Content</title>
+        <css src="Webfitters_Wholesale::css/bs.css" />
+        <css src="Webfitters_Wholesale::css/wholesale.css" />
+        <css src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" src_type="url" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Webfitters\Wholesale\Block\Adminhtml\Wholesale" template="Webfitters_Wholesale::pages/wholesale.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

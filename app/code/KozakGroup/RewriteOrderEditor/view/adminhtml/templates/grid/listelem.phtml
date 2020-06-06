@@ -1,0 +1,34 @@
+<script>
+    require([
+        "jquery",
+        "mage/translate",
+        "Magento_Ui/js/modal/alert"
+    ], function ($) {
+        var flag = true;
+        setTimeout(function () {
+            var list = '.admin__data-grid-header-row.row.row-gutter .action-select-wrap .action-menu-items .action-menu li:nth-child';
+            changeList(list);
+        },3000);
+        $(window).scroll(function () {
+            var parent = $('.admin__data-grid-outer-wrap .admin__data-grid-header .admin__data-grid-header-row.row.row-gutter').parent();
+            if(parent.css('visibility') === 'hidden' && flag){
+                var list = '.sticky-header .admin__data-grid-header .admin__data-grid-header-row .action-select-wrap .action-menu-items .action-menu li:nth-child';
+                changeList(list);
+                flag = false;
+            }
+        });
+
+        function changeList(elem) {
+            var firstElem = $(elem +'(1)');
+            var tenthElem = $(elem +'(10)');
+            var ninthElem = $(elem +'(9)');
+            var fourthElem = $(elem +'(4)');
+            ninthElem.insertBefore(firstElem);
+            tenthElem.insertBefore(firstElem);
+            firstElem.insertBefore(fourthElem);
+            tenthElem.css('border-bottom','1px solid #adadad');
+        }
+
+    });
+
+</script>

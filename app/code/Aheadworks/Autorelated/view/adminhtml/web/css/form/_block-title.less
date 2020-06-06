@@ -1,0 +1,54 @@
+//
+//  Block title
+//  _____________________________________________
+
+.title.admin__field {
+  .admin__more_link {
+    cursor: pointer;
+    color: #007bdb;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.4rem;
+    border: none;
+    background: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.title.dynamic-rows {
+   margin-left: ~'calc( (100%) * 0.25 - 22px )';
+   width: ~'calc( (100%) * 0.5 + 20px )';
+
+  &._no-header {
+    margin-top: 1.5rem !important;
+  }
+
+  .select_field {
+    width: 20%;
+
+    &._disabled {
+      opacity: 1;
+    }
+
+    .admin__field.select_field {
+      width: 100%;
+    }
+  }
+
+  .value_field {
+    width: 100%;
+  }
+
+  .action-delete {
+    &:focus {
+      border-color: #007bdb;
+    }
+  }
+
+  td:nth-child(2), th:nth-child(2) {
+    padding-left: 1rem;
+  }
+}

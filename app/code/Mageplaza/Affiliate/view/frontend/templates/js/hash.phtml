@@ -1,0 +1,22 @@
+<?php if ($block->checkCookie()): ?>
+<script type="text/javascript">
+//<![CDATA[
+require([
+	'jquery',
+	'mage/cookies'
+], function($) {
+	"use strict";
+
+	var affPrefix = '<?php echo $block->getPrefix() ?>';
+	var hash = window.location.hash;
+
+	if (hash.indexOf(affPrefix) != -1) {
+		$.mage.cookies.set('<?php echo $block->getCookieName() ?>', hash.substr(affPrefix.length + 1), {lifetime: <?php echo $this->getExpire() ?>});
+
+		var url = window.location.href;
+		window.location = url.replace(hash, '');
+	}
+});
+//]]>
+</script>
+<?php endif; ?>

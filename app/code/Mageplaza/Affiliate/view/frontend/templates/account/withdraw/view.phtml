@@ -1,0 +1,63 @@
+<?php $withdraw = $this->getWithdraw(); ?>
+<div class="fieldset affiliate-view-withdraw">
+	<h2 class="legend"><?php echo __('Withdraw Information') ?></h2>
+	<div class="field amount">
+		<label class="label"><span><?php /* @escapeNotVerified */ echo __('Requested Amount') ?></span></label>
+		<div class="control">
+			<?php echo $this->formatPrice($withdraw->getAmount()) ?>
+		</div>
+	</div>
+	<div class="field fee">
+		<label class="label"><span><?php /* @escapeNotVerified */ echo __('Fee') ?></span></label>
+		<div class="control">
+			<?php echo $this->formatPrice($withdraw->getFee()) ?>
+		</div>
+	</div>
+	<div class="field transfer-amount">
+		<label class="label"><span><?php /* @escapeNotVerified */ echo __('Net. Amount') ?></span></label>
+		<div class="control">
+			<?php echo $this->formatPrice($withdraw->getTransferAmount()) ?>
+		</div>
+	</div>
+	<div class="field status">
+		<label class="label"><span><?php /* @escapeNotVerified */ echo __('Status') ?></span></label>
+		<div class="control">
+			<?php echo $withdraw->getStatusLabel() ?>
+		</div>
+	</div>
+	<div class="field payment-method">
+		<label class="label"><span><?php /* @escapeNotVerified */ echo __('Payment Method') ?></span></label>
+		<div class="control">
+			<?php echo $withdraw->getPaymentLabel() ?>
+		</div>
+	</div>
+	<?php $detail = $this->getPaymentDetail(); ?>
+	<?php if(sizeof($detail)):?>
+	<div class="field payment-detail">
+		<label class="label"><span><?php /* @escapeNotVerified */ echo __('Payment Detail') ?></span></label>
+		<div class="control">
+			<?php foreach($detail as $key => $value): ?>
+				<?= $value['label'] . ': ' . $value['value'] . '</br>' ?>
+			<?php endforeach; ?>
+		</div>
+	</div>
+	<?php endif; ?>
+
+	<div class="field created-at">
+		<label class="label"><span><?php /* @escapeNotVerified */ echo __('Requested Date') ?></span></label>
+		<div class="control">
+			<?php echo $this->formatDate($withdraw->getCreatedAt(), \IntlDateFormatter::MEDIUM, true) ?>
+		</div>
+	</div>
+	<?php if($withdraw->getResolvedAt()): ?>
+	<div class="field resolved-at">
+		<label class="label"><span><?php /* @escapeNotVerified */ echo __('Resolve Date') ?></span></label>
+		<div class="control">
+			<?php echo $this->formatTime($withdraw->getResolvedAt(), \IntlDateFormatter::MEDIUM, true) ?>
+		</div>
+	</div>
+	<?php endif; ?>
+</div>
+<div class="buttons-set">
+	<p class="back-link"><a href="<?php echo $this->getUrl('*/account/withdraw') ?>"><small>« </small><?php echo __('Back') ?></a></p>
+</div>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Webfitters_Hero::css/hero.css" />
+	</head>
+    <body>
+    	<referenceContainer name="page.top">
+        	<block class="Webfitters\Wholesale\Block\Type" template="Webfitters_Hero::hero.phtml" name="hero" after="navigation.sections" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Webfitters\Wholesale\Block\Type" name="wholesaler.type" template="Webfitters_Wholesale::blocks/type.phtml" />
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="affiliate_email_account_welcome" label="Welcome Email" file="account_welcome.html" type="html" module="Mageplaza_Affiliate" area="frontend"/>
+    <template id="affiliate_refer_account_sharing" label="Affiliate Sharing Email" file="account_sharing.html" type="html" module="Mageplaza_Affiliate" area="frontend"/>
+    <template id="affiliate_email_account_approve" label="Welcome Email After Account Approved" file="account_approve.html" type="html" module="Mageplaza_Affiliate" area="frontend"/>
+    <template id="affiliate_email_transaction_update_balance" label="Update Balance Email" file="transaction_update_balance.html" type="html" module="Mageplaza_Affiliate" area="frontend"/>
+    <template id="affiliate_email_withdraw_complete" label="Withdraw Complete Email" file="withdraw_complete.html" type="html" module="Mageplaza_Affiliate" area="frontend"/>
+</config>

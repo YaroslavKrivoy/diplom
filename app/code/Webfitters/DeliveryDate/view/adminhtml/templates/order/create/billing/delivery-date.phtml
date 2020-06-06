@@ -1,0 +1,29 @@
+<div class="admin__page-section-title">
+    <span class="title">Requested Delivery Date:</span>
+</div>
+<div class="admin__field field field-delivery-date">
+	<div class="admin__field-control control" style="display: flex;">
+		<input id="order-delivery_date" name="order[delivery_date]" value="<?php echo $this->getDeliveryDate(); ?>" class="input-text admin__control-text" type="text"> 
+		<button class="action-secondary action-apply-delivery" type="button" id="apply_delivery_date"><span>Apply</span></button> 
+	</div>
+</div>
+<script type="text/javascript">
+	requirejs(['jquery', 'Magento_Sales/order/create/form'], function($){
+		order.updateDeliveryDate = function(){
+			var data = this.serializeData('edit_form');
+			data._object = {};
+			data._object.json = true;
+			data._object['order[delivery_date]'] = $('#order-delivery_date').val();
+			this.loadArea(['billing_method', 'totals'], true, data);
+		};
+		$('#apply_delivery_date').on('click', function(event){
+			order.updateDeliveryDate();
+		});
+	});
+	require(['jquery', 'mage/calendar'], function($, ui){
+        $('#order-delivery_date').datepicker({
+            minDate: 0,
+            dateFormat: 'mm/dd/yy',
+        });
+    });
+</script>

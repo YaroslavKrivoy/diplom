@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="send_comment_order_change">
+        <observer name="comment_order_change" instance="KozakGroup\RewriteOrderEditor\Observer\SendCommentOrderChange"/>
+    </event>
+    <event name="sales_order_save_after">
+        <observer name="set_case_qty_equal_item_qty" instance="KozakGroup\RewriteOrderEditor\Observer\SetCaseQtyEqualItemQty" />
+    </event>
+</config>

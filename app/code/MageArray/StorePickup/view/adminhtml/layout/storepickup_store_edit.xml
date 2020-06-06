@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Store</title>
+    </head>
+	<update handle="editor"/>
+    <body>
+        <referenceBlock name="menu">
+            <action method="setActive">
+                <argument name="itemId" xsi:type="string">MageArray_StorePickup::store</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+        <block class="MageArray\StorePickup\Block\Adminhtml\Store\Edit" name="store_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+			<block class="MageArray\StorePickup\Block\Adminhtml\Store\Edit\Tabs" name="store_edit_tabs">
+			</block>
+        </referenceContainer>
+    </body>
+</page>

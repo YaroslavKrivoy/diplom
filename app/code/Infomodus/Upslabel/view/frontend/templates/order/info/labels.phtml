@@ -1,0 +1,48 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php $_labels = $block->getLabels() ?>
+<?php if ($_labels !== null && count($_labels) > 0): ?>
+    <?php $_order = $block->getOrder() ?>
+    <?php $path_url = $block->_conf->getBaseUrl('media') . 'upslabel/label/'; ?>
+    <?php $path_dir = $block->_conf->getBaseDir('media') . '/upslabel/label/'; ?>
+    <div class="block block-order-details-view">
+        <div class="block-title"><strong><?php echo __('Return label(s)'); ?></strong></div>
+        <table class="data table table-labels-items" id="my-labels-table">
+            <thead>
+            <tr>
+                <th class="col name"><?php /* @escapeNotVerified */
+                    echo __('Tracking number') ?></th>
+                <th class="col price"><?php /* @escapeNotVerified */
+                    echo __('Print') ?></th>
+            </tr>
+            </thead>
+            <tbody id="infomodusReturnLabelsList">
+            <?php foreach ($_labels as $label): ?>
+                <tr>
+                    <td class="col options">
+                        <?php echo $label->getTrackingnumber(); ?>
+                    </td>
+                    <td class="col options">
+                        <?php if ($label->getTypePrint() != 'virtual'): ?>
+                            <?php if ($label->getTypePrint() != 'GIF'): ?>
+                                <a href="<?php echo $label->getLabelname(); ?>"
+                                   target="_blank"><?php echo __('Print Return Label'); ?></a> &nbsp;&nbsp;
+                            <?php else: if (file_exists($path_dir . $label->getTrackingnumber() . '.html')) { ?>
+                                <a href="<?php echo $path_url . $label->getTrackingnumber(); ?>.html" target="_blank"><?php echo __('Print Return Label'); ?></a>
+                            <?php } endif; ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif; ?>
+<?php echo $block->getChildHtml(); ?>

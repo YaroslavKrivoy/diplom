@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="invoice">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">invoice</item>
+                        <item name="label" xsi:type="string">Batch Invoice</item>
+                        <item name="url" xsi:type="url" path="batchinvoice/orders/invoice" />
+                    </item>
+                </argument>
+            </action>
+            <!--<action name="additional">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">additional</item>
+                        <item name="label" xsi:type="string" translate="true">Additional</item>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="configurableObject">
+                    <argument name="class" xsi:type="string">MageWorx\OrdersGrid\Ui\Component\MassAction\Additional</argument>
+                </argument>
+            </action>
+            <action name="notifyCustomer">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">notifyCustomer</item>
+                        <item name="label" xsi:type="string" translate="true">Notify Customer</item>
+                        <item name="url" xsi:type="url" path="mageworx_ordersgrid/order_grid/massShipInvoiceCapture"/>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="configurableObject">
+                    <argument name="class" xsi:type="string">MageWorx\OrdersGrid\Ui\Component\MassAction\NotifyCustomer</argument>
+                    <argument name="data" xsi:type="array">
+                        <item name="urlPath" xsi:type="string">mageworx_ordersgrid/order_grid/massShipInvoiceCapture</item>
+                    </argument>
+                </argument>
+            </action>
+            <action name="doNotNotifyCustomer">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">doNotNotifyCustomer</item>
+                        <item name="label" xsi:type="string" translate="true">Do Not Notify Customer</item>
+                        <item name="url" xsi:type="url" path="mageworx_ordersgrid/order_grid/massShipInvoiceCapture"/>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="configurableObject">
+                    <argument name="class" xsi:type="string">MageWorx\OrdersGrid\Ui\Component\MassAction\DoNotNotifyCustomer</argument>
+                    <argument name="data" xsi:type="array">
+                        <item name="urlPath" xsi:type="string">mageworx_ordersgrid/order_grid/massShipInvoiceCapture</item>
+                    </argument>
+                </argument>
+            </action>-->
+        </massaction>
+    </listingToolbar>
+</listing>

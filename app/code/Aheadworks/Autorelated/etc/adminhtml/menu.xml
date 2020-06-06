@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Aheadworks_Autorelated::main" title="Automatic Related Products by AheadWorks" module="Aheadworks_Autorelated" sortOrder="999" dependsOnModule="Aheadworks_Autorelated" parent="Magento_Backend::marketing" resource="Aheadworks_Autorelated::main"/>
+        <add id="Aheadworks_Autorelated::rule" title="Manage Rules" module="Aheadworks_Autorelated" sortOrder="1" parent="Aheadworks_Autorelated::main" action="autorelated_admin/rule/index" resource="Aheadworks_Autorelated::rule"/>
+    </menu>
+</config>

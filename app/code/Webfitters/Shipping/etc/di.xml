@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  	<preference for="Magento\Ups\Model\Carrier" type="Webfitters\Shipping\Model\Ups" />
+  	<type name="Magento\Shipping\Block\Tracking\Popup">
+  		<plugin name="remove_time_from_delivery" type="Webfitters\Shipping\Plugin\RemoveTrackingTime" />
+  	</type>
+</config>

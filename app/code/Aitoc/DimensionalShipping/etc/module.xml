@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Aitoc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Framework:etc/module.xsd">
+    <module name="Aitoc_DimensionalShipping" setup_version="1.0.2"></module>
+</config>

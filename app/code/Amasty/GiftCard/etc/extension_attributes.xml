@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_GiftCard
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
+        <attribute code="amgiftcard_code" type="string"/>
+        <attribute code="amgiftcard_gift_amount" type="float"/>
+        <attribute code="amgiftcard_base_gift_amount" type="float"/>
+        <attribute code="amgiftcard_code_set_id" type="string"/>
+        <attribute code="amgiftcard_account_id" type="string"/>
+    </extension_attributes>
+    <!--<extension_attributes for="Magento\Catalog\Api\Data\ProductOptionInterface">
+        <attribute code="amgiftcard_options" type="Amasty\GiftCard\Api\Data\AmGiftCardOptionsInterface"/>
+    </extension_attributes>
+    <extension_attributes for="Magento\Quote\Api\Data\ProductOptionInterface">
+        <attribute code="amgiftcard_options" type="Amasty\GiftCard\Api\Data\AmGiftCardOptionsInterface" />
+    </extension_attributes>-->
+</config>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid_data_source</item>
+            <item name="deps" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">upslabel_items_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Create New Label</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">infomodus_upslabel/items/new</item>
+            </item>
+        </item>
+    </argument>
+    <dataSource name="infomodus_upslabel_items_grid_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">infomodus_upslabel_items_grid_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">upslabel_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+            </item>
+        </argument>
+        <!--<bookmark name="bookmarks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="namespace" xsi:type="string">infomodus_upslabel_items_grid</item>
+                    </item>
+                </item>
+            </argument>
+        </bookmark>-->
+        <component name="columns_controls">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsData" xsi:type="array">
+                        <item name="provider" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid.upslabel_items_columns</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                </item>
+            </argument>
+        </component>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid.upslabel_items_columns.ids</item>
+                    <item name="indexField" xsi:type="string">upslabel_id</item>
+                </item>
+            </argument>
+            <action name="print_ups_items_label">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">print_ups_items_label</item>
+                        <item name="label" xsi:type="string" translate="true">Print UPS Shipping Labels</item>
+                        <item name="url" xsi:type="url" path="infomodus_upslabel/pdflabels/many"/>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+        <paging name="listing_paging">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.paging</item>
+                    </item>
+                    <item name="selectProvider" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid.upslabel_items_columns.ids</item>
+                </item>
+            </argument>
+        </paging>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsProvider" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid.upslabel_items_columns</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.filters</item>
+                    </item>
+                    <item name="childDefaults" xsi:type="array">
+                        <item name="provider" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid.listing_top.listing_filters</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="visible" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid.upslabel_items_columns.${ $.index }:visible</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+    </container>
+    <columns name="upslabel_items_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="childDefaults" xsi:type="array">
+                    <item name="fieldAction" xsi:type="array">
+                        <item name="provider" xsi:type="string">infomodus_upslabel_items_grid.infomodus_upslabel_items_grid.upslabel_items_columns.actions</item>
+                        <item name="target" xsi:type="string">applyAction</item>
+                        <item name="params" xsi:type="array">
+                            <item name="0" xsi:type="string">view</item>
+                            <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">upslabel_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="upslabel_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">desc</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                </item>
+            </argument>
+        </column>
+        <column name="trackingnumber" class="Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\AddNewLabelLinks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="label" xsi:type="string" translate="true">Tracking Number</item>
+                </item>
+            </argument>
+        </column>
+        <column name="order_increment_id" class="Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\OrderId">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Order ID</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipment_increment_id" class="Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\ShipmentOrCreditmemo">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipment or Credit memos ID</item>
+                </item>
+            </argument>
+        </column>
+        <column name="printerman" class="Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\Printerman">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="label" xsi:type="string" translate="true">Print</item>
+                </item>
+            </argument>
+        </column>
+        <column name="type_2">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Infomodus\Upslabel\Model\Config\ListsType</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Type</item>
+                </item>
+            </argument>
+        </column>
+        <column name="rva_printed">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Infomodus\Upslabel\Model\Config\PrintStatus</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Print Status</item>
+                </item>
+            </argument>
+        </column>
+        <column name="created_time">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Created</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" class="Infomodus\Upslabel\Block\Adminhtml\Widget\Items\Grid\Column\Renderer\DeleteLabel">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">shipmentidentificationnumber</item>
+                    <item name="viewUrlPath" xsi:type="string">infomodus_upslabel/items/delete</item>
+                    <item name="urlEntityParamName" xsi:type="string">shipidnumber</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

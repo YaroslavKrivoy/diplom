@@ -1,0 +1,14 @@
+<?php
+/**
+ * Copyright © 2018 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /** @var \MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Payment $block */?>
+<div id="payment-result-form">
+    <form id="payment-form">
+        <?php echo $block->getPaymentForm(); ?>
+    </form>
+    <?php echo $block->getSubmitButtonHtml() ?>
+    <?php echo $block->getCancelButtonHtml() ?>
+</div>

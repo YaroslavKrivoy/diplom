@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageWorx_OrdersGrid::css/styles.css"/>
+    </head>
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="MageWorx\OrdersGrid\Block\Adminhtml\Grid\PrintingHelper"
+                   name="printing.helper"
+                   template="MageWorx_OrdersGrid::grid/printingHelper.phtml"
+            />
+        </referenceContainer>
+    </body>
+</page>

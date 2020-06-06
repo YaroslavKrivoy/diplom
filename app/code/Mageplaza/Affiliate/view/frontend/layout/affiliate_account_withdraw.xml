@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="affiliate_account"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Mageplaza\Affiliate\Block\Account\Withdraw" name="affiliate.account.withdraw" template="Mageplaza_Affiliate::account/withdraw.phtml" cacheable="false">
+                <block class="Mageplaza\Affiliate\Block\Account\Withdraw\Methods" name="affiliate.account.withdraw.offline" as="offline" template="Mageplaza_Affiliate::account/withdraw/methods/offline.phtml"/>
+                <block class="Mageplaza\Affiliate\Block\Account\Withdraw\Methods" name="affiliate.account.withdraw.paypal" as="paypal" template="Mageplaza_Affiliate::account/withdraw/methods/paypal.phtml"/>
+                <block class="Mageplaza\Affiliate\Block\Account\Withdraw\Transaction" name="affiliate.account.withdraw.transaction" as="withdraw.transaction" template="Mageplaza_Affiliate::account/withdraw/transactions.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

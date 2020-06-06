@@ -1,0 +1,22 @@
+{
+    "name": "mageworx/module-ordereditorbase",
+    "description": "Order Editor module for Magento 2",
+    "require": {
+        "magento/module-sales"     : ">=100.0.0 <103",
+        "magento/module-checkout"  : ">=100.0.0 <101",
+        "magento/module-quote"     : ">=100.0.0 <102",
+        "mageworx/module-ordersbase" : ">=1.1.1"
+    },
+    "type": "magento2-module",
+    "version": "2.7.2",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "MageWorx\\OrderEditor\\": ""
+        }
+    }
+}

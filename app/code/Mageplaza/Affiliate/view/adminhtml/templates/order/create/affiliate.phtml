@@ -1,0 +1,11 @@
+<div class="field admin__field">
+	<label class="label admin__field-label">Affiliate</label>
+	<div class="control admin__field-control">
+		<select name="order[affiliate_id]" class="select admin__control-select">
+			<option value="">Please Choose</option>
+			<?php foreach($this->getAffiliates() as $id => $affiliate): ?>
+			<option value="<?php echo $id; ?>"><?php echo $affiliate; ?></option>
+			<?php endforeach; ?>
+		</select>
+	</div>
+</div>

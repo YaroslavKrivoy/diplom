@@ -1,0 +1,279 @@
+[31-May-2019 05:55:40 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'fvqff415so0jt3e9mfd9j7aee1' for key 'PRIMARY' in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/blackwing/public_html/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(93): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement.php(303): Magento\Framework\DB\Statement\Pdo\Mysql->_execute(Array)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `se...', Array)
+#5 /home/blackwing/public_html/vendor/magento/framewo in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 571
+[31-May-2019 07:57:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor::goBack() in /home/blackwing/public_html/app/code/Bss/AddMultipleProducts/Controller/Cart/Add.php:106
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/App/Action/Action.php(107): Bss\AddMultipleProducts\Controller\Cart\Add->execute()
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Framework\App\Action\Action->dispatch(Object(Magento\Framework\App\Request\Http))
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor->___callParent('dispatch', Array)
+#3 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor->Magento\Framework\Interception\{closure}(Object(Magento\Framework\App\Request\Http))
+#4 /home/blackwing/public_html/generated/code/Bss/AddMultipleProducts/Controlle in /home/blackwing/public_html/app/code/Bss/AddMultipleProducts/Controller/Cart/Add.php on line 106
+[31-May-2019 13:10:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php:227
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Sales\Block\Adminhtml\Order\View\Info->getAddressEditLink(NULL)
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callParent('getAddressEditL...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->Magento\Framework\Interception\{closure}(NULL)
+#3 /home/blackwing/public_html/generated/code/Magento/Sales/Block/Adminhtml/Order/View/Info/Interceptor.php(39): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callPlugins('getAddressEditL...', Array, Array)
+#4 /home/blackwing/public_html/vendor/magento/module-sales/view/adminhtml/templ in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php on line 227
+[31-May-2019 13:11:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php:227
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Sales\Block\Adminhtml\Order\View\Info->getAddressEditLink(NULL)
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callParent('getAddressEditL...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->Magento\Framework\Interception\{closure}(NULL)
+#3 /home/blackwing/public_html/generated/code/Magento/Sales/Block/Adminhtml/Order/View/Info/Interceptor.php(39): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callPlugins('getAddressEditL...', Array, Array)
+#4 /home/blackwing/public_html/vendor/magento/module-sales/view/adminhtml/templ in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php on line 227
+[31-May-2019 13:12:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php:227
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Sales\Block\Adminhtml\Order\View\Info->getAddressEditLink(NULL)
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callParent('getAddressEditL...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->Magento\Framework\Interception\{closure}(NULL)
+#3 /home/blackwing/public_html/generated/code/Magento/Sales/Block/Adminhtml/Order/View/Info/Interceptor.php(39): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callPlugins('getAddressEditL...', Array, Array)
+#4 /home/blackwing/public_html/vendor/magento/module-sales/view/adminhtml/templ in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php on line 227
+[31-May-2019 13:21:38 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php:227
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Sales\Block\Adminhtml\Order\View\Info->getAddressEditLink(NULL)
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callParent('getAddressEditL...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->Magento\Framework\Interception\{closure}(NULL)
+#3 /home/blackwing/public_html/generated/code/Magento/Sales/Block/Adminhtml/Order/View/Info/Interceptor.php(39): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callPlugins('getAddressEditL...', Array, Array)
+#4 /home/blackwing/public_html/vendor/magento/module-sales/view/adminhtml/templ in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php on line 227
+[31-May-2019 13:31:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php:227
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Sales\Block\Adminhtml\Order\View\Info->getAddressEditLink(NULL)
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callParent('getAddressEditL...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->Magento\Framework\Interception\{closure}(NULL)
+#3 /home/blackwing/public_html/generated/code/Magento/Sales/Block/Adminhtml/Order/View/Info/Interceptor.php(39): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callPlugins('getAddressEditL...', Array, Array)
+#4 /home/blackwing/public_html/vendor/magento/module-sales/view/adminhtml/templ in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php on line 227
+[31-May-2019 14:46:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php:227
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Sales\Block\Adminhtml\Order\View\Info->getAddressEditLink(NULL)
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callParent('getAddressEditL...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->Magento\Framework\Interception\{closure}(NULL)
+#3 /home/blackwing/public_html/generated/code/Magento/Sales/Block/Adminhtml/Order/View/Info/Interceptor.php(39): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callPlugins('getAddressEditL...', Array, Array)
+#4 /home/blackwing/public_html/vendor/magento/module-sales/view/adminhtml/templ in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php on line 227
+[31-May-2019 14:46:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php:227
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Sales\Block\Adminhtml\Order\View\Info->getAddressEditLink(NULL)
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callParent('getAddressEditL...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->Magento\Framework\Interception\{closure}(NULL)
+#3 /home/blackwing/public_html/generated/code/Magento/Sales/Block/Adminhtml/Order/View/Info/Interceptor.php(39): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callPlugins('getAddressEditL...', Array, Array)
+#4 /home/blackwing/public_html/vendor/magento/module-sales/view/adminhtml/templ in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php on line 227
+[31-May-2019 14:47:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php:227
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Sales\Block\Adminhtml\Order\View\Info->getAddressEditLink(NULL)
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callParent('getAddressEditL...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->Magento\Framework\Interception\{closure}(NULL)
+#3 /home/blackwing/public_html/generated/code/Magento/Sales/Block/Adminhtml/Order/View/Info/Interceptor.php(39): Magento\Sales\Block\Adminhtml\Order\View\Info\Interceptor->___callPlugins('getAddressEditL...', Array, Array)
+#4 /home/blackwing/public_html/vendor/magento/module-sales/view/adminhtml/templ in /home/blackwing/public_html/vendor/magento/module-sales/Block/Adminhtml/Order/View/Info.php on line 227
+[01-Jun-2019 19:57:05 UTC] PHP Fatal error:  Uncaught Exception: Warning: PDOStatement::execute(): MySQL server has gone away in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php on line 228 in /home/blackwing/public_html/vendor/magento/framework/App/ErrorHandler.php:61
+Stack trace:
+#0 [internal function]: Magento\Framework\App\ErrorHandler->handler(2, 'PDOStatement::e...', '/home/blackwing...', 228, Array)
+#1 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(93): Zend_Db_Statement_Pdo->_execute(Array)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement.php(303): Magento\Framework\DB\Statement\Pdo\Mysql->_execute(Array)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#5 /home/blackwing/public_html/vendor/magento/zendframework1/libra in /home/blackwing/public_html/vendor/magento/framework/App/ErrorHandler.php on line 61
+[02-Jun-2019 01:12:25 UTC] PHP Fatal error:  Uncaught Zend_Db_Adapter_Exception: Port must be configured within host parameter (like localhost:3306 in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php:381
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(561): Magento\Framework\DB\Adapter\Pdo\Mysql->_connect()
+#1 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(596): Magento\Framework\DB\Adapter\Pdo\Mysql->_query('SELECT `session...', Array)
+#2 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(828): Magento\Framework\DB\Adapter\Pdo\Mysql->query(Object(Magento\Framework\DB\Select), Array)
+#3 /home/blackwing/public_html/vendor/magento/framework/Session/SaveHandler/DbTable.php(120): Zend_Db_Adapter_Abstract->fetchOne(Object(Magento\Framework\DB\Select), Array)
+#4 /home/blackwing/public_html/vendor/magento/framework/Session/SaveHandler.php(105): Magento\Framework\Session\SaveHandler\DbTable->write('dpu7sfeqgkjdumd in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 381
+[02-Jun-2019 22:34:51 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getRealOrderId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Order/PrintShipment.php:60
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(272): Magento\Sales\Block\Order\PrintShipment->_prepareLayout()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Layout/Generator/Block.php(150): Magento\Framework\View\Element\AbstractBlock->setLayout(Object(Magento\Framework\View\Layout\Interceptor))
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Layout/GeneratorPool.php(80): Magento\Framework\View\Layout\Generator\Block->process(Object(Magento\Framework\View\Layout\Reader\Context), Object(Magento\Framework\View\Layout\Generator\Context))
+#3 /home/blackwing/public_html/vendor/magento/framework/View/Layout.php(344): Magento\Framework\View\Layout\GeneratorPool->process(Object(Magento\Framework\View\Layout\Reader\Context), Object(Magento\Framework\View\Layout\Generator\Context))
+# in /home/blackwing/public_html/vendor/magento/module-sales/Block/Order/PrintShipment.php on line 60
+[03-Jun-2019 08:57:12 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08S01]: Communication link failure: 1047 WSREP has not yet prepared node for application use in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/blackwing/public_html/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(93): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement.php(303): Magento\Framework\DB\Statement\Pdo\Mysql->_execute(Array)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SELECT `session...', Array)
+#5 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/P in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php on line 235
+[03-Jun-2019 13:30:38 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '8imv6mnorqgrq82gvluham3t66' for key 'PRIMARY' in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/blackwing/public_html/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(93): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement.php(303): Magento\Framework\DB\Statement\Pdo\Mysql->_execute(Array)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `se...', Array)
+#5 /home/blackwing/public_html/vendor/magento/framewo in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 571
+[04-Jun-2019 16:16:35 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml:19
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(270): Magento\Framework\View\TemplateEngine\Php->render(Object(Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items\Interceptor), '/home/blackwing...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(300): Magento\Framework\View\Element\Template->fetchView('/home/blackwing...')
+#3 /home/blackwing/public_html/vendor/magento/module-backend/Block/Template.php(124): Magento\Framework\View\Element\Template->_toHtml()
+#4 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(667): Magento\Backend\Block\Template->_toHtml()
+#5 /home/blackwing/public_html/vendor/magento/framework/V in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml on line 19
+[04-Jun-2019 16:16:53 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml:19
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(270): Magento\Framework\View\TemplateEngine\Php->render(Object(Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items\Interceptor), '/home/blackwing...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(300): Magento\Framework\View\Element\Template->fetchView('/home/blackwing...')
+#3 /home/blackwing/public_html/vendor/magento/module-backend/Block/Template.php(124): Magento\Framework\View\Element\Template->_toHtml()
+#4 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(667): Magento\Backend\Block\Template->_toHtml()
+#5 /home/blackwing/public_html/vendor/magento/framework/V in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml on line 19
+[04-Jun-2019 16:17:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml:19
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(270): Magento\Framework\View\TemplateEngine\Php->render(Object(Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items\Interceptor), '/home/blackwing...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(300): Magento\Framework\View\Element\Template->fetchView('/home/blackwing...')
+#3 /home/blackwing/public_html/vendor/magento/module-backend/Block/Template.php(124): Magento\Framework\View\Element\Template->_toHtml()
+#4 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(667): Magento\Backend\Block\Template->_toHtml()
+#5 /home/blackwing/public_html/vendor/magento/framework/V in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml on line 19
+[04-Jun-2019 16:22:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml:19
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(270): Magento\Framework\View\TemplateEngine\Php->render(Object(Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items\Interceptor), '/home/blackwing...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(300): Magento\Framework\View\Element\Template->fetchView('/home/blackwing...')
+#3 /home/blackwing/public_html/vendor/magento/module-backend/Block/Template.php(124): Magento\Framework\View\Element\Template->_toHtml()
+#4 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(667): Magento\Backend\Block\Template->_toHtml()
+#5 /home/blackwing/public_html/vendor/magento/framework/V in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml on line 19
+[04-Jun-2019 16:34:25 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getRealOrderId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Order/PrintShipment.php:60
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(272): Magento\Sales\Block\Order\PrintShipment->_prepareLayout()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Layout/Generator/Block.php(150): Magento\Framework\View\Element\AbstractBlock->setLayout(Object(Magento\Framework\View\Layout\Interceptor))
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Layout/GeneratorPool.php(80): Magento\Framework\View\Layout\Generator\Block->process(Object(Magento\Framework\View\Layout\Reader\Context), Object(Magento\Framework\View\Layout\Generator\Context))
+#3 /home/blackwing/public_html/vendor/magento/framework/View/Layout.php(344): Magento\Framework\View\Layout\GeneratorPool->process(Object(Magento\Framework\View\Layout\Reader\Context), Object(Magento\Framework\View\Layout\Generator\Context))
+# in /home/blackwing/public_html/vendor/magento/module-sales/Block/Order/PrintShipment.php on line 60
+[04-Jun-2019 16:48:08 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml:19
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(270): Magento\Framework\View\TemplateEngine\Php->render(Object(Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items\Interceptor), '/home/blackwing...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(300): Magento\Framework\View\Element\Template->fetchView('/home/blackwing...')
+#3 /home/blackwing/public_html/vendor/magento/module-backend/Block/Template.php(124): Magento\Framework\View\Element\Template->_toHtml()
+#4 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(667): Magento\Backend\Block\Template->_toHtml()
+#5 /home/blackwing/public_html/vendor/magento/framework/V in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml on line 19
+[04-Jun-2019 16:58:36 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml:19
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(270): Magento\Framework\View\TemplateEngine\Php->render(Object(Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items\Interceptor), '/home/blackwing...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(300): Magento\Framework\View\Element\Template->fetchView('/home/blackwing...')
+#3 /home/blackwing/public_html/vendor/magento/module-backend/Block/Template.php(124): Magento\Framework\View\Element\Template->_toHtml()
+#4 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(667): Magento\Backend\Block\Template->_toHtml()
+#5 /home/blackwing/public_html/vendor/magento/framework/V in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml on line 19
+[05-Jun-2019 16:10:44 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getRealOrderId() on null in /home/blackwing/public_html/vendor/magento/module-sales/Block/Order/PrintShipment.php:60
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(272): Magento\Sales\Block\Order\PrintShipment->_prepareLayout()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Layout/Generator/Block.php(150): Magento\Framework\View\Element\AbstractBlock->setLayout(Object(Magento\Framework\View\Layout\Interceptor))
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Layout/GeneratorPool.php(80): Magento\Framework\View\Layout\Generator\Block->process(Object(Magento\Framework\View\Layout\Reader\Context), Object(Magento\Framework\View\Layout\Generator\Context))
+#3 /home/blackwing/public_html/vendor/magento/framework/View/Layout.php(344): Magento\Framework\View\Layout\GeneratorPool->process(Object(Magento\Framework\View\Layout\Reader\Context), Object(Magento\Framework\View\Layout\Generator\Context))
+# in /home/blackwing/public_html/vendor/magento/module-sales/Block/Order/PrintShipment.php on line 60
+[05-Jun-2019 16:51:09 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[40001]: Serialization failure: 1213 Deadlock: wsrep aborted transaction in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/blackwing/public_html/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(93): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement.php(303): Magento\Framework\DB\Statement\Pdo\Mysql->_execute(Array)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('UPDATE `session...', Array)
+#5 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(533): Ze in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 571
+[05-Jun-2019 18:40:41 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml:19
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(270): Magento\Framework\View\TemplateEngine\Php->render(Object(Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items\Interceptor), '/home/blackwing...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(300): Magento\Framework\View\Element\Template->fetchView('/home/blackwing...')
+#3 /home/blackwing/public_html/vendor/magento/module-backend/Block/Template.php(124): Magento\Framework\View\Element\Template->_toHtml()
+#4 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(667): Magento\Backend\Block\Template->_toHtml()
+#5 /home/blackwing/public_html/vendor/magento/framework/V in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml on line 19
+[05-Jun-2019 18:40:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml:19
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(270): Magento\Framework\View\TemplateEngine\Php->render(Object(Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items\Interceptor), '/home/blackwing...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(300): Magento\Framework\View\Element\Template->fetchView('/home/blackwing...')
+#3 /home/blackwing/public_html/vendor/magento/module-backend/Block/Template.php(124): Magento\Framework\View\Element\Template->_toHtml()
+#4 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(667): Magento\Backend\Block\Template->_toHtml()
+#5 /home/blackwing/public_html/vendor/magento/framework/V in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml on line 19
+[05-Jun-2019 18:42:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getParentItem() on null in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml:19
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/View/TemplateEngine/Php.php(59): include()
+#1 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(270): Magento\Framework\View\TemplateEngine\Php->render(Object(Magento\Sales\Block\Adminhtml\Order\Invoice\View\Items\Interceptor), '/home/blackwing...', Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/View/Element/Template.php(300): Magento\Framework\View\Element\Template->fetchView('/home/blackwing...')
+#3 /home/blackwing/public_html/vendor/magento/module-backend/Block/Template.php(124): Magento\Framework\View\Element\Template->_toHtml()
+#4 /home/blackwing/public_html/vendor/magento/framework/View/Element/AbstractBlock.php(667): Magento\Backend\Block\Template->_toHtml()
+#5 /home/blackwing/public_html/vendor/magento/framework/V in /home/blackwing/public_html/app/code/Webfitters/Checkout/view/adminhtml/templates/invoice/view/items.phtml on line 19
+[05-Jun-2019 19:57:04 UTC] PHP Fatal error:  Uncaught Exception: Warning: PDOStatement::execute(): MySQL server has gone away in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php on line 228 in /home/blackwing/public_html/vendor/magento/framework/App/ErrorHandler.php:61
+Stack trace:
+#0 [internal function]: Magento\Framework\App\ErrorHandler->handler(2, 'PDOStatement::e...', '/home/blackwing...', 228, Array)
+#1 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#2 /home/blackwing/public_html/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(93): Zend_Db_Statement_Pdo->_execute(Array)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement.php(303): Magento\Framework\DB\Statement\Pdo\Mysql->_execute(Array)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#5 /home/blackwing/public_html/vendor/magento/zendframework1/libra in /home/blackwing/public_html/vendor/magento/framework/App/ErrorHandler.php on line 61
+[05-Jun-2019 19:57:12 UTC] PHP Fatal error:  Uncaught Zend_Db_Adapter_Exception: Port must be configured within host parameter (like localhost:3306 in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php:381
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(561): Magento\Framework\DB\Adapter\Pdo\Mysql->_connect()
+#1 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(596): Magento\Framework\DB\Adapter\Pdo\Mysql->_query('SELECT `session...', Array)
+#2 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(828): Magento\Framework\DB\Adapter\Pdo\Mysql->query(Object(Magento\Framework\DB\Select), Array)
+#3 /home/blackwing/public_html/vendor/magento/framework/Session/SaveHandler/DbTable.php(120): Zend_Db_Adapter_Abstract->fetchOne(Object(Magento\Framework\DB\Select), Array)
+#4 /home/blackwing/public_html/vendor/magento/framework/Session/SaveHandler.php(105): Magento\Framework\Session\SaveHandler\DbTable->write('keb060dehlosp6a in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 381
+[05-Jun-2019 19:57:12 UTC] PHP Fatal error:  Uncaught Zend_Db_Adapter_Exception: Port must be configured within host parameter (like localhost:3306 in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php:381
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(861): Magento\Framework\DB\Adapter\Pdo\Mysql->_connect()
+#1 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(931): Zend_Db_Adapter_Abstract->quote('', NULL)
+#2 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(1453): Zend_Db_Adapter_Abstract->quoteInto('session_id = :s...', '', NULL, NULL)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Select.php(1031): Magento\Framework\DB\Adapter\Pdo\Mysql->quoteInto('session_id = :s...', '', NULL)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Select.php(496): Zend_Db_Select->_where('session_id = :s...', '', NULL, true)
+#5 /home/blackwing/public_ht in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 381
+[05-Jun-2019 19:57:17 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08S01]: Communication link failure: 1047 WSREP has not yet prepared node for application use in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/blackwing/public_html/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(93): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement.php(303): Magento\Framework\DB\Statement\Pdo\Mysql->_execute(Array)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `se...', Array)
+#5 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/P in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php on line 235
+[05-Jun-2019 19:57:17 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[08S01]: Communication link failure: 1047 WSREP has not yet prepared node for application use in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/blackwing/public_html/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(93): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement.php(303): Magento\Framework\DB\Statement\Pdo\Mysql->_execute(Array)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SELECT `session...', Array)
+#5 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/P in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php on line 235
+[05-Jun-2019 19:57:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor::goBack() in /home/blackwing/public_html/app/code/Bss/AddMultipleProducts/Controller/Cart/Add.php:106
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/App/Action/Action.php(107): Bss\AddMultipleProducts\Controller\Cart\Add->execute()
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Framework\App\Action\Action->dispatch(Object(Magento\Framework\App\Request\Http))
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor->___callParent('dispatch', Array)
+#3 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor->Magento\Framework\Interception\{closure}(Object(Magento\Framework\App\Request\Http))
+#4 /home/blackwing/public_html/generated/code/Bss/AddMultipleProducts/Controlle in /home/blackwing/public_html/app/code/Bss/AddMultipleProducts/Controller/Cart/Add.php on line 106
+[07-Jun-2019 09:51:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor::goBack() in /home/blackwing/public_html/app/code/Bss/AddMultipleProducts/Controller/Cart/Add.php:106
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/App/Action/Action.php(107): Bss\AddMultipleProducts\Controller\Cart\Add->execute()
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Framework\App\Action\Action->dispatch(Object(Magento\Framework\App\Request\Http))
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor->___callParent('dispatch', Array)
+#3 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor->Magento\Framework\Interception\{closure}(Object(Magento\Framework\App\Request\Http))
+#4 /home/blackwing/public_html/generated/code/Bss/AddMultipleProducts/Controlle in /home/blackwing/public_html/app/code/Bss/AddMultipleProducts/Controller/Cart/Add.php on line 106
+[09-Jun-2019 09:29:51 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'sq4dsvtdnd3u82ia377fd9hjp2' for key 'PRIMARY' in /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /home/blackwing/public_html/vendor/magento/framework/DB/Statement/Pdo/Mysql.php(93): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Statement.php(303): Magento\Framework\DB\Statement\Pdo\Mysql->_execute(Array)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('INSERT INTO `se...', Array)
+#5 /home/blackwing/public_html/vendor/magento/framewo in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 571
+[09-Jun-2019 10:16:04 UTC] PHP Fatal error:  Uncaught Zend_Db_Adapter_Exception: Port must be configured within host parameter (like localhost:3306 in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php:381
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(861): Magento\Framework\DB\Adapter\Pdo\Mysql->_connect()
+#1 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Adapter/Abstract.php(931): Zend_Db_Adapter_Abstract->quote('', NULL)
+#2 /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(1453): Zend_Db_Adapter_Abstract->quoteInto('session_id = :s...', '', NULL, NULL)
+#3 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Select.php(1031): Magento\Framework\DB\Adapter\Pdo\Mysql->quoteInto('session_id = :s...', '', NULL)
+#4 /home/blackwing/public_html/vendor/magento/zendframework1/library/Zend/Db/Select.php(496): Zend_Db_Select->_where('session_id = :s...', '', NULL, true)
+#5 /home/blackwing/public_ht in /home/blackwing/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 381
+[10-Jun-2019 14:33:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor::goBack() in /home/blackwing/public_html/app/code/Bss/AddMultipleProducts/Controller/Cart/Add.php:106
+Stack trace:
+#0 /home/blackwing/public_html/vendor/magento/framework/App/Action/Action.php(107): Bss\AddMultipleProducts\Controller\Cart\Add->execute()
+#1 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(58): Magento\Framework\App\Action\Action->dispatch(Object(Magento\Framework\App\Request\Http))
+#2 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(138): Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor->___callParent('dispatch', Array)
+#3 /home/blackwing/public_html/vendor/magento/framework/Interception/Interceptor.php(153): Bss\AddMultipleProducts\Controller\Cart\Add\Interceptor->Magento\Framework\Interception\{closure}(Object(Magento\Framework\App\Request\Http))
+#4 /home/blackwing/public_html/generated/code/Bss/AddMultipleProducts/Controlle in /home/blackwing/public_html/app/code/Bss/AddMultipleProducts/Controller/Cart/Add.php on line 106

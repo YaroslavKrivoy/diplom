@@ -1,0 +1,92 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_AddMultipleProducts
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php /** @var $block \Bss\AddMultipleProducts\Block\ConfigData */ ?>
+<?php
+    $class_apply = explode(',',$block->displayAddmunltiple());
+    $priceIncludesTax = $block->priceIncludesTax();
+    $group_Id = $block->getGroupCustomerId();
+?>
+<?php if ($block->backGroundStick()!=''): ?>
+    <style>
+        .ad-mt-stick{
+            background: url(<?php echo $block->getUrlMediaStick().'addmunltipleproduct/stick/'.$block->backGroundStick(); ?>);
+        }
+    </style>
+<?php endif ?>
+
+<?php if ($block->isEnabled() && count($class_apply) > 0) : ?>
+<?php if ( is_array($block->getCustomerGroup()) && (in_array(32000,$block->getCustomerGroup()) || in_array($group_Id,$block->getCustomerGroup())) ): ?>
+<div id="bss_ajaxmuntiple_cart_popup"></div>
+<input type="hidden" name="" id="currency-add" value="<?php echo $block->getCurrentCurrency(); ?>">
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Bss_AddMultipleProducts/js/addmultipleproducts": {
+                "jsonClassApply": <?php echo json_encode($class_apply,JSON_FORCE_OBJECT) ?>,
+                "showCheckbox": <?php echo $block->showSelectProduct()? $block->showSelectProduct() : 'false'  ?>,
+                "showStick": <?php echo $block->showStick()? $block->showStick() : 'false' ?>,
+                "positionBT": <?php echo $block->positionButton()? $block->positionButton() : '0' ?>,
+                "urlAddToCart": "<?php echo $block->geturlAddToCart(); ?>",
+                "priceIncludesTax": <?php echo $priceIncludesTax? $priceIncludesTax : 'false' ?>
+            }
+        }
+    }
+</script>
+<?php endif ?>
+<?php endif ?>
+<!-- form -->
+<script id="form-multiple-add" type="text/x-magento-template">
+    <form action="<?php echo $block->geturlAddMultipleToCart() ?>" method="post" id="<%- data.id %>" name="<%- data.name %>" class="<%- data.class %>">
+        <div class="add-option" style="display: none;">
+             <!-- content -->
+        </div>
+    </form>
+</script>
+<!-- input qty -->
+<script id="qty-multiple-add" type="text/x-magento-template">
+    <input type="text" class="qty-m-c" data-group="<%- data.group %>" name="qty" placeholder="<?php echo $block->defaultQty()?>" value="<?php echo $block->defaultQty()?>">
+</script>
+<!-- check box -->
+<script id="checkbox-multiple-add" type="text/x-magento-template">
+    <?php if ($block->showSelectProduct()): ?>
+        <input type="checkbox" name="product-select[]" id="<%- data.id %>" data-froma="<%- data.froma %>" class="<%- data.class %>" value="<%- data.value %>">
+    <?php else: ?>
+        <input type="hidden" name="product-select[]" id="<%- data.id %>" data-froma="<%- data.froma %>" class="<%- data.class %>" value="<%- data.value %>">
+    <?php endif ?>
+</script>
+<!-- button add all -->
+<script id="button-multiple-add" type="text/x-magento-template">
+    <div class="button-bs-ad">
+    <?php if ($block->showSelectProduct()): ?>
+        <input type="checkbox" name="addall" class="add-all-product" value="">
+        <label for="checkall" style="margin-right: 15px;">
+            <?php echo __('Check All') ?>
+        </label>
+    <?php endif ?>
+        <a href="#" title="<?php echo __('Add selected to cart') ?>" id="<%- data.id %>" data-froma="<%- data.froma %>" class="addmanytocart">
+            <span><?php echo __('Add selected to cart') ?></span>
+            <?php if ($block->showTotal() == 1): ?>
+                <span class="total_products">(<?php echo __('Total Products') ?>: <span>0</span>)</span>
+            <?php endif ?>
+            <?php if ($block->showTotal() == 2): ?>
+                <span class="total_qty">(<?php echo __('Total Qty') ?>: <span>0</span>)</span>
+            <?php endif ?>
+        </a>
+    </div>
+</script>

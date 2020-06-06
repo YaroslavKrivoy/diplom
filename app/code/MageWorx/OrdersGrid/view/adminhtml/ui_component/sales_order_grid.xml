@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <dataSource name="sales_order_grid_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">MageWorx_OrdersGrid/js/grid/orders-grid-massaction</item>
+                </item>
+            </argument>
+            <action name="additional">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">additional</item>
+                        <item name="label" xsi:type="string" translate="true">Additional</item>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="configurableObject">
+                    <argument name="class" xsi:type="string">MageWorx\OrdersGrid\Ui\Component\MassAction\Additional</argument>
+                </argument>
+            </action>
+            <action name="notifyCustomer">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">notifyCustomer</item>
+                        <item name="label" xsi:type="string" translate="true">Notify Customer</item>
+                        <item name="url" xsi:type="url" path="mageworx_ordersgrid/order_grid/massShipInvoiceCapture"/>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="configurableObject">
+                    <argument name="class" xsi:type="string">MageWorx\OrdersGrid\Ui\Component\MassAction\NotifyCustomer</argument>
+                    <argument name="data" xsi:type="array">
+                        <item name="urlPath" xsi:type="string">mageworx_ordersgrid/order_grid/massShipInvoiceCapture</item>
+                    </argument>
+                </argument>
+            </action>
+            <action name="doNotNotifyCustomer">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">doNotNotifyCustomer</item>
+                        <item name="label" xsi:type="string" translate="true">Do Not Notify Customer</item>
+                        <item name="url" xsi:type="url" path="mageworx_ordersgrid/order_grid/massShipInvoiceCapture"/>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="configurableObject">
+                    <argument name="class" xsi:type="string">MageWorx\OrdersGrid\Ui\Component\MassAction\DoNotNotifyCustomer</argument>
+                    <argument name="data" xsi:type="array">
+                        <item name="urlPath" xsi:type="string">mageworx_ordersgrid/order_grid/massShipInvoiceCapture</item>
+                    </argument>
+                </argument>
+            </action>
+        </massaction>
+        <columnsControls name="columns_controls">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsData" xsi:type="array">
+                        <item name="provider" xsi:type="string">sales_order_grid.sales_order_grid.sales_order_columns</item>
+                    </item>
+                    <item name="component" xsi:type="string">MageWorx_OrdersGrid/js/grid/controls</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                    <item name="tabsData" xsi:type="array">
+                        <item name="unassigned" xsi:type="string">Order</item>
+                        <item name="shipping" xsi:type="string">Shipping</item>
+                        <item name="billing" xsi:type="string">Billing</item>
+                        <item name="customer" xsi:type="string">Customer</item>
+                    </item>
+                </item>
+            </argument>
+        </columnsControls>
+    </listingToolbar>
+    <columns name="sales_order_columns">
+        <!-- Custom columns: -->
+        <column name="coupon_code">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Coupon Code</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">400</item>
+                </item>
+            </argument>
+        </column>
+        <column name="customer_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Id</item>
+                    <item name="tab" xsi:type="string">customer</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">410</item>
+                </item>
+            </argument>
+        </column>
+        <column name="weight">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Weight</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">420</item>
+                </item>
+            </argument>
+        </column>
+        <column name="subtotal_purchased" class="Magento\Sales\Ui\Component\Listing\Column\PurchasedPrice">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Subtotal (Purchased)</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">430</item>
+                </item>
+            </argument>
+        </column>
+        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sorting" xsi:type="string">desc</item>
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="label" xsi:type="string" translate="true">Modified</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">440</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Tax columns -->
+        <column name="applied_tax_code">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Tax Code</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">450</item>
+                </item>
+            </argument>
+        </column>
+        <column name="applied_tax_percent">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Tax Percent</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">460</item>
+                </item>
+            </argument>
+        </column>
+        <column name="applied_tax_amount" class="Magento\Sales\Ui\Component\Listing\Column\PurchasedPrice">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Tax Amount</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">470</item>
+                </item>
+            </argument>
+        </column>
+        <column name="applied_tax_base_amount" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Tax Amount (Base)</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">480</item>
+                </item>
+            </argument>
+        </column>
+        <column name="applied_tax_base_real_amount" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Tax Real Amount (Base)</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">490</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Invoices column -->
+        <column name="invoices">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">MageWorx_OrdersGrid/js/grid/cells/comaSeparated</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Invoices</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">500</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Shipment columns -->
+        <column name="shipments">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">MageWorx_OrdersGrid/js/grid/cells/comaSeparated</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipments</item>
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">510</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Shipment Tracking columns -->
+        <column name="tracking_number">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">MageWorx_OrdersGrid/js/grid/cells/comaSeparated</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Tracking Numbers</item>
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">520</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Product columns -->
+        <column name="product_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">MageWorx_OrdersGrid/js/grid/cells/comaSeparated</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Product Name</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">530</item>
+                </item>
+            </argument>
+        </column>
+        <column name="product_sku">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">MageWorx_OrdersGrid/js/grid/cells/comaSeparated</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">SKU</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">540</item>
+                </item>
+            </argument>
+        </column>
+        <column name="product_thumbnail" class="MageWorx\OrdersGrid\Ui\Component\Listing\Columns\ProductThumbnail">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">MageWorx_OrdersGrid/js/grid/cells/thumbnails</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="label" xsi:type="string" translate="true">Product Thumbnail</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">550</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Billing address columns -->
+        <column name="billing_fax">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Billing Fax</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">560</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_region">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Billing Region</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">570</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_postcode">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Billing Postcode</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">580</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_city">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Billing City</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">590</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_telephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Billing Telephone</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">600</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_country_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Locale\Country</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Billing Country</item>
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">610</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Shipping address columns -->
+        <column name="shipping_fax">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping Fax</item>
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">620</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_region">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping Region</item>
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">630</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_postcode">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping Postcode</item>
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">640</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_city">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping City</item>
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">650</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_telephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping Telephone</item>
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">660</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_country_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Locale\Country</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping Country</item>
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">670</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Standard columns config START -->
+        <!-- BASE TAB: -->
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">unassigned</item>
+                    <item name="sortOrder" xsi:type="number">310</item>
+                </item>
+            </argument>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">unassigned</item>
+                    <item name="sortOrder" xsi:type="number">315</item>
+                </item>
+            </argument>
+        </column>
+        <column name="base_grand_total" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">unassigned</item>
+                    <item name="sortOrder" xsi:type="number">320</item>
+                </item>
+            </argument>
+        </column>
+        <column name="grand_total" class="Magento\Sales\Ui\Component\Listing\Column\PurchasedPrice">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">unassigned</item>
+                    <item name="sortOrder" xsi:type="number">325</item>
+                </item>
+            </argument>
+        </column>
+        <column name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Sales\Ui\Component\Listing\Column\Status\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">unassigned</item>
+                    <item name="sortOrder" xsi:type="number">330</item>
+                </item>
+            </argument>
+        </column>
+        <column name="subtotal" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">unassigned</item>
+                    <item name="sortOrder" xsi:type="number">335</item>
+                </item>
+            </argument>
+        </column>
+        <column name="total_refunded" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">unassigned</item>
+                    <item name="sortOrder" xsi:type="number">340</item>
+                </item>
+            </argument>
+        </column>
+        <!-- CUSTOMER TAB: -->
+        <column name="customer_email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">customer</item>
+                    <item name="sortOrder" xsi:type="number">345</item>
+                </item>
+            </argument>
+        </column>
+        <column name="customer_group">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">customer</item>
+                    <item name="sortOrder" xsi:type="number">350</item>
+                </item>
+            </argument>
+        </column>
+        <column name="customer_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">customer</item>
+                    <item name="sortOrder" xsi:type="number">355</item>
+                </item>
+            </argument>
+        </column>
+        <!-- SHIPPING TAB: -->
+        <column name="shipping_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="sortOrder" xsi:type="number">360</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_address">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="sortOrder" xsi:type="number">365</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_information">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="sortOrder" xsi:type="number">370</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_and_handling">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">shipping</item>
+                    <item name="sortOrder" xsi:type="number">375</item>
+                </item>
+            </argument>
+        </column>
+        <!-- BILLING TAB: -->
+        <column name="payment_method">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="sortOrder" xsi:type="number">380</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_address">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="sortOrder" xsi:type="number">385</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="tab" xsi:type="string">billing</item>
+                    <item name="sortOrder" xsi:type="number">390</item>
+                </item>
+            </argument>
+        </column>
+        <!-- Standard columns config ENDS -->
+    </columns>
+</listing>

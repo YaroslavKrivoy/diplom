@@ -1,0 +1,86 @@
+<?php
+/**
+ * Copyright © 2018 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /** @var \MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Payment\Method $block */ ?>
+<?php if ($block->hasMethods()) : ?>
+    <div id="order-payment-method-choose">
+        <dl class="admin__payment-methods">
+            <?php
+            $_methods      = $block->getMethods();
+            $_methodsCount = count($_methods);
+            $_counter      = 0;
+            ?>
+            <?php foreach ($_methods as $_method) :
+                $_code = $_method->getCode();
+                $_counter++;
+                ?>
+                <dt class="admin__field-option">
+                    <?php if ($_methodsCount > 1) : ?>
+                        <input id="p_method_<?= $block->escapeHtml($_code); ?>"
+                               value="<?= $block->escapeHtml($_code); ?>"
+                               type="radio" name="payment[method]"
+                               title="<?= $block->escapeHtml($_method->getTitle()); ?>"
+                            <?php if ($block->getSelectedMethodCode() == $_code) : ?>
+                                checked="checked"
+                            <?php endif; ?>
+                            <?php $className = ($_counter == $_methodsCount) ? ' validate-one-required-by-name' : ''; ?>
+                               class="admin__control-radio<?= $block->escapeHtml($className); ?>"/>
+                    <?php else : ?>
+                        <span class="no-display">
+                <input id="p_method_<?= $block->escapeHtml($_code); ?>"
+                       value="<?= $block->escapeHtml($_code); ?>"
+                       type="radio"
+                       name="payment[method]" class="admin__control-radio"
+                       checked="checked"/>
+            </span>
+                    <?php endif; ?>
+                    <?php if ($_code == 'mageworx_ordereditor_payment_method') : ?>
+                        <?php $paymentTitle = $block->getPaymentTitle($_code);
+                        $paymentTitle = !empty($paymentTitle) ? $paymentTitle : $_method->getTitle(); ?>
+                        <label class="admin__field-label"
+                               id="mageworx_ordereditor_payment_method_label"
+                               for="p_method_<?= $block->escapeHtml($_code); ?>">
+                            <input type="text"
+                                   id="mageworx_ordereditor_payment_method"
+                                   name="payment[mageworx_ordereditor_payment_method][payment_title]"
+                                   value="<?= $block->escapeHtml($paymentTitle); ?> "/>
+                        </label>
+                    <?php else : ?>
+                        <label class="admin__field-label" for="p_method_<?= $block->escapeHtml($_code); ?>">
+                            <?= $block->escapeHtml($_method->getTitle()) ?>
+                        </label>
+                        <?php if ($_code == 'authorizenet_directpost'):
+                            echo $block->getChildHtml('authorizenet_method');?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </dt>
+                <?php if ($_code != 'authorizenet_directpost'): ?>
+                <dd class="admin__payment-method-wrapper">
+                    <?= /* @noEscape */
+                    $block->getChildHtml('payment.method.' . $_code) ?>
+                </dd>
+            <?php endif; ?>
+            <?php endforeach; ?>
+        </dl>
+    </div>
+    <script>
+        require([
+            'jquery'
+        ], function($) {
+            var value = $('.admin__control-radio:checked').attr('value');
+            $('#p_method_webfitters_terms').parent().hide();
+            $('#p_method_pmclain_authorizenetcim_vault').parent().hide();
+            $('#payment_form_' + value).show();
+            $('.admin__control-radio').on("change",function () {
+                value = $('.admin__control-radio:checked').attr('value');
+                $('.admin__fieldset.payment-method').hide();
+                $('#payment_form_' + value).show();
+            })
+        });
+    </script>
+<?php else : ?>
+    <div class="admin__message-empty"><?= $block->escapeHtml(__('No Payment Methods')); ?></div>
+<?php endif; ?>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.details">
+            <block class="Webfitters\Custom\Block\NutritionBlock" name="nutrition.tab" as="nutrition" template="Webfitters_Custom::product/nutrition.phtml" group="detailed_info" />
+            <block class="Webfitters\Custom\Block\RecipeBlock" name="related.recipe.tab" template="Webfitters_Custom::recipe.phtml" group="detailed_info" />
+        </referenceBlock>
+        <referenceBlock name="product.info.media.image">
+        	<action method="setTemplate">
+        		<argument name="template" xsi:type="string">Webfitters_Custom::product/view/gallery.phtml</argument>
+        	</action>
+        </referenceBlock>
+        <referenceBlock name="breadcrumbs" template="Magento_Theme::html/breadcrumbs.phtml" />
+        <move element="product.info.type" destination="product.info.main" before="product.info.price" />
+        <!--<referenceContainer name="product.info.price">-->
+            <!--<block class="Magento\Catalog\Block\Product\View" name="product.info.weight" template="Webfitters_Custom::product/weight.phtml" after="-" />-->
+        <!--</referenceContainer>-->
+        <move element="product.info.sku" destination="product.info.main" before="product.info.price" />
+    </body>
+</page>

@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+    <head>
+        <css src="Mageplaza_Affiliate::css/style.css"/>
+    </head>
+    <body>
+        <attribute name="class" value="account"/>
+        <referenceContainer name="sidebar.main">
+            <block class="Magento\Framework\View\Element\Template" name="affiliate_navigation_block" template="Magento_Theme::html/collapsible.phtml" before="-">
+                <arguments>
+                    <argument name="block_title" translate="true" xsi:type="string">Account Dashboard</argument>
+                    <argument name="block_css" xsi:type="string">block-collapsible-nav</argument>
+                </arguments>
+                <block class="Mageplaza\Affiliate\Block\Navigation" name="affiliate_navigation" before="-">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">nav items</argument>
+                    </arguments>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="affiliate-navigation-home-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Home</argument>
+                            <argument name="path" xsi:type="string">affiliate/</argument>
+                            <argument name="sort_order" xsi:type="string">0</argument>
+                            <argument name="active" xsi:type="string">both</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="affiliate-navigation-signup-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Signup</argument>
+                            <argument name="path" xsi:type="string">affiliate/account/signup/</argument>
+                            <argument name="sort_order" xsi:type="string">5</argument>
+                            <argument name="active" xsi:type="string">guess</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="affiliate-navigation-credit-link">
+                        <arguments>
+                            <argument name="label" xsi:type="helper" helper="Mageplaza\Affiliate\Helper\Data::getCreditTitle" />
+                            <argument name="path" xsi:type="string">affiliate/account/</argument>
+                            <argument name="sort_order" xsi:type="string">10</argument>
+                            <argument name="active" xsi:type="string">login</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="affiliate-navigation-banner-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Banners</argument>
+                            <argument name="path" xsi:type="string">affiliate/account/banner</argument>
+                            <argument name="sort_order" xsi:type="string">25</argument>
+                            <argument name="active" xsi:type="string">login</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="affiliate-navigation-withdraw-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">My Withdrawal</argument>
+                            <argument name="path" xsi:type="string">affiliate/account/withdraw</argument>
+                            <argument name="sort_order" xsi:type="string">30</argument>
+                            <argument name="active" xsi:type="string">login</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="affiliate-navigation-setting-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Setting</argument>
+                            <argument name="path" xsi:type="string">affiliate/account/setting</argument>
+                            <argument name="sort_order" xsi:type="string">90</argument>
+                            <argument name="active" xsi:type="string">login</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Link\Current" name="affiliate-navigation-back-link">
+                        <arguments>
+                            <argument name="label" xsi:type="string" translate="true">Back</argument>
+                            <argument name="path" xsi:type="string">customer/account/</argument>
+                            <argument name="sort_order" xsi:type="string">100</argument>
+                            <argument name="active_for_guess" xsi:type="string">both</argument>
+                        </arguments>
+                    </block>
+                </block>
+            </block>
+        </referenceContainer>
+        <move element="page.main.title" destination="content.top" before="-"/>
+    </body>
+</page>

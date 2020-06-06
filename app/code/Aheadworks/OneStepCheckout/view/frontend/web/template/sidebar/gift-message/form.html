@@ -1,0 +1,26 @@
+<div class="gift-message-form item-options">
+    <fieldset class="fieldset">
+        <!-- ko foreach: {data: elems, as: 'element'} -->
+        <!-- ko if: hasTemplate() -->
+        <!-- ko template: getTemplate() -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+    </fieldset>
+</div>
+<div class="actions-toolbar">
+    <div class="primary">
+        <button type="button" class="action primary action-update" data-bind="
+                    attr: {title: $t('Update')},
+                    click: $data.submitOptions.bind($data)">
+            <span data-bind="i18n: 'Save'"></span>
+        </button>
+    </div>
+    <div class="secondary">
+        <button type="button" class="action secondary action-cancel" visible="!isNew()" data-bind="
+                    attr: {title: $t('Cancel')},
+                    click: $data.cancel.bind($data)">
+            <span data-bind="i18n: 'Cancel'"></span>
+        </button>
+    </div>
+</div>

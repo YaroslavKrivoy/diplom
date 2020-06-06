@@ -1,0 +1,20 @@
+<div class="row featured-category-row">
+<?php foreach($this->getCategories() as $category): ?>
+	<div class="col-md-2">
+		<div class="featured-category" onclick="window.location.href='<?php echo $category->getUrl(); ?>';">
+			<div class="category-icon">
+				<a class="category-image" href="<?php echo $category->getUrl(); ?>"><img src="<?php echo $category->getImageUrl(); ?>" alt="<?php echo $category->getName(); ?>" /></a>
+				<a class="category-heading" href="<?php echo $category->getUrl(); ?>"><?php echo $category->getName(); ?></a>
+			</div>
+			<div class="overlay">
+				<div class="overlay-border"></div>
+				<div class="overlay-text">
+					<img src="<?php echo $category->getImageUrl(); ?>" alt="<?php echo $category->getName(); ?>" />
+					<div><?php echo $category->getFeaturedDescription(); ?></div>
+					<a href="<?php echo $category->getUrl(); ?>">Shop Now</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endforeach; ?>
+</div>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza_Affiliate extension
+ *                     NOTICE OF LICENSE
+ * 
+ *                     This source file is subject to the Mageplaza License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     https://www.mageplaza.com/LICENSE.txt
+ * 
+ *                     @category  Mageplaza
+ *                     @package   Mageplaza_Affiliate
+ *                     @copyright Copyright (c) 2016
+ *                     @license   https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Mageplaza\Affiliate\Block\Adminhtml\Group\Create" name="mageplaza_affiliate_group_create"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Mageplaza\Affiliate\Block\Adminhtml\Group\Create\Tabs" name="mageplaza_affiliate_group_tabs">
+                <block class="Mageplaza\Affiliate\Block\Adminhtml\Group\Create\Tab\Group" name="affiliate_group_create_tab_group"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">group</argument>
+                    <argument name="block" xsi:type="string">affiliate_group_create_tab_group</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

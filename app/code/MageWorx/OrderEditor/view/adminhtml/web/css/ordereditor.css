@@ -1,0 +1,98 @@
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+.mw-order-editor-order-item {
+    width: 100px;
+}
+
+.mw-order-editor-order-item.qty_input {
+    width: 35px;
+}
+
+.mw-order-editor-order-item.total_input {
+    width: 70px;
+}
+
+.mw-order-editor-order-item.disabled {
+    background: #DDDDDD none repeat scroll 0 0;
+}
+
+.mw-order-editor-order-item.cancelled {
+    background: #DDDDDD none repeat scroll 0 0;
+}
+
+#ordereditor-search-products .action-configure.disabled {
+    display: none !important;
+}
+
+#ordereditor-search-products .action-configure {
+    float: right;
+}
+
+#ordereditor-search-products .admin__page-section-title .actions {
+    float: right;
+}
+
+.new-totals {
+    background-color: #E8FAD7
+}
+
+#shipping-result-form .order-totals {
+    width: 100%;
+}
+
+.back-to-stock-table td {
+    padding: 3px 5px;
+    border: none;
+}
+
+.removed_item * {
+    color: #cccccc;
+}
+
+.removed_item td.col-actions * {
+    color: black;
+}
+
+.order-shipping-method {
+    position: relative;
+}
+
+#order-shipping-method-choose .edit_price_form {
+    margin-top: 3px
+}
+
+#order-shipping-method-choose .edit_price_form input {
+    width: 55px;
+}
+
+#order-shipping-method-choose .edit_price_form .price_incl_tax {
+    display: block;
+    margin-top: 3px;
+}
+
+#mageworx_ordereditor_payment_method {
+    display: block;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#mageworx_ordereditor_payment_method_label {
+    display: block;
+    width: 100%;
+}
+
+#payment_form_authorizenet_directpost {
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+    .order-shipping-method {
+        float: left;
+        width: calc((100%) * .5 - 30px);
+    }
+}

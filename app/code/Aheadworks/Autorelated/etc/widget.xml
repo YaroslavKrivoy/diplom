@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="aw_arp_widget" class="Aheadworks\Autorelated\Block\Widget\Related">
+        <label translate="true">Automatic Related Products by AheadWorks</label>
+        <description translate="true">Contents of a Automatic Related Products</description>
+        <parameters>
+            <parameter name="rule_id" xsi:type="block" required="true" visible="true">
+                <label translate="true">Rule</label>
+                <block class="Aheadworks\Autorelated\Block\Adminhtml\Widget\Rule\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Rule...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

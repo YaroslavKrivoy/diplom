@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Sales::sales">
+                    <resource id="Infomodus_Upslabel::upslabel_acl" title="Infomodus UPS Shipping Labels"
+                              sortOrder="30">
+                        <resource id="Infomodus_Upslabel::items" title="View labels" sortOrder="5">
+                            <resource id="Infomodus_Upslabel::create" title="Create label" sortOrder="5"/>
+                            <resource id="Infomodus_Upslabel::delete" title="Delete label" sortOrder="10"/>
+                        </resource>
+                        <resource id="Infomodus_Upslabel::account_items" title="View accounts" sortOrder="10">
+                            <resource id="Infomodus_Upslabel::account_create" title="Create account" sortOrder="5"/>
+                            <resource id="Infomodus_Upslabel::account_delete" title="Delete account" sortOrder="10"/>
+                        </resource>
+                        <resource id="Infomodus_Upslabel::boxes_items" title="View box" sortOrder="10">
+                            <resource id="Infomodus_Upslabel::boxes_create" title="Create box" sortOrder="5"/>
+                            <resource id="Infomodus_Upslabel::boxes_delete" title="Delete box" sortOrder="10"/>
+                        </resource>
+                        <resource id="Infomodus_Upslabel::address_items" title="View address" sortOrder="15">
+                            <resource id="Infomodus_Upslabel::address_create" title="Create address" sortOrder="5"/>
+                            <resource id="Infomodus_Upslabel::address_delete" title="Delete address" sortOrder="10"/>
+                        </resource>
+                        <resource id="Infomodus_Upslabel::pickup_items" title="View pickups" sortOrder="20">
+                            <resource id="Infomodus_Upslabel::pickup_create" title="Create pickup" sortOrder="5"/>
+                            <resource id="Infomodus_Upslabel::pickup_delete" title="Delete pickup" sortOrder="10"/>
+                        </resource>
+                        <resource id="Infomodus_Upslabel::conformity_items" title="View compliance methods"
+                                  sortOrder="25">
+                            <resource id="Infomodus_Upslabel::conformity_create" title="Create compliance method"
+                                      sortOrder="5"/>
+                            <resource id="Infomodus_Upslabel::conformity_delete" title="Delete compliance method"
+                                      sortOrder="10"/>
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magento_Sales::config_sales">
+                                <resource id="Infomodus_Upslabel::upslabel" title="UPS Shipping Labels" sortOrder="5"/>
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

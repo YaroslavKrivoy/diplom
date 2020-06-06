@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="categorycreate" xsi:type="object">Webfitters\Custom\Console\Commands\CategoryCreate</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Contact\Controller\Index\Post">
+    	<plugin name="webfitters_custom_contact_redirect" type="Webfitters\Custom\Plugin\Contact\PostPlugin" sortOrder="50"/>
+  	</type>
+	<type name="Magento\Catalog\Controller\Adminhtml\Product\Save">
+    	<plugin name="webfitters_custom_product_save_redirect" type="Webfitters\Custom\Plugin\Admin\Product\SavePlugin" sortOrder="50"/>
+  	</type>
+  	<preference for="Magento\Catalog\Model\Product\Image" type="Webfitters\Custom\Model\Product\Image" />
+  	<preference for="Magento\Email\Model\Template\Filter" type="Webfitters\Custom\Model\Template\Filter" />
+  	<preference for="Magento\Sales\Model\ResourceModel\Order\Customer\Collection" type="Webfitters\Custom\Model\ResourceModel\Order\Customer\Collection" />
+  	<type name="Magento\Catalog\Block\Product\View">
+	    <plugin name="add_catalog_breadcrumb_block" type="Webfitters\Custom\Plugin\Catalog\Block\Breadcrumbs" />
+	</type>
+</config>

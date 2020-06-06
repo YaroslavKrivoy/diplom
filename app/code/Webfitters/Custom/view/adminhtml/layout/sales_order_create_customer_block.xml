@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.customer.grid.columnSet">
+            <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.customer.grid.columnSet.group" as="group">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Customer Group</argument>
+                    <argument name="index" xsi:type="string">customer_group_name</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.customer.grid.columnSet.company" as="company">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Company</argument>
+                    <argument name="index" xsi:type="string">company</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageWorx_OrderEditor::css/ordereditor.css"/>
+    </head>
+    <referenceBlock name="content">
+        <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Wrapper" template="wrapper.phtml" name="mageworx_ordereditor_wrapper"/>
+    </referenceBlock>
+    <referenceBlock name="order_items">
+        <action method="setTemplate">
+            <argument name="template" xsi:type="string">MageWorx_OrderEditor::grid/items.phtml</argument>
+        </action>
+        <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Grid\Thumbnail" name="column_thumbnail" template="grid/column/thumbnail.phtml" group="column"/>
+    </referenceBlock>
+</page>

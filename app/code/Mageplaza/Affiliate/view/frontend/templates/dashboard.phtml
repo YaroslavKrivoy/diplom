@@ -1,0 +1,128 @@
+<div class="page-content">
+    <?php
+	if ($blockId = $block->getAffiliateConfig('general/page/welcome')) {
+		echo $block->loadCmsBlock($blockId);
+	} ?>
+</div>
+<?php
+$flag             = false;
+$campaigns        = $block->getCampaigns();
+$showForGuest     = $block->showForGuest($campaigns);
+$isAffiliateLogin = $block->isAffiliateLogin();
+if ($isAffiliateLogin) {
+	$flag = true;
+} else {
+	if ($showForGuest) {
+		$flag      = true;
+		$campaigns = $block->getCampaignForGuest();
+	}
+}
+?>
+
+<?php if ($flag && $campaigns->getSize()): ?>
+	<div class="affiliate-campaigns-list">
+        <table class="data-table" id="list-campaigns-table">
+            <colgroup>
+                <col width="1">
+                <col width="1">
+            </colgroup>
+            <thead>
+				<tr>
+					<th colspan="5" height="30"><?php echo 'Our Campaigns' ?></th>
+				</tr>
+            </thead>
+            <tbody>
+            <?php foreach ($campaigns as $campaign): ?>
+				<?php
+				$commission = @unserialize($campaign->getCommission());
+				$rowSpan    = is_array($commission) ? sizeof($commission) : 0;
+				$extraSpan  = $block->getCampaignRowSpan($rowSpan, $campaign);
+				?>
+				<?php if (is_array($commission) && sizeof($commission)): ?>
+					<?php foreach ($commission as $tierId => $tierValue): ?>
+						<tr>
+                            <?php if ($tierId == 'tier_1'): ?>
+								<td rowspan="<?php echo $extraSpan ?>" width="20%">
+                                    <strong><?php echo $campaign->getName() ?></strong>
+
+                                    <p style="  font-size: 0.9em; font-style: italic; margin-top: 10px;"><?php echo $campaign->getDescription() ?></p>
+                                </td>
+								<td rowspan="<?php echo $rowSpan ?>" width="15%">
+                                    <strong><?php echo __('Pay Per Sale') ?></strong>
+                                </td>
+							<?php endif; ?>
+							<td width="8%">
+                                <?php echo $tierValue['name'] ?>
+                            </td>
+                            <td>
+                                <?php if ($tierValue['value']) {
+									if ($tierValue['type'] == \Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit\Tab\Commissions\Arraycommission::TYPE_FIXED) {
+										echo __('%1 for first order.', $block->formatPrice($tierValue['value']));
+									} elseif ($tierValue['type'] == \Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit\Tab\Commissions\Arraycommission::TYPE_SALE_PERCENT) {
+										echo __('%1 of Order Total for first order.', ($tierValue['value'] . '%'));
+									} else {
+										echo __('%1 of Order Profit for first order.', ($tierValue['value'] . '%'));
+									}
+								} ?>
+                            </td>
+                            <td>
+                                <?php if ($tierValue['value_second']) {
+									if ($tierValue['type_second'] == \Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit\Tab\Commissions\Arraycommission::TYPE_FIXED) {
+										echo __('%1 for next orders.', $block->formatPrice($tierValue['value_second']));
+									} elseif ($tierValue['type_second'] == \Mageplaza\Affiliate\Block\Adminhtml\Campaign\Edit\Tab\Commissions\Arraycommission::TYPE_SALE_PERCENT) {
+										echo __('%1 of Order Total for next orders.', ($tierValue['value_second'] . '%'));
+									} else {
+										echo __('%1 of Order Profit for next orders.', ($tierValue['value_second'] . '%'));
+									}
+								} ?>
+                            </td>
+                        </tr>
+					<?php endforeach; ?>
+					<?php echo $block->getCommissionCampaignAddition('commission.campaign.addition', $campaign); ?>
+				<?php else: ?>
+					<tr>
+                        <?php if (!$rowSpan): ?>
+							<td rowspan="<?php echo $extraSpan + 1; ?>" width="20%">
+                                <strong><?php echo $campaign->getName() ?></strong>
+
+                                <p style="  font-size: 0.9em; font-style: italic; margin-top: 10px;"><?php echo $campaign->getDescription() ?></p>
+                            </td>
+						<?php endif; ?>
+						<?php echo $block->getCommissionCampaignAddition('commission.campaign.addition', $campaign); ?>
+                    </tr>
+				<?php endif; ?>
+				<?php if ($campaign->getDiscountDescription()): ?>
+					<tr>
+						<td>
+							<strong><?php echo __('Discount policy') ?></strong>
+						</td>
+						<td colspan="3">
+							<?php echo $campaign->getDiscountDescription() ?>
+						</td>
+					</tr>
+				<?php endif; ?>
+				<tr>
+                    <td>
+                        <strong><?php echo __('Valid Date') ?></strong>
+                    </td>
+                    <td colspan="3">
+                        <?php
+						$fromDate = $campaign->getFromDate();
+						$toDate   = $campaign->getToDate();
+						if (!$fromDate && !$toDate) {
+							echo __('Always');
+						} else {
+							echo $fromDate ? __('from') . ' <strong>' . $block->formatDate($fromDate, \IntlDateFormatter::MEDIUM) . '</strong> ' : '';
+							echo $toDate ? __('to') . ' <strong>' . $block->formatDate($toDate, \IntlDateFormatter::MEDIUM) . '</strong>' : '';
+						}
+						?>
+                    </td>
+                </tr>
+				<?php echo $block->getChildHtml('campaign_addition'); ?>
+			<?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif; ?>
+
+<?php echo $this->getChildHtml('dashboard.extra') ?>

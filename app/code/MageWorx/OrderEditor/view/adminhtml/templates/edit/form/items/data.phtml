@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /** @var $block \MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Data */ ?>
+<div class="page-create-order">
+    <div class="<?php if ($block->getCustomerId()): ?>order-details-existing-customer<?php endif; ?>">
+        <section id="order-items" class="admin__page-section order-items" data-mage-init='{"loader": {}}'>
+            <?php echo $block->getChildHtml('items') ?>
+        </section>
+        <div id="order-search" style="display: none" class="admin__page-section order-search-items">
+            <?php echo $block->getChildHtml('search') ?>
+        </div>
+        <div id="ordereditor_new_totals" class="admin__page-section">
+            <?php echo $block->getChildHtml('temp_totals') ?>
+        </div>
+        <div class="actions" id="ordereditor-items-actions-block">
+            <?php echo $block->getSubmitButtonHtml() ?>
+            <?php echo $block->getAddProductsButtonHtml() ?>
+            <?php echo $block->getCancelButtonHtml() ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+.admin__fieldset > .admin__field > .admin__field-control[data-index="tier_price"] {
+	width: auto;
+}

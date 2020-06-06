@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <head>
+    <css src="Webfitters_Checkout::css/orderindex.css" />
+  </head>
+  <body>
+  	<referenceBlock name="items_grid">
+        <action method="setTemplate">
+            <argument name="template" xsi:type="string">Webfitters_Checkout::order/create/items/grid.phtml</argument>
+        </action>
+    </referenceBlock>
+    <referenceBlock name="order_create_billing_form">
+    	<action method="setMethodFormTemplate">
+        	<argument name="method" xsi:type="string">webfitters_paylater</argument>
+        	<argument name="template" xsi:type="string">Webfitters_Checkout::form/later.phtml</argument>
+      	</action>
+    </referenceBlock>
+    <referenceBlock name="order_create_billing_form">
+      <action method="setMethodFormTemplate">
+          <argument name="method" xsi:type="string">webfitters_terms</argument>
+          <argument name="template" xsi:type="string">Webfitters_Checkout::form/terms.phtml</argument>
+        </action>
+    </referenceBlock>
+    <referenceBlock name="shipping_method">
+      <action method="setTemplate">
+        <argument xsi:type="string" name="template">Webfitters_Checkout::order/create/shipping/method/form.phtml</argument>
+      </action>
+    </referenceBlock>
+    <referenceBlock name="billing_address">
+      <action method="setTemplate">
+        <argument xsi:type="string" name="template">Webfitters_Checkout::order/create/form/address.phtml</argument>
+      </action>
+    </referenceBlock>
+    <referenceBlock name="shipping_address">
+      <action method="setTemplate">
+        <argument name="template" xsi:type="string">Webfitters_Checkout::order/create/form/address.phtml</argument>
+      </action>
+    </referenceBlock>
+  </body>
+</page>

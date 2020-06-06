@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    	<referenceBlock name="page.main.title" remove="true" />
+    	<!--<referenceContainer name="before.body.end">-->
+            <!--<block class="Magento\Framework\View\Element\Template" template="Webfitters_Custom::announcement.phtml">-->
+        		<!--<block class="Magento\Cms\Block\Block" name="announcement" after="-">-->
+                    <!--<arguments>-->
+                        <!--<argument name="block_id" xsi:type="string">announcement</argument>-->
+                    <!--</arguments>-->
+                <!--</block>-->
+            <!--</block>-->
+    	<!--</referenceContainer>-->
+    </body>
+</page>

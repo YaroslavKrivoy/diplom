@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid" type="Webfitters\Checkout\Block\Adminhtml\Order\Create\Search\Grid" />
+	<preference for="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AdvancedPricing" type="Webfitters\Checkout\Ui\DataProvider\Product\AdvancedPricing" />
+  <preference for="Magento\Vault\Model\Ui\Adminhtml\TokensConfigProvider" type="Webfitters\Checkout\Model\Vault\TokensConfigProvider" />
+  <preference for="Magento\Vault\Model\Method\Vault" type="Webfitters\Checkout\Model\Vault\Method" />
+  <preference for="Magento\Sales\Block\Adminhtml\Order\Invoice\View" type="Webfitters\Checkout\Block\Adminhtml\Order\Invoice\View" />
+  <preference for="Magento\Sales\Controller\Adminhtml\Order\Invoice\Save" type="Webfitters\Checkout\Plugin\Invoice\Save" />
+	<!--<type name="Magento\Sales\Controller\Adminhtml\Order\Invoice\Save">
+    	<plugin name="webfitters_check_payment_method" type="Webfitters\Checkout\Plugin\Invoice\Save" sortOrder="0" />
+  </type>-->
+  <type name="Magento\Sales\Controller\Adminhtml\Order\Invoice\Capture">
+      <plugin name="webfitters_update_payment_method" type="Webfitters\Checkout\Plugin\Invoice\Capture" sortOrder="0" />
+  </type>
+  <type name="Magento\Quote\Model\Quote\Item\Processor">
+      <plugin name="save_qty_weight" type="Webfitters\Checkout\Plugin\Quote\Item\SaveQtyWeight"/>
+  </type>
+  <type name="Magento\Quote\Model\Quote\Item\Updater">
+      <plugin name="update_qty_weight" type="Webfitters\Checkout\Plugin\Quote\Item\UpdateQtyWeight"/>
+  </type>
+  <type name="Magento\Sales\Block\Adminhtml\Order\View\Items\Renderer\DefaultRenderer">
+      <plugin name="add_weights_to_admin_order_items" type="Webfitters\Checkout\Plugin\Order\View\Items"/>
+  </type>
+  <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+      <plugin name="transfer_quote_weight_to_order_item" type="Webfitters\Checkout\Plugin\Quote\Item\ToOrder"/>
+  </type>
+  <type name="Magento\Sales\Model\Order\Item">
+      <plugin name="modify_weight_for_qty" type="Webfitters\Checkout\Plugin\Order\Item\Weight" />
+  </type>
+  <type name="Magento\Sales\Model\Convert\Order">
+      <plugin name="add_weight_to_invoices_and_shipment" type="Webfitters\Checkout\Plugin\Order\Item\Convert" />
+      <plugin name="add_using_container_fee" type="Webfitters\Checkout\Plugin\Order\Convert" />
+  </type>
+  <type name="Magento\Sales\Model\AdminOrder\Create">
+      <plugin name="add_using_container_fee_to_order" type="Webfitters\Checkout\Plugin\SaveContainerFee" />
+  </type>
+</config>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magecheckout_SocialLogin extension
+ *                     NOTICE OF LICENSE
+ *
+ *                     This source file is subject to the MIT License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     http://opensource.org/licenses/mit-license.php
+ *
+ *                     @category  Magecheckout
+ *                     @package   Magecheckout_SocialLogin
+ *                     @copyright Copyright (c) 2015
+ *                     @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.components">
+            <block class="Mageplaza\Affiliate\Block\Js\Hash" name="affiliate_check_hash" template="Mageplaza_Affiliate::js/hash.phtml"/>
+        </referenceBlock>
+        <referenceBlock name="top.links">
+            <block class="Mageplaza\Affiliate\Block\Html\Link" name="affiliate_top_link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">My Affiliate</argument>
+                    <argument name="title" xsi:type="string" translate="true">My Affiliate</argument>
+                    <argument name="path" xsi:type="string">affiliate/</argument>
+                    <argument name="type" xsi:type="string">top_link</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="footer_links">
+            <block class="Mageplaza\Affiliate\Block\Html\Link" name="affiliate_footer_link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">My Affiliate</argument>
+                    <argument name="title" xsi:type="string" translate="true">My Affiliate</argument>
+                    <argument name="path" xsi:type="string">affiliate/</argument>
+                    <argument name="type" xsi:type="string">footer_link</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

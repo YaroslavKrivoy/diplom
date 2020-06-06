@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <affiliate>
+            <transaction>
+                <admin>Mageplaza\Affiliate\Model\Transaction\Action\Admin</admin>
+                <order>
+                    <invoice>Mageplaza\Affiliate\Model\Transaction\Action\Order\Invoice</invoice>
+                    <refund>Mageplaza\Affiliate\Model\Transaction\Action\Order\Refund</refund>
+                </order>
+                <withdraw>
+                    <create>Mageplaza\Affiliate\Model\Transaction\Action\Withdraw\Create</create>
+                </withdraw>
+            </transaction>
+            <payment_method>
+                <offline>
+                    <label>Offline payment</label>
+                    <model>Mageplaza\Affiliate\Model\Payment\Methods\Offline</model>
+                    <block>Mageplaza\Affiliate\Block\Payment\Methods\Offline</block>
+                    <active>1</active>
+                </offline>
+                <paypal>
+                    <label>Paypal payment</label>
+                    <model>Mageplaza\Affiliate\Model\Payment\Methods\Paypal</model>
+                    <block>Mageplaza\Affiliate\Block\Payment\Methods\Paypal</block>
+                    <active>1</active>
+                </paypal>
+            </payment_method>
+            <general>
+                <enable>1</enable>
+                <expired_time>365</expired_time>
+                <overwrite_cookies>1</overwrite_cookies>
+                <discount_label>Affiliate Discount</discount_label>
+                <show_link>footer_link</show_link>
+                <page>
+                    <welcome>affiliate-home</welcome>
+                    <faq>affiliate-faq</faq>
+                    <getting_started>affiliate-getting-started</getting_started>
+                    <policy_enable>0</policy_enable>
+                </page>
+                <url>
+                    <type>hash</type>
+                    <param>account_id</param>
+                    <prefix>c</prefix>
+                    <code_length>6</code_length>
+                </url>
+            </general>
+            <account>
+                <sign_up>
+                    <allow_create>1</allow_create>
+                    <default_group>1</default_group>
+                    <admin_approved>0</admin_approved>
+                    <default_email_notification>1</default_email_notification>
+                </sign_up>
+                <term_conditions>
+                    <enable>1</enable>
+                    <checkbox_text>I agree to the terms and conditions</checkbox_text>
+                    <title>Terms and Conditions</title>
+                    <html>affiliate-term-condition</html>
+                    <default_checkbox>1</default_checkbox>
+                </term_conditions>
+                <balance>
+                    <negative>1</negative>
+                </balance>
+            </account>
+            <commission>
+                <by_tax>0</by_tax>
+                <by_shipping>0</by_shipping>
+                <process>
+                    <order_invoice>0</order_invoice>
+                    <holding_days>30</holding_days>
+                    <refund>1</refund>
+                </process>
+            </commission>
+            <withdraw>
+                <allow_request>1</allow_request>
+            </withdraw>
+            <email>
+                <sender>general</sender>
+                <account>
+                    <enable>1</enable>
+                </account>
+                <transaction>
+                    <enable>1</enable>
+                </transaction>
+                <withdraw>
+                    <enable>1</enable>
+                </withdraw>
+            </email>
+            <refer>
+                <enable>1</enable>
+                <account_sharing>affiliate_refer_account_sharing</account_sharing>
+                <referring_page>affiliate-referfriend-description</referring_page>
+                <display>list,detail</display>
+                <addthis_pubid>ra-56e141d56e895f5c</addthis_pubid>
+                <cloudsponge>1</cloudsponge>
+                <cloudsponge_key>a473483c2e256bd812bdc9a0bac867ecf1999a54</cloudsponge_key>
+                <sharing_content>
+                    <subject>Good product and services</subject>
+                    <email_content><![CDATA[Hi {{friend_name}},
+I've been shopping at {{store_name}} and feel really happy. They provide good customer service and reasonable prices.
+If you click on my link below, you can even receive a special discount! Check it out:
+<a href="{{url}}">{{url}}</a>
+
+Cheers,
+{{account_name}}
+]]></email_content>
+                    <social_content><![CDATA[I've been shopping at {{store_name}} and feel really happy. Check it out: {{url}}]]></social_content>
+                </sharing_content>
+            </refer>
+            <banner>
+                <enable>1</enable>
+                <enable_addthis>1</enable_addthis>
+            </banner>
+        </affiliate>
+    </default>
+</config>

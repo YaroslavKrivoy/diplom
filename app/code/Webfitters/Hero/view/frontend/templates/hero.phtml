@@ -1,0 +1,12 @@
+<?php if($this->getImage() && $this->getImage()!=''): ?>
+	<?php if($this->isParallax()): ?>
+	<div class="hero-image parallax-hero" data-parallax="scroll" data-image-src="<?php echo $this->getImage(); ?>">
+	<?php else: ?>
+	<div class="hero-image<?php echo (($this->isParallax())?' parallax-hero':''); ?>" style="background-image: url('<?php echo $this->getImage(); ?>');">
+	<?php endif; ?>
+	<div class="hero-overlay"></div>
+	<?php if($this->getText()!=''): ?>
+	<h1 class="hero-title"><?php echo $this->getText(); ?></h1>
+	<?php endif; ?>
+</div>
+<?php endif; ?>

@@ -1,0 +1,11 @@
+<div class="block block-categories">
+	<div class="block-title">Our Products</div>
+	<?php foreach($this->getCategories() as $category): ?>
+	<h4 class="sidebar-title"><?php echo $category->getName(); ?></h4>
+	<ul class="sidebar-categories">
+	<?php foreach($category->getChildrenCategories() as $child): ?>
+		<li><a href="<?php echo $child->getUrl(); ?>"><?php echo $child->getName(); ?></a></li>
+	<?php endforeach; ?>
+	</ul>
+	<?php endforeach; ?>
+</div>

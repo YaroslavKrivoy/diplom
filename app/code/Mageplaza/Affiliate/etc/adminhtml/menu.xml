@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza_Affiliate extension
+ *                     NOTICE OF LICENSE
+ *
+ *                     This source file is subject to the Mageplaza License
+ *                     that is bundled with this package in the file LICENSE.txt.
+ *                     It is also available through the world-wide-web at this URL:
+ *                     https://www.mageplaza.com/LICENSE.txt
+ *
+ *                     @category  Mageplaza
+ *                     @package   Mageplaza_Affiliate
+ *                     @copyright Copyright (c) 2016
+ *                     @license   https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_Affiliate::affiliate" title="Affiliate" module="Mageplaza_Affiliate" sortOrder="20" resource="Mageplaza_Affiliate::affiliate" parent="Mageplaza_Core::menu"/>
+        <add id="Mageplaza_Affiliate::account" title="Manage Accounts" module="Mageplaza_Affiliate" sortOrder="10" action="affiliate/account" resource="Mageplaza_Affiliate::account" parent="Mageplaza_Affiliate::affiliate"/>
+        <add id="Mageplaza_Affiliate::group" title="Affiliate Groups" module="Mageplaza_Affiliate" sortOrder="20" action="affiliate/group" resource="Mageplaza_Affiliate::group" parent="Mageplaza_Affiliate::affiliate"/>
+        <add id="Mageplaza_Affiliate::campaign" title="Campaigns" module="Mageplaza_Affiliate" sortOrder="30" action="affiliate/campaign" resource="Mageplaza_Affiliate::campaign" parent="Mageplaza_Affiliate::affiliate"/>
+        <add id="Mageplaza_Affiliate::banner" title="Banners" module="Mageplaza_Affiliate" sortOrder="40" action="affiliate/banner" resource="Mageplaza_Affiliate::banner" parent="Mageplaza_Affiliate::affiliate"/>
+        <add id="Mageplaza_Affiliate::withdraw" title="Withdraws" module="Mageplaza_Affiliate" sortOrder="50" action="affiliate/withdraw" resource="Mageplaza_Affiliate::withdraw" parent="Mageplaza_Affiliate::affiliate"/>
+        <add id="Mageplaza_Affiliate::transaction" title="Transactions" module="Mageplaza_Affiliate" sortOrder="60" action="affiliate/transaction" resource="Mageplaza_Affiliate::transaction" parent="Mageplaza_Affiliate::affiliate"/>
+        <add id="Mageplaza_Affiliate::configuration" title="Configuration" module="Mageplaza_Affiliate" sortOrder="100" action="adminhtml/system_config/edit/section/affiliate" resource="Mageplaza_Affiliate::configuration" parent="Mageplaza_Affiliate::affiliate"/>
+    </menu>
+</config>

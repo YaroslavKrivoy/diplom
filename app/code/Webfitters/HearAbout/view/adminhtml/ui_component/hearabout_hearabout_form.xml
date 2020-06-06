@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">hearabout_hearabout_form.sources_form_data_source</item>
+            <item name="deps" xsi:type="string">hearabout_hearabout_form.sources_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Sample Form</item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+        </item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Webfitters\HearAbout\Block\Adminhtml\HearAbout\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">Webfitters\HearAbout\Block\Adminhtml\HearAbout\Edit\DeleteButton</item>
+            <item name="reset" xsi:type="string">Webfitters\HearAbout\Block\Adminhtml\HearAbout\Edit\ResetButton</item>
+            <item name="save" xsi:type="string">Webfitters\HearAbout\Block\Adminhtml\HearAbout\Edit\SaveButton</item>
+        </item>
+    </argument>
+
+    <dataSource name="sources_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Webfitters\HearAbout\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">sources_form_data_source</argument>
+            <argument name="primary" xsi:type="string">id</argument>
+            <argument name="request" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                <item name="submit_url" path="*/*/save" xsi:type="url" />
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="hear_about">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Source Name</item>
+            </item>
+        </argument>
+        <field name="id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">hear_about</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">hear_about</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

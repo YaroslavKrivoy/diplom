@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="KozakGroup_RewriteOrderEditor::css/order_shipping.css" />
+    </head>
+    <body>
+        <referenceBlock name="order_items">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">KozakGroup_RewriteOrderEditor::grid/items.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="order_history">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">KozakGroup_RewriteOrderEditor::order/view/history.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="order_tab_info">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">KozakGroup_RewriteOrderEditor::order/view/tab/info.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="page.actions.toolbar">
+            <block class="KozakGroup\RewriteOrderEditor\Block\Adminhtml\EditOrderButton" as="edit_order_button"/>
+        </referenceBlock>
+    </body>
+</page>

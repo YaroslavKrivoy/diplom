@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mageworx" sortOrder="2001">
+            <label>MageWorx</label>
+        </tab>
+        <section id="mageworx_order_management" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Order Management</label>
+            <tab>mageworx</tab>
+            <resource>MageWorx_OrdersGrid::config_ordersgrid</resource>
+            <group id="order_grid" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Orders Grid</label>
+                <group id="main" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Main Settings</label>
+                    <field id="sync" translate="label comment" type="button" sortOrder="2000" showInDefault="1" showInWebsite="0" showInStore="0">
+                        <frontend_model>MageWorx\OrdersGrid\Block\Adminhtml\System\Config\Buttons\Sync</frontend_model>
+                        <label><![CDATA[Sync orders additional data]]></label>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

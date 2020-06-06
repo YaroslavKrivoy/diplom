@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<form class="form form-edit-account form-affiliate form-create-affiliate" action="<?php /* @escapeNotVerified */ echo $block->getSignupUrl() ?>" method="post" id="form-validate" autocomplete="off">
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php echo __('Affiliate Information') ?></span></legend>
+        <div class="field">
+            <label for="referred_by"><?php echo __('Referred By') ?></label>
+            <div class="input-box">
+                <?php $referBy = $block->helper()->getCustomerReferBy() ?>
+                <input type="text" name="referred_by" title="<?php echo __('Referred By') ?>" <?php echo $referBy ? 'value="' . $referBy . '" disabled' : '' ?> id="referred_by" class="input-text" placeholder="<?php echo __('Customer email or Affiliate code') ?>"/>
+            </div>
+        </div>
+    </fieldset>
+    <?php if((bool) $block->getAffiliateConfig('account/term_conditions/enable')): ?>
+        <div class="fields affiliate-clear">
+                <label for="terms_condition"><?php echo $block->getAffiliateConfig('account/term_conditions/title') ?></label>
+                <div class="terms_condition_textarea">
+                    <div class="terms_condition_text"><?php echo $block->loadCmsBlock($block->getAffiliateConfig('account/term_conditions/html')) ?></div>
+                    <div class="input-box">
+                        <input type="checkbox" class="required required-entry" name="terms" id="terms_conditions" <?php echo $block->getAffiliateConfig('account/term_conditions/default_checkbox') ? 'checked' : '' ?>/>
+                        <label for="terms_conditions"><?php echo $block->getAffiliateConfig('account/term_conditions/checkbox_text') ?></label>
+                    </div>
+                </div>
+            </div>
+    <?php endif; ?>
+    <div class="actions-toolbar affiliate-clear">
+        <div class="primary">
+            <button type="submit" class="action submit primary" title="<?php /* @escapeNotVerified */ echo __('Create an Account') ?>"><span><?php /* @escapeNotVerified */ echo __('Create an Account') ?></span></button>
+        </div>
+    </div>
+</form>

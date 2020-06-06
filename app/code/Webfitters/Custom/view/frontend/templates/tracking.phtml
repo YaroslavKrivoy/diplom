@@ -1,0 +1,32 @@
+<?php 
+$count = 1;
+$items = [];
+foreach($this->getOrder()->getItems() as $item) {
+	$items[] = [
+		'id' => $item->getId(),
+		'name' => $item->getName(),
+		'list_name' => '',
+		'brand' => '',
+		'category' => $this->getCategory($item->getProduct()),
+		'variant' => '',
+		'list_position' => $count,
+		'quantity' => $item->getQtyOrdered(),
+		'price' => $item->getPrice()
+	];
+	$count++;
+} 
+?>
+<script type="text/javascript">
+gtag('event', 'purchase', {
+	"transaction_id": "<?php echo $this->getOrder()->getIncrementId(); ?>",
+	"affiliation": "blackwing.com",
+	"value": <?php echo $this->getOrder()->getGrandTotal(); ?>,
+	"currency": "USD",
+	"tax": <?php echo $this->getOrder()->getTaxAmount(); ?>,
+	"shipping": <?php echo $this->getOrder()->getShippingAmount(); ?>,
+	"items": <?php echo json_encode($items); ?>
+});
+</script>
+<script type="text/javascript">
+	fbq('track', 'Purchase', {value: <?php echo $this->getOrder()->getGrandTotal(); ?>, currency: 'USD'});
+</script>

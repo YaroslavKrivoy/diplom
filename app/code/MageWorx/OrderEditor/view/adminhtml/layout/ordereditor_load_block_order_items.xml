@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="sales_order_create_item_price"/>
+    <referenceBlock name="content">
+        <block class="Magento\Catalog\Block\Adminhtml\Product\Composite\Configure" template="Magento_Catalog::catalog/product/composite/configure.phtml"/>
+        <block class="Magento\Backend\Block\Template" template="MageWorx_OrderEditor::edit/form/js.phtml" name="create"/>
+        <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Form" template="edit/form/items/form.phtml" name="order_create_form" as="form">
+            <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Data" template="edit/form/items/data.phtml" name="data">
+                <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items" template="edit/form/items.phtml" name="items">
+                    <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Grid" template="edit/form/items/grid.phtml" name="items_grid">
+                        <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Type\Simple" name="ordereditor_order_simple_item_form" template="MageWorx_OrderEditor::edit/form/items/type/simple.phtml" />
+                        <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Type\Bundle" name="ordereditor_order_bundle_item_form" template="MageWorx_OrderEditor::edit/form/items/type/bundle.phtml"/>
+                    </block>
+                </block>
+                <block class="MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Totals" template="edit/totals.phtml" name="temp_totals" />
+            </block>
+        </block>
+        <block class="Magento\Framework\View\Element\Text\ListText" name="order_item_extra_info"/>
+    </referenceBlock>
+</page>

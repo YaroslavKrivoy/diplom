@@ -1,0 +1,237 @@
+<?php
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /** @var $block \MageWorx\OrderEditor\Block\Adminhtml\Sales\Order\Edit\Form\Items\Type\AbstractType */ ?>
+
+<?php $item = $block->getOrderItem() ?>
+<?php $itemType = $block->getEditedItemType(); ?>
+<?php $itemId = $block->getOrderItemId(); ?>
+<?php $parentItemId = $block->getParentItemId(); ?>
+<?php $hasParent  = $block->hasOrderItemParent(); ?>
+<?php $canEditItem = true; ?>
+<?php $canDeleteItem = $block->getCanDeleteItem(); ?>
+
+<tr id="order_item_<?php echo $block->escapeHtml($itemId); ?>"
+    class="type-<?php echo $itemType ?> <?php if($hasParent) : ?> has-parent has-parent-<?php echo $parentItemId ?><?php endif;?>"
+    <?php if($hasParent) : ?> data-parent-id="<?php echo $parentItemId ?>"<?php endif; ?>
+    data-item-id="<?php echo $itemId ?>">
+
+    <!-- Name, SKU, configure button, hidden params -->
+    <td class="col-product">
+        <span class="item_name_<?php echo $itemId ?>" id="order_item_<?php echo $itemId ?>_title"><?php echo $block->escapeHtml($item->getName()) ?></span>
+        <div class="product-sku-block">
+            <span><?php echo __('SKU') ?>:</span>
+            <span class="item_sku_<?php echo $itemId ?>"><?php echo $item->getSku() ?></span>
+        </div>
+        <div class="product-configure-block">
+            <?php $button = $block->getConfigureButtonHtml() ?>
+            <?php if($button): ?>
+                <?php echo $button; ?>
+                <div style="display:none !important;">
+                    <input type="hidden" name="item[<?php echo $itemId ?>][product_options]" />
+                    <input type="hidden" name="item[<?php echo $itemId ?>][sku]" />
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <input type="hidden"
+               value="<?php echo $item->getId() ?>"
+               name="item[<?php echo $itemId ?>][item_id]"/>
+        <input type="hidden"
+               value="<?php echo $itemType ?>"
+               name="item[<?php echo $itemId ?>][item_type]"/>
+        <input type="hidden" class="mw-order-editor-order-item"
+               value="<?php echo $item->getProductId() ?>"
+               name="item[<?php echo $itemId ?>][product_id]"/>
+        <input type="hidden" class="mw-order-editor-order-item"
+               value="<?php echo $block->getPrice('discount_tax_compensation_amount'); ?>"
+               name="item[<?php echo $itemId ?>][discount_tax_compensation_amount]"/>
+        <input type="hidden" class="mw-order-editor-order-item"
+               value="<?php echo $block->getPrice('weee_tax_applied_row_amount'); ?>"
+               name="item[<?php echo $itemId ?>][weee_tax_applied_row_amount]"/>
+    </td>
+
+    <!-- Item Status -->
+    <td class="col-status">
+        <?php echo ($itemType == 'quote') ? __('New') : $item->getStatus(); ?>
+    </td>
+
+    <!-- Original Price -->
+    <td class="col-price-original">
+        <?php echo $block->displayPriceAttribute('original_price') ?>
+    </td>
+
+    <!-- Price -->
+    <td class="col-price">
+        <label><?php echo __('Excl.Tax:') ?>&nbsp;<b><?php echo $block->getPriceHtml('price'); ?></b></label><br/>
+        <input type="text" name="item[<?php echo $itemId ?>][price]"
+               title="<?php echo __("Price excl tax") ?>"
+               class="mw-order-editor-order-item required-entry validate-number"
+               value="<?php echo $block->getPrice('price'); ?>"/><br/>
+        <label><?php echo __('Incl.Tax:') ?>&nbsp;<b><?php echo $block->getPriceHtml('price_incl_tax'); ?></b></label><br/>
+        <input type="text" name="item[<?php echo $itemId ?>][price_incl_tax]"
+               title="<?php echo __("Price incl. tax") ?>"
+               class="mw-order-editor-order-item required-entry validate-number"
+               value="<?php echo $block->getPrice('price_incl_tax'); ?>"/>
+    </td>
+
+    <!-- Quantity -->
+    <td class="col-qty">
+        <table class="qty-table">
+            <tr>
+                <td><?php echo __("Ordered"); ?></td><td><?php echo $item->getQtyOrdered() * 1; ?></td>
+            </tr>
+            <?php if ($item->getQtyInvoiced() > 0): ?>
+                <tr>
+                    <td><?php echo __("Invoiced") ?></td><td><?php  echo $item->getQtyInvoiced() * 1; ?></td>
+                </tr>
+            <?php endif; ?>
+            <?php if ($item->getQtyRefunded() > 0): ?>
+                <tr>
+                    <td><?php echo __("Refunded") ?></td><td><?php  echo $item->getQtyRefunded() * 1; ?></td>
+                </tr>
+            <?php endif; ?>
+            <?php if ($item->getQtyShipped() > 0): ?>
+                <tr>
+                    <td><?php  echo __("Shipped") ?></td><td><?php  echo $item->getQtyShipped() * 1; ?></td>
+                </tr>
+            <?php endif; ?>
+            <?php if ($item->getQtyCanceled() > 0): ?>
+                <tr>
+                    <td><?php  echo __("Canceled") ?></td><td><?php  echo $item->getQtyCanceled() * 1; ?></td>
+                </tr>
+            <?php endif; ?>
+            <tr>
+                <td><b><?php echo __("New"); ?></b></td>
+                <td>
+                    <input type="text" name="item[<?php echo $itemId ?>][fact_qty]"
+                           class="mw-order-editor-order-item required-entry validate-number qty_input
+                           <?php if (!$canDeleteItem) :
+                               echo 'cancelled" readonly="readonly"';
+                           else :
+                               echo '"';
+                           endif; ?>"
+                           data-item-id="<?php echo $itemId ?>"
+                           value="<?php echo $block->getItemQty() * 1 ?>" />
+                </td>
+
+                <?php if($hasParent): ?>
+                    <tr>
+                        <td colspan="2">
+                            <?php $parentItemQty = $item->getParentItem()->getQtyOrdered() - $item->getParentItem()->getQtyRefunded(); ?>
+                            <?php $parentItemQty = $parentItemQty == 0 ? 1 : $parentItemQty * 1; ?>
+                            <input type="hidden" value="<?php echo $block->getItemQty() / $parentItemQty; ?>"
+                                   name="item[<?php echo $itemId ?>][qty_item_in_bundle]"/>
+                            <input type="hidden" value="<?php echo $parentItemId ?>"
+                                   name="item[<?php echo $itemId ?>][parent]"/>
+                        </td
+                    </tr>
+                <?php endif; ?>
+            </tr>
+        </table>
+    </td>
+
+    <!-- Subtotal -->
+    <td class="col-subtotal">
+        <?php echo __("Excl.Tax") ?>:&nbsp;<b><?php echo $block->getPriceHtml('row_total'); ?></b>
+        <input type="text" class="mw-order-editor-order-item required-entry validate-number disabled"
+               title="<?php echo __("Subtotal excl. tax") ?>" readonly="readonly"
+               value="<?php echo $block->getPrice('row_total'); ?>"
+               name="item[<?php echo $itemId ?>][subtotal]"/>
+        <br/>
+
+        <?php echo __("Incl.Tax") ?>:&nbsp;<b><?php echo $block->getPriceHtml('row_total_incl_tax'); ?></b>
+        <input type="text" class="mw-order-editor-order-item required-entry validate-number disabled"
+               title="<?php echo __("Subtotal incl. tax") ?>" readonly="readonly"
+               value="<?php echo $block->getPrice('row_total_incl_tax'); ?>"
+               name="item[<?php echo $itemId ?>][subtotal_incl_tax]"/>
+    </td>
+
+    <!-- Tax Amount/Percent -->
+    <td class="col-tax">
+        <?php echo __("Amount") ?>:&nbsp;<b><?php echo $block->getPriceHtml('tax_amount'); ?></b>
+        <input type="text" name="item[<?php echo $itemId ?>][tax_amount]" readonly="readonly"
+               title="<?php echo __("Tax amount") ?>"
+               class="mw-order-editor-order-item required-entry validate-number disabled"
+               value="<?php echo $block->getPrice('base_tax_amount'); ?>"/>
+        <br/>
+
+        <?php echo __("Percent") ?>:&nbsp;<b><?php echo $block->getPercentHtml('tax_percent'); ?></b>
+        <input type="text" name="item[<?php echo $itemId ?>][tax_percent]"
+               id="<?php echo $block->getPercent('tax_percent'); ?>"
+               title="<?php echo __("Tax percent") ?>"
+               class="mw-order-editor-order-item required-entry validate-number"
+               value="<?php echo $block->getPercent('tax_percent'); ?>"/>
+    </td>
+
+    <!-- Discount Amount/Percent-->
+    <td class="col-discount">
+        <label><?php echo __("Amount") ?>:&nbsp;<b><?php echo $block->getPriceHtml('discount_amount'); ?></b></label><br/>
+        <input type="text" name="item[<?php echo $itemId ?>][discount_amount]"
+               class="mw-order-editor-order-item required-entry validate-number
+               <?php if ($block->getPercent('discount_percent')) : ?> disabled"<?php endif; ?>"
+               title="<?php echo __("Discount amount") ?>"
+               value="<?php echo $block->getPrice('base_discount_amount'); ?>"/>
+        <br/>
+
+        <label><?php echo __("Percent") ?>:&nbsp;<b><?php echo $block->getPercentHtml('discount_percent'); ?></b></label><br/>
+        <input type="text" name="item[<?php echo $itemId ?>][discount_percent]"
+               title="<?php echo __("Discount percent") ?>"
+               class="mw-order-editor-order-item required-entry validate-number"
+               value="<?php echo $block->getPercent('discount_percent'); ?>"/>
+    </td>
+
+    <!-- Row total -->
+    <td class="col-row-total">
+        <label><b><?php echo $block->getItemTotalHtml() ?></b></label><br/>
+        <input type="text" name="item[<?php echo $itemId ?>][row_total]" readonly="readonly"
+               title="<?php echo __("Total") ?>"
+               class="mw-order-editor-order-item required-entry validate-number total_input disabled"
+               value="<?php echo $block->getItemTotal(); ?>"/>
+    </td>
+
+    <!-- Actions -->
+    <td class="col-actions last">
+
+        <?php if ($itemType != 'quote') : ?>
+            <?php if ($canDeleteItem) : ?>
+                <select class="admin__control-select item-action-dropdown"
+                        id="action_dropdown_<?php echo $itemId ?>"
+                        data-item-id="<?php echo $itemId ?>"
+                        <?php if($hasParent): ?>data-parent-id="<?php echo $parentItemId ?>"<?php endif; ?>
+                        name="item[<?php echo $block->escapeHtml($itemId) ?>][action]">
+                    <option value=""><?php echo $block->escapeHtml(__('Please select')) ?></option>
+                    <option value="remove"><?php echo $block->escapeHtml(__('Remove')) ?></option>
+                </select>
+            <?php endif; ?>
+        <?php else : ?>
+            <?php if (!$hasParent) : ?>
+
+                <select class="admin__control-select remove_quote_item"
+                        data-item-id="<?php echo $itemId ?>"
+                        <?php if($hasParent): ?>data-parent-id="<?php echo $parentItemId ?>"<?php endif; ?>
+                        name="item[<?php echo $block->escapeHtml($itemId) ?>][action]">
+                    <option value=""><?php echo $block->escapeHtml(__('Please select')) ?></option>
+                    <option value="remove"><?php echo $block->escapeHtml(__('Remove')) ?></option>
+                </select>
+
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($itemType != 'quote' && $canDeleteItem) : ?>
+            <table class="back-to-stock-table">
+                <tr>
+                    <td><?php  echo __("Back to stock") ?></td>
+                    <td>
+                        <input type="checkbox" class="back_to_stock"
+                               name="item[<?php echo $itemId ?>][back_to_stock]"
+                               <?php if($block->getDefaultBackToStock()): ?>checked="checked"<?php endif; ?>
+                               title="<?php echo __("Back to stock") ?>" value="1"/>
+                    </td>
+                </tr>
+            </table>
+        <?php endif; ?>
+    </td>
+</tr>

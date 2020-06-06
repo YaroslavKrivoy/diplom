@@ -1,0 +1,35 @@
+.autorelated-admin-rule-index,
+.autorelated_admin-rule-index {
+  .admin__data-grid-wrap {
+    overflow-x: inherit;
+  }
+}
+
+.data-grid-th {
+  &.tooltip-header {
+    .data-grid-cell-content {
+      width: auto;
+    }
+
+    .admin__field-tooltip {
+      .admin__field-tooltip-action {
+        margin-left: 0.5rem;
+
+        &:before {
+          color: #ffffff;
+          content: '\e61a';
+          font-size: 1.8rem;
+          line-height: 0.5;
+          overflow: inherit;
+          vertical-align: top;
+        }
+      }
+      .admin__field-tooltip-content {
+        color: #41362f;
+        right: -5rem;
+        width: 47rem;
+        font-weight: normal;
+      }
+    }
+  }
+}

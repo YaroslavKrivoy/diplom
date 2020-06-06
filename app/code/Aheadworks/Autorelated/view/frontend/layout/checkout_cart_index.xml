@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Aheadworks_Autorelated::css/shoppingcart.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_content_top_shopping_cart" as="awarp_content_top_shopping_cart" before="-" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_content_bottom_shopping_cart" as="awarp_content_bottom_shopping_cart" after="-" />
+        </referenceContainer>
+
+        <referenceContainer name="checkout.cart.items">
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_crosssell_before_shopping_cart" as="awarp_crosssell_before_shopping_cart" before="awarp_crosssell_instead_shopping_cart" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_crosssell_instead_shopping_cart" as="awarp_crosssell_instead_shopping_cart" before="checkout.cart.crosssell" />
+            <block class="Aheadworks\Autorelated\Block\Related" name="awarp_crosssell_after_shopping_cart" as="awarp_crosssell_after_shopping_cart" after="checkout.cart.crosssell" />
+        </referenceContainer>
+
+        <!-- Compatibility with Magento Luma custom layout-->
+        <move element="awarp_crosssell_instead_shopping_cart" destination="checkout.cart.container" before="checkout.cart.crosssell" />
+        <move element="awarp_crosssell_before_shopping_cart" destination="checkout.cart.container" before="checkout.cart.crosssell" />
+        <move element="awarp_crosssell_after_shopping_cart" destination="checkout.cart.container" after="checkout.cart.crosssell" />
+    </body>
+</page>

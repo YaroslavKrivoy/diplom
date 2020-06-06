@@ -1,0 +1,27 @@
+# production:
+#   when: manual
+
+#   stage: deploy
+
+#   script:
+#     - ssh -p22 $SSH_PRODUCTION_USER@$PRODUCTION_URL "cd ~/public_html && git reset --hard && git pull origin master && php bin/magento deploy:mode:set production"
+
+#   environment:
+#     name: production
+#     url: $PRODUCTION_URL
+
+#   only:
+#     - master
+
+staging:
+  stage: deploy
+
+  script:
+    - ssh -p22 $SSH_STAGING_USER@$STAGING_URL "cd ~/staging && git reset --hard && git pull origin staging && php bin/magento deploy:mode:set production"
+
+  environment:
+    name: staging
+    url: $STAGING_URL
+
+  only:
+    - staging

@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php  $_order = $block->getOrder() ?>
+<?php
+$rmaLink = $block->getRMAUrl($_order);
+if ($rmaLink) : ?>
+    <a class="action rma" href="<?php echo $rmaLink; ?>">
+        <span><?php echo __('Create UPS Return label') ?></span>
+    </a>
+<?php endif ?>
+<?php if ($block->getGoToRMAUrl() > 0): ?>
+    <a class="action rma-go" href="#infomodusReturnLabelsList">
+        <span><?php echo __('Go to Return Label') ?></span>
+    </a>
+<?php endif ?>
+<?php echo $block->getChildHtml(); ?>

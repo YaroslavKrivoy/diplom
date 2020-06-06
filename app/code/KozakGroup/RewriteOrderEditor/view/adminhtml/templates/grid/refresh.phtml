@@ -1,0 +1,39 @@
+<script>
+require([
+    "jquery",
+    "mage/translate",
+    "Magento_Ui/js/modal/alert",
+    "loader"
+], function ($) {
+    $('body').click(function (event) {
+            var text = $(event.target).text();
+
+            if(text == 'Print UPS Shipping Labels'){
+                var selected = $('.data-grid-checkbox-cell-inner .admin__control-checkbox:checked');
+                var selectedParents = selected.parents('tr');
+                var length = selected.length;
+                var orderId = '';
+                var time = 0;
+                for(var i = 0; i < selected.length; i++){
+                    if($(selectedParents[i]).children('td:nth-child(11)').text()!=='\n\n\n\n'){
+                        length--;
+                        orderId+= $(selectedParents[i]).children('td:nth-child(2)').text().replace(/\r?\n/g, '')  + ",";
+                    }
+                }
+
+                time = length * 3000;
+                if(orderId){
+                    orderId = orderId.slice(0,-1);
+                    alert($.mage.__('The page will reload in %1 seconds after message confirmation. Labels for orders with identifiers ' + orderId +' will not be created').replace('%1',time / 1000));
+                }
+                else{
+                    $('body').loader("show");
+                }
+
+                setTimeout(function () {
+                    location.reload(true);
+                },time);
+            }
+        });
+    });
+</script>

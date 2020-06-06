@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Webfitters_MasonryBlog::css/masonry.css"/>
+    </head>
+    <body>
+        <!--<referenceContainer name="blog.sidebar.main" remove="true" />
+        <referenceContainer name="content">
+       	 	<block class="Mageplaza\Blog\Block\Category\Widget" name="mpblog.sidebar.category" template="category/widget.phtml" after="page.title" />
+    	</referenceContainer>-->
+    </body>
+</page>
